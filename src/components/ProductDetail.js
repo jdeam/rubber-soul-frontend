@@ -96,7 +96,7 @@ const ProductDetail = () => {
                   </div>
                 </div>
               </div>
-              <div>{'\n'}</div>
+              
               <p><strong>Quantity</strong></p>
               <div className="dropdown">
                 <div className="dropdown-trigger">
