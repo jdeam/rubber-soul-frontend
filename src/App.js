@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ProductDetail from './components/ProductDetail';
+import ProductDetail from './components/ProductDetailView/ProductDetail';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Route } from 'react-router-dom';

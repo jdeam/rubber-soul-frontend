@@ -1,0 +1,13 @@
+#ProductDetail-review-bar {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+#ProductDetail-review-stars {
+  display: flex;
+  margin-right: 1em;
+}
+
+#ProductDetail-number-reviews{
+  margin-right: 1em;
+}

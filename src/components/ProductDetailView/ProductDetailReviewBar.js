@@ -1,0 +1,30 @@
+import React from 'react';
+import './ProductDetailReviewBar.css'
+
+const ProductDetailReviewBar = ({shoeReviews}) => {
+  let numReviews = shoeReviews.length;
+
+  return (
+    <div id="ProductDetail-review-bar">
+      <div id="ProductDetail-review-stars">
+        {/* <p className="star-ratings"> */}
+          <i className="fas fa-star title is-5" style={{color: '#ed6c63'}} />
+          <i className="fas fa-star title is-5" style={{color: '#ed6c63'}} />
+          <i className="fas fa-star title is-5" style={{color: '#ed6c63'}} />
+          <i className="fas fa-star title is-5" />
+          <i className="fas fa-star title is-5" />
+          {/* &nbsp; &nbsp; */}
+        {/* </p> */}
+      </div>
+      <div id="ProductDetail-number-reviews">
+        <strong>{`${numReviews} Reviews`}</strong>
+        {/* &nbsp; &nbsp; */}
+      </div>
+      <div id="ProductDetail-show-all-reviews">
+        <a href="#">show all</a>
+      </div>
+    </div>
+  )
+}
+
+export default ProductDetailReviewBar

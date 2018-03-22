@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductDetailTitle.css';
+import './ProductDetailTitle.css'
 
 const ProductDetailTitle = ({
   shoeBrand,
@@ -7,8 +7,8 @@ const ProductDetailTitle = ({
 }) => {
 
   return (
-    <div className="section product-header">
-      <div className="container">
+    <div id="ProductDetail-header" className="section product-header">
+      <div id="ProductDetail-header-container" className="container">
         <div className="columns">
           <div className="column">
             <span id="ProductDetail-brandname" className="title is-3">{`${shoeBrand}`}</span>

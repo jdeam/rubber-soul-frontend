@@ -7,3 +7,7 @@ body {
 .rubber-soul {
   font-family: 'Pacifico', cursive;
 }
+
+#footer-container {
+  max-width: 100%;
+}
