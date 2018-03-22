@@ -4,7 +4,7 @@ import shoeData from '../seedData/shoeData.json';
 import levenshtein from 'fast-levenshtein';
 
 export default class extends Component {
-    state = { shoes: [], filter: undefined, sort: undefined, tags: [], sizes: [], colors: [], brands: [] };
+    state = { shoes: [], filter: undefined, sort: undefined, selectedSizes: [], tags: [], sizes: [], colors: [], brands: [] };
 
     componentDidMount() {
         let tagsList = [];
@@ -26,23 +26,30 @@ export default class extends Component {
         this.setState({ shoes: shoeData, tags: tagsList, sizes: sizesList, colors: colorsList, brands: brandsList });
     }
 
-    queryShoes = (e) => {
+    queryShoes = (e, sizesState = []) => {
         let searchQuery = e.target.value.toLowerCase();
+        let selectedSizes = sizesState;
         let filter;
         let sort;
+        // if (this.state.selectedSizes.length > 0) selectedSizes = [...this.state.selectedSizes];
         if (this.state.filter) filter = this.state.filter.toLowerCase();
         if (this.state.sort) sort = this.state.sort;
-        let newState = this.returnShoeData(searchQuery, shoeData, filter, sort);
+        let newState = this.returnShoeData(searchQuery, shoeData, selectedSizes, filter, sort);
         this.setState({ shoes: newState });
     }
 
-    returnShoeData = (queryStr, shoeArray, filter, sort) => {
+    returnShoeData = (queryStr, shoeArray, selectedSizes, filter, sort) => {
         let newShoeArray = [...shoeArray];
         if (filter || queryStr.length < 4) {
             newShoeArray = newShoeArray.filter(shoe => {
                 let propArray = [];
-                let propToCheck = shoe[filter];
+                
                 if (filter) {
+                    let propToCheck = shoe[filter];
+                    if (filter !== 'tags') {
+                        propToCheck = shoe[filter.slice(0, -1)];
+                    }
+                    
                     if (Array.isArray(propToCheck)) {
                         propArray = [...propToCheck];
                     } else {
@@ -52,16 +59,39 @@ export default class extends Component {
                     propArray = [shoe.model, shoe.brand, shoe.color, ...shoe.tags];
                 }
 
+                let sizeArrToCheck = shoe.sizes.filter(size => {
+                    let key = Object.keys(size)[0];
+                    return selectedSizes.includes(key);
+                });
+                
+                for (let j = 0; j < sizeArrToCheck.length; j++) {
+                    let key = Object.keys(sizeArrToCheck[j])[0];
+                    let qty = sizeArrToCheck[j][key];
+                    if (!qty) return false;
+                }
+
                 for (let i = 0; i < propArray.length; i++) {
                     let strCheck = propArray[i].toLowerCase();
                     if (strCheck.includes(queryStr)) return true;
                 }
+
                 return false;
             });
         } else {
             newShoeArray = newShoeArray.filter(shoe => {
                 let propArray = [shoe.model, shoe.brand, shoe.color, ...shoe.tags];
+
+                let sizeArrToCheck = shoe.sizes.filter(size => {
+                    let key = Object.keys(size)[0];
+                    return selectedSizes.includes(key);
+                });
                 
+                for (let j = 0; j < sizeArrToCheck.length; j++) {
+                    let key = Object.keys(sizeArrToCheck[j])[0];
+                    let qty = sizeArrToCheck[j][key];
+                    if (!qty) return false;
+                }
+
                 for (let i = 0; i < propArray.length; i++) {
                     let strCheck = propArray[i].toLowerCase();
                     let editDist = levenshtein.get(strCheck, queryStr);
@@ -134,7 +164,6 @@ export default class extends Component {
         switch(e.target.value) {
             case 'Brands': 
             case 'Tags': 
-            case 'Sizes':
             case 'Colors': {
                 newFilterState = e.target.value;
                 break;
@@ -153,6 +182,20 @@ export default class extends Component {
         this.queryShoes(mockEvent);
     }
 
+    selectSize = (e) => {
+        let selectedSize = e.target.textContent;
+        let newState = [...this.state.selectedSizes];
+        if (newState.includes(selectedSize)) {
+            let index = newState.indexOf(selectedSize);
+            newState.splice(index, 1);
+        } else {
+            newState.push(selectedSize);
+        }
+        this.setState({ selectedSizes: newState });
+        let mockEvent = { target: { value: this.textInput.value }};
+        this.queryShoes(mockEvent, newState);
+    }
+
     render() {
         console.log(this.state);
         return(
@@ -166,50 +209,71 @@ export default class extends Component {
                         </span>
                     </div>
                 </div>
-                <div className="field">
-                    <label className="label">Sort</label>
-                    <div className="control">
-                        <div className="select">
-                            <select onChange={this.sortShoesByCriteria} >
-                                <option>- Select An Option -</option>
-                                <option>Price - Low</option>
-                                <option>Price - High</option>
-                                <option>Rating - Low</option>
-                                <option>Rating - High</option>
-                            </select>
+                <div className="columns">
+                    <div className="column is-three-fifths">
+                        <div className="columns">
+                            <div className="column">
+                                <div className="field">
+                                    <label className="label">Sort</label>
+                                    <div className="control">
+                                        <div className="select">
+                                            <select onChange={this.sortShoesByCriteria} >
+                                                <option>- Select Option -</option>
+                                                <option>Price - Low</option>
+                                                <option>Price - High</option>
+                                                <option>Rating - Low</option>
+                                                <option>Rating - High</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="column">
+                                <div className="field">
+                                    <label className="label">Filter</label>
+                                    <div className="control">
+                                        <div className="select">
+                                            <select onChange={this.setFilter}>
+                                                <option>- Select Option -</option>
+                                                <option>Brands</option>
+                                                <option>Colors</option>
+                                                <option>Tags</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {this.state.filter ? 
+                                (<div className="column">
+                                    <div className="field">
+                                        <label className="label">{this.state.filter} List</label>
+                                        <div className="control">
+                                            <div className="select">
+                                                <select onChange={this.applyFilter}>
+                                                    <option>- Select Option -</option>
+                                                    {this.state.filter ? this.state[this.state.filter.toLowerCase()].map(item=> {
+                                                        return (
+                                                            <option>{item}</option>
+                                                        );
+                                                    }) : ''}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>) : (<span></span>)
+                            }
                         </div>
                     </div>
-                </div> 
-                <div className="field">
-                    <label className="label">Filter</label>
-                    <div className="control">
-                        <div className="select">
-                            <select onChange={this.setFilter}>
-                                <option>- Select An Option -</option>
-                                <option>Brands</option>
-                                <option>Colors</option>
-                                <option>Tags</option>
-                                <option>Sizes</option>
-                            </select>
-                        </div>
+                    <div className="column is-two-fifths">
+                        {this.state.sizes.map(size => {
+                            return (
+                               <a onClick={this.selectSize} className="button is-info is-rounded">{size}</a> 
+                            );
+                        })}
                     </div>
                 </div>
-
-                <div className="field">
-                    <label className="label">Filter List</label>
-                    <div className="control">
-                        <div className="select">
-                            <select onChange={this.applyFilter}>
-                                <option>- Select An Option -</option>
-                                {this.state.filter ? this.state[this.state.filter.toLowerCase()].map(item=> {
-                                    return (
-                                        <option>{item}</option>
-                                    );
-                                }) : ''}
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                
+                
                 
                 {this.state.shoes.map(shoe => {
                     return <div>
