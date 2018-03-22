@@ -197,7 +197,6 @@ export default class extends Component {
     }
 
     render() {
-        console.log(this.state);
         return(
             <div>
                 <div className="field">
@@ -251,11 +250,11 @@ export default class extends Component {
                                             <div className="select">
                                                 <select onChange={this.applyFilter}>
                                                     <option>- Select Option -</option>
-                                                    {this.state.filter ? this.state[this.state.filter.toLowerCase()].map(item=> {
+                                                    {this.state[this.state.filter.toLowerCase()].map((item, i)=> {
                                                         return (
-                                                            <option>{item}</option>
+                                                            <option key={i}>{item}</option>
                                                         );
-                                                    }) : ''}
+                                                    })}
                                                 </select>
                                             </div>
                                         </div>
@@ -296,4 +295,5 @@ export default class extends Component {
             </div>
         );
     }
+
 }
