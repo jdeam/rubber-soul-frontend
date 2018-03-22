@@ -1,7 +1,8 @@
 import React from 'react';
+import './Header.css';
 
 const Header = () => (
-  <nav className="nav has-shadow" role="navigation" aria-label="main navigation">
+  <nav className="navbar has-shadow Header-full">
     <div className="navbar-brand">
       <a className="navbar-item" href="#">
         <h1 className="rubber-soul title is-1">RubberSoul</h1>

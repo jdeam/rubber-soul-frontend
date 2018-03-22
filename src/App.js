@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ProductDetail from './components/ProductDetailView/ProductDetail';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ProductList from './components/ProductList';
 import { Route } from 'react-router-dom';
 import 'bulma/css/bulma.css';
 
