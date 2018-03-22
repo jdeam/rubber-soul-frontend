@@ -1,4 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ProductDetailTitle from './ProductDetailTitle';
+import ProductDetailImg from './ProductDetailImg';
+import ProductDetailPrice from './ProductDetailPrice';
+import ProductDetailReviewBar from './ProductDetailReviewBar';
+import ProductDetailDescription from './ProductDetailDescription';
 const shoes = require('../seedData/shoeData.json')
 
 const ProductDetail = () => {
@@ -15,44 +20,23 @@ const ProductDetail = () => {
   let shoeTags = shoes[0].tags;
 
   return (
-    <div>
-      <div className="section product-header">
-        <div className="container">
-          <div className="columns">
-            <div className="column">
-              <span className="title is-3">{`${shoeBrand}`}</span>
-              <span className="title is-3 has-text-muted">&nbsp;|&nbsp;</span>
-              <span className="title is-4 has-text-muted">{`${shoeModel}`}</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="main-container">
+      <ProductDetailTitle
+        shoeBrand={shoeBrand}
+        shoeModel={shoeModel}
+      />
       <div className="section">
         <div className="container">
           <div className="columns">
-            <div className="column is-6">
-              <div className="image is-2by2">
-                <img src={`${shoeImg}`} alt="product"/>
-              </div>
-            </div>
+            <ProductDetailImg shoeImg={shoeImg} />
+
             <div className="column is-5 is-offset-1">
-              {/* <div className="title is-2">Item Title</div> */}
-              <p className="title is-3 has-text-muted">${`${shoePrice}`}</p>
+              <ProductDetailPrice shoePrice={shoePrice} />
               <hr />
               <br />
-              <p className>
-                <i className="fas fa-star title is-5" style={{color: '#ed6c63'}} />
-                <i className="fas fa-star title is-5" style={{color: '#ed6c63'}} />
-                <i className="fas fa-star title is-5" style={{color: '#ed6c63'}} />
-                <i className="fas fa-star title is-5" />
-                <i className="fas fa-star title is-5" />
-                &nbsp; &nbsp;
-                <strong>41 Reviews</strong>
-                &nbsp; &nbsp;
-                <a href="#">show all</a>
-              </p>
+              <ProductDetailReviewBar shoeReviews={shoeReviews}/>
               <br />
-              <p>{`${shoeDescription}`}</p>
+              <ProductDetailDescription shoeDescription={shoeDescription} />
               <br />
               <br />
 
@@ -96,7 +80,7 @@ const ProductDetail = () => {
                   </div>
                 </div>
               </div>
-              
+
               <p><strong>Quantity</strong></p>
               <div className="dropdown">
                 <div className="dropdown-trigger">
