@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css';
+import './SearchBar.css';
 import shoeData from '../seedData/shoeData.json';
 import levenshtein from 'fast-levenshtein';
 
@@ -179,6 +180,7 @@ export default class extends Component {
     applyFilter = (e) => {
         this.textInput.value = e.target.value;
         let mockEvent = { target: { value: e.target.value } };
+        
         this.queryShoes(mockEvent);
     }
 
@@ -196,6 +198,20 @@ export default class extends Component {
         this.queryShoes(mockEvent, newState);
     }
 
+    createDropDown = () => {
+        return (
+        <div className="select">
+            <select onChange={this.applyFilter} value={"default"}>
+                <option>- Select Option -</option>
+                {this.state[this.state.filter.toLowerCase()].map((item, i)=> {
+                    return (
+                        <option key={i}>{item}</option>
+                    );
+                })}
+            </select>
+        </div>);
+    }
+
     render() {
         return(
             <div>
@@ -209,7 +225,7 @@ export default class extends Component {
                     </div>
                 </div>
                 <div className="columns">
-                    <div className="column is-three-fifths">
+                    <div className="column">
                         <div className="columns">
                             <div className="column">
                                 <div className="field">
@@ -247,26 +263,18 @@ export default class extends Component {
                                     <div className="field">
                                         <label className="label">{this.state.filter} List</label>
                                         <div className="control">
-                                            <div className="select">
-                                                <select onChange={this.applyFilter}>
-                                                    <option>- Select Option -</option>
-                                                    {this.state[this.state.filter.toLowerCase()].map((item, i)=> {
-                                                        return (
-                                                            <option key={i}>{item}</option>
-                                                        );
-                                                    })}
-                                                </select>
-                                            </div>
+                                            {this.createDropDown()}
                                         </div>
                                     </div>
-                                </div>) : (<span></span>)
+                                </div>) : (<div className="column"></div>)
                             }
                         </div>
                     </div>
-                    <div className="column is-two-fifths">
+                    <div className="column">
+                        <label className="label">Sizes</label>
                         {this.state.sizes.map(size => {
                             return (
-                               <a onClick={this.selectSize} className="button is-info is-rounded">{size}</a> 
+                                <a onClick={this.selectSize} style={this.state.selectedSizes.includes(size) ? {backgroundColor: "#a1bfd3"} : {}} className="button is-info is-rounded SearchBar-sizeBtn">{size}</a>
                             );
                         })}
                     </div>
