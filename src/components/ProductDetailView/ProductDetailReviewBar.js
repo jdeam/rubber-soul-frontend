@@ -2,7 +2,8 @@ import React from 'react';
 import './ProductDetailReviewBar.css'
 
 const ProductDetailReviewBar = ({shoeReviews}) => {
-  let numReviews = shoeReviews.length;
+  let numReviews = 0;
+  if (shoeReviews) numReviews = shoeReviews.length;
 
   return (
     <div id="ProductDetail-review-bar">
@@ -21,7 +22,7 @@ const ProductDetailReviewBar = ({shoeReviews}) => {
         {/* &nbsp; &nbsp; */}
       </div>
       <div id="ProductDetail-show-all-reviews">
-        <a href="#">show all</a>
+        <a href="#ProductDetail-reviews-div">see all</a>
       </div>
     </div>
   )
