@@ -7,13 +7,9 @@ const ProductCol = ({ shoe }) => {
     fontWeight: 'bold'
   };
 
-  const linkStyle = {
-
-  };
-
   return (
     <div className="column is-3">
-      <Link to="/detail" style={ linkStyle }>
+      <Link to="/detail">
         <div className="card">
           <div className="card-image">
             <figure className="image">
