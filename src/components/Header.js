@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.css';
 
 const Header = () => (
   <nav className="navbar has-shadow Header-full">
