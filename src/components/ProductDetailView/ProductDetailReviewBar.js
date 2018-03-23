@@ -2,7 +2,8 @@ import React from 'react';
 import './ProductDetailReviewBar.css'
 
 const ProductDetailReviewBar = ({shoeReviews}) => {
-  let numReviews = shoeReviews.length;
+  let numReviews = 0;
+  if (shoeReviews) numReviews = shoeReviews.length;
 
   return (
     <div id="ProductDetail-review-bar">
