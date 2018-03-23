@@ -37,6 +37,7 @@ class ProductDetail extends React.Component {
     });
   }
 
+
   render() {
     // console.log(shoes);
     console.log('STATE?', this.state)
