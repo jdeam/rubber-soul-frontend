@@ -1,8 +1,7 @@
 import React from 'react';
-import './Header.css';
 
 const Header = () => (
-  <nav className="navbar has-shadow Header-full">
+  <nav className="navbar has-shadow">
     <div className="navbar-brand">
       <a className="navbar-item">
         <h1 className="rubber-soul title is-1">RubberSoul</h1>

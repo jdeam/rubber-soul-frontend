@@ -12,12 +12,10 @@ class App extends Component {
   render() {
     return (
       <div>
-
         <Header />
           <Route path="/list" component={ ProductList }/>
           <Route path="/detail" component={ ProductDetail }/>
         <Footer />
-
       </div>
     );
   }
