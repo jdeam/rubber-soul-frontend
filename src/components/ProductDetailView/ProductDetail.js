@@ -5,7 +5,7 @@ import ProductDetailPrice from './ProductDetailPrice';
 import ProductDetailReviewBar from './ProductDetailReviewBar';
 import ProductDetailDescription from './ProductDetailDescription';
 import ProductDetailSizeDropdown from './ProductDetailSizeDropdown';
-import ProductDetailQtyDropdown from './ProductDetailQtyDropdown';
+import ProductDetailQtySelect from './ProductDetailQtySelect';
 import ProductDetailAddToCartButton from './ProductDetailAddToCartButton';
 import ProductDetailItemTable from './ProductDetailItemTable';
 import ProductDetailReviews from './ProductDetailReviews';
@@ -38,7 +38,6 @@ const ProductDetail = () => {
               shoeImg={shoeImg}
             />
 
-            {/* <div id="ProductDetail-right-detail" className="column is-5"> */}
             <div className="column is-5 is-offset-1">
               <ProductDetailPrice
                 shoePrice={shoePrice}
@@ -57,8 +56,10 @@ const ProductDetail = () => {
               <ProductDetailSizeDropdown
                 shoeSizes={shoeSizes}
               />
-              <ProductDetailQtyDropdown />
-              <ProductDetailAddToCartButton onClick={ (e) => {} }/>
+              <ProductDetailQtySelect
+                shoeSizes={shoeSizes}
+              />
+              <ProductDetailAddToCartButton />
               <br />
               <ProductDetailItemTable
                 shoeColor={shoeColor}

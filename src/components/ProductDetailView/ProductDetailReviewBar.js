@@ -21,7 +21,7 @@ const ProductDetailReviewBar = ({shoeReviews}) => {
         {/* &nbsp; &nbsp; */}
       </div>
       <div id="ProductDetail-show-all-reviews">
-        <a href="#">show all</a>
+        <a href="#ProductDetail-reviews-div">see all</a>
       </div>
     </div>
   )

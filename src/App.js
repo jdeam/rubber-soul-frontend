@@ -9,7 +9,7 @@ import 'bulma/css/bulma.css';
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
         <Header />
         {/* <ProductDetail /> */}
           {/* <Route path="/list" component={  }/> */}
