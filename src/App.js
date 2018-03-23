@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SearchBar from './components/SearchBar';
 
 import ProductDetail from './components/ProductDetailView/ProductDetail';
 import Header from './components/Header';
@@ -11,10 +12,12 @@ class App extends Component {
   render() {
     return (
       <div>
+
         <Header />
           <Route path="/list" component={ ProductList }/>
           <Route path="/detail" component={ ProductDetail }/>
         <Footer />
+
       </div>
     );
   }
