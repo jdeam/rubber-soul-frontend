@@ -5,18 +5,21 @@ import ProductDetail from './components/ProductDetailView/ProductDetail';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProductList from './components/ProductListView/ProductList';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bulma/css/bulma.css';
+import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Header />
-          <Route path="/list" component={ ProductList }/>
-          <Route path="/detail" component={ ProductDetail }/>
-        <Footer />
-      </div>
+      <Router>
+        <div>
+          <Header />
+          <Route exact path="/shoes" component={ ProductList }/>
+          <Route path="/shoes/:id" component={ ProductDetail }/>
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }

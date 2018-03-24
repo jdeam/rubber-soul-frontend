@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchSingleShoe } from '../../actions';
 import ProductDetailTitle from './ProductDetailTitle';
 import ProductDetailImg from './ProductDetailImg';
 import ProductDetailPrice from './ProductDetailPrice';
@@ -9,77 +12,54 @@ import ProductDetailQtySelect from './ProductDetailQtySelect';
 import ProductDetailAddToCartButton from './ProductDetailAddToCartButton';
 import ProductDetailItemTable from './ProductDetailItemTable';
 import ProductDetailReviews from './ProductDetailReviews';
-import './ProductDetail.css'
-import axios from 'axios'
-// const shoes = require('../../seedData/shoeData.json')
-const BASE_URL = 'http://localhost:8080';
+import './ProductDetail.css';
 
-// const ProductDetail = () => {
-class ProductDetail extends React.Component {
-  constructor(props) {
-    super(props)
-      this.state = {
-        shoe: null,
-      }
-  }
-
-  async componentWillMount() {
-    this.getShoe();
-  }
-
-  async getShoe() {
-    const response = await axios.get(`${BASE_URL}/api/shoes/1`);
-
-    const shoe = response.data.data;
-
-    this.setState({
-      shoe
-    });
+class ProductDetail extends Component {
+  componentDidMount() {
+    this.props.fetchSingleShoe(this.props.match.params.id);
+    window.scrollTo(0, 0);
   }
 
   render() {
-    // console.log(shoes);
-    console.log('STATE?', this.state)
-
-    return this.state.shoe ? (
+    return (
       <div className="main-container">
         <ProductDetailTitle
-          shoeBrand={this.state.shoe.brand}
-          shoeModel={this.state.shoe.model}
+          shoeBrand={ this.props.shoe.brand }
+          shoeModel={ this.props.shoe.model }
         />
         <div id="ProductDetail-main" className="section">
           <div id="ProductDetail-main-container" className="container">
             <div className="columns">
               <ProductDetailImg
-                shoeImg={this.state.shoe.imgURL}
+                shoeImg={ this.props.shoe.imgURL }
               />
 
               <div className="column is-5 is-offset-1">
                 <ProductDetailPrice
-                  shoePrice={this.state.shoe.price}
+                  shoePrice={ this.props.shoe.price }
                 />
                 <hr />
                 <br />
                 <ProductDetailReviewBar
-                  shoeReviews={this.state.shoe.reviews}
+                  shoeReviews={ this.props.shoe.reviews }
                 />
                 <br />
                 <ProductDetailDescription
-                  shoeDescription={this.state.shoe.description}
+                  shoeDescription={ this.props.shoe.description }
                 />
                 <br />
                 <br />
                 <ProductDetailSizeDropdown
-                  shoeSizes={this.state.shoe.sizes}
+                  sizes={ this.props.shoe.sizes }
                 />
                 <ProductDetailQtySelect
-                  shoeSizes={this.state.shoe.sizes}
+                  sizes={ this.props.shoe.sizes }
                 />
                 <ProductDetailAddToCartButton />
                 <br />
                 <ProductDetailItemTable
-                  shoeColor={this.state.shoe.color}
-                  shoeTags={this.state.shoe.tags}
+                  shoeColor={ this.props.shoe.color }
+                  shoeTags={ this.props.shoe.tags }
                 />
               </div>
             </div>
@@ -105,8 +85,17 @@ class ProductDetail extends React.Component {
           </div>
         </div>
       </div>
-    ) : <div>{ "blah" }</div>
+    );
   }
 }
 
-export default ProductDetail
+const mapStateToProps = (state) => ({ shoe: state.shoeDetail });
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  fetchSingleShoe
+}, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductDetail);

@@ -2,7 +2,6 @@ import React from 'react';
 import './ProductDetailQtySelect.css'
 
 const ProductDetailQtySelect = ({ shoeSizes }) => {
-  console.log('props', shoeSizes);
 
   // let shoeSize = shoeSizes.map((shoeSize, i) => {
   //   console.log(shoeSize, i);

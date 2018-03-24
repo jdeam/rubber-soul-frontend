@@ -9,11 +9,11 @@ const ProductCol = ({ shoe }) => {
 
   return (
     <div className="column is-3">
-      <Link to="/detail">
+      <Link to={ `/shoes/${shoe.id}` }>
         <div className="card">
           <div className="card-image">
-            <figure className="image">
-              <img src={ shoe.imgURL } />
+            <figure className="image is-square">
+              <img src={ shoe.imgURL } alt={ `${shoe.brand} ${shoe.model}` }/>
             </figure>
           </div>
           <div className="card-content">
