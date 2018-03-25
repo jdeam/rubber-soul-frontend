@@ -1,36 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProductContent from './ProductContent';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { showSizes, hideSizes } from '../../actions';
 
-const ProductCol = ({ shoe }) => {
-  const shoePrice = {
-    float: 'right',
-    fontWeight: 'bold'
-  };
-
+const ProductCol = ({ shoe, showSizes, hideSizes }) => {
   return (
-    <div className="column is-3">
+    <div
+      className="column is-3"
+      onMouseEnter={ () => showSizes(shoe.id) }
+      onMouseLeave={ hideSizes }
+    >
       <Link to={ `/shoes/${shoe.id}` }>
         <div className="card">
           <div className="card-image">
-            <figure className="image is-square">
+            <figure className="image">
               <img src={ shoe.imgURL } alt={ `${shoe.brand} ${shoe.model}` }/>
             </figure>
           </div>
-          <div className="card-content">
-            <p className="title is-4">{ shoe.model }</p>
-            <p className="subtitle is-6">
-              { shoe.brand }
-              <span
-                className="shoe-price"
-                style={ shoePrice }
-                >{ `$${shoe.price.toFixed(2)}` }
-              </span>
-            </p>
-          </div>
+          <ProductContent shoe={ shoe } />
         </div>
       </Link>
     </div>
   );
 }
 
-export default ProductCol;
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  showSizes,
+  hideSizes
+}, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ProductCol);
