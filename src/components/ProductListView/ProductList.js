@@ -1,9 +1,10 @@
 import React from 'react';
 import ProductRows from './ProductRows';
+import SearchBar from '../SearchBar/SearchBar.js';
 import './ProductList.css';
 import { connect } from 'react-redux';
 
-const ProductList = ({ shoes }) => (
+const ProductList = ({ shoesInView }) => (
   <div className="section">
     <div className="container">
       <div className="columns">
@@ -12,11 +13,12 @@ const ProductList = ({ shoes }) => (
         </div>
       </div>
       <hr />
-      <ProductRows shoes={ shoes } />
+      <SearchBar />
+      <ProductRows shoes={ shoesInView } />
     </div>
   </div>
 );
 
-const mapStateToProps = (state) => ({ shoes: state.shoes });
+const mapStateToProps = (state) => ({ shoesInView: state.shoesInView });
 
 export default connect(mapStateToProps)(ProductList);

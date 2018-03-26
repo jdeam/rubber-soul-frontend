@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css';
 import './SearchBar.css';
-import shoeData from '../seedData/shoeData.json';
+import shoeData from '../../seedData/shoeData.json';
 import levenshtein from 'fast-levenshtein';
+import SearchInput from './SearchInput';
+import SortDropDown from './SortDropDown';
+import FilterDropDown from './FilterDropDown';
+import FilterSubDropDown from './FilterSubDropDown';
 
 export default class extends Component {
     state = { shoes: [], filter: undefined, sort: undefined, selectedSizes: [], tags: [], sizes: [], colors: [], brands: [] };
@@ -215,7 +219,8 @@ export default class extends Component {
     render() {
         return(
             <div>
-                <div className="field">
+                <SearchInput />
+                {/* <div className="field">
                     <label className="label">Find A Shoe</label>
                     <div className="control has-icons-left">
                         <input ref={(input) => {this.textInput = input;} } className="input" type="text" placeholder="Enter Search Query Here" onChange={this.queryShoes} />
@@ -223,51 +228,19 @@ export default class extends Component {
                             <i className="fas fa-search"></i>
                         </span>
                     </div>
-                </div>
+                </div> */}
                 <div className="columns">
                     <div className="column">
                         <div className="columns">
                             <div className="column">
-                                <div className="field">
-                                    <label className="label">Sort</label>
-                                    <div className="control">
-                                        <div className="select">
-                                            <select onChange={this.sortShoesByCriteria} >
-                                                <option>- Select Option -</option>
-                                                <option>Price - Low</option>
-                                                <option>Price - High</option>
-                                                <option>Rating - Low</option>
-                                                <option>Rating - High</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                <SortDropDown />
                             </div>
                             <div className="column">
-                                <div className="field">
-                                    <label className="label">Filter</label>
-                                    <div className="control">
-                                        <div className="select">
-                                            <select onChange={this.setFilter}>
-                                                <option>- Select Option -</option>
-                                                <option>Brands</option>
-                                                <option>Colors</option>
-                                                <option>Tags</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                <FilterDropDown />
                             </div>
-                            {this.state.filter ? 
-                                (<div className="column">
-                                    <div className="field">
-                                        <label className="label">{this.state.filter} List</label>
-                                        <div className="control">
-                                            {this.createDropDown()}
-                                        </div>
-                                    </div>
-                                </div>) : (<div className="column"></div>)
-                            }
+                            <div className="column">
+                                <FilterSubDropDown />
+                            </div>
                         </div>
                     </div>
                     <div className="column">
@@ -280,26 +253,6 @@ export default class extends Component {
                     </div>
                 </div>
                 
-                
-                
-                {this.state.shoes.map(shoe => {
-                    return <div>
-                        <figure className="image is-128x128">
-                            <img src={shoe.imgURL} width={128} height={128} />
-                        </figure>
-                        <ul>
-                            <li>{shoe.model}</li>
-                            <li>{shoe.brand}</li>
-                            <li>{shoe.color}</li>
-                            <li>{shoe.price}</li>
-                            <ul>
-                                {shoe.tags.map(tag => {
-                                    return <li>{tag}</li>
-                                })}
-                            </ul>
-                        </ul>
-                    </div>
-                })}
             </div>
         );
     }

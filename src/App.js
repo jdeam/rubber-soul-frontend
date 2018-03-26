@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import SearchBar from './components/SearchBar';
-
 import ProductDetail from './components/ProductDetailView/ProductDetail';
 import Header from './components/Header';
 import Footer from './components/Footer';
