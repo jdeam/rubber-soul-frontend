@@ -8,12 +8,6 @@ const ProductDetailItemTable = ({shoeColor, shoeTags}) => {
         <tbody>
           <tr>
             <td className="has-text-right">
-              <strong>Item ID</strong>
-            </td>
-            <td>1234</td>
-          </tr>
-          <tr>
-            <td className="has-text-right">
               <strong>Color</strong>
             </td>
             <td>{`${shoeColor}`}</td>
@@ -23,12 +17,6 @@ const ProductDetailItemTable = ({shoeColor, shoeTags}) => {
               <strong>Tags</strong>
             </td>
             <td>{`${shoeTags}`}</td>
-          </tr>
-          <tr>
-            <td className="has-text-right">
-              <strong>Views</strong>
-            </td>
-            <td>3</td>
           </tr>
         </tbody>
       </table>
