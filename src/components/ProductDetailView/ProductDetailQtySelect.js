@@ -1,28 +1,33 @@
 import React from 'react';
 import './ProductDetailQtySelect.css'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { increaseQty, decreaseQty } from '../../actions';
 
-const ProductDetailQtySelect = ({ shoeSizes }) => {
-
-  // let shoeSize = shoeSizes.map((shoeSize, i) => {
-  //   console.log(shoeSize, i);
-  //   for (let key in shoeSize) {
-  //     console.log('key', key);
-  //     return key;
-  //     // console.log('qty', size[key]);
-  //   }
-  // })
+const ProductDetailQtySelect = ({
+  shoeSizes,
+  qty,
+  increaseQty,
+  decreaseQty,
+}) => {
 
   return (
     <div id="ProductDetail-qty-select">
       <p><strong>Quantity</strong></p>
       <div id="ProductDetail-qty-input">
-        <a>
+        <a onClick={ () => decreaseQty(qty) }>
           <i className="fa fa-minus cart-icon" />
         </a>
         &nbsp;
-        <input type="text" className="input has-text-centered" defaultValue={1} style={{width: 40}} />
+        <input
+          type="text"
+          className="input has-text-centered"
+          value={ qty }
+          style={{width: 40}}
+          readOnly
+        />
         &nbsp;
-        <a>
+        <a onClick={ increaseQty }>
           <i className="fa fa-plus cart-icon" />
         </a>
       </div>
@@ -30,4 +35,14 @@ const ProductDetailQtySelect = ({ shoeSizes }) => {
   )
 }
 
-export default ProductDetailQtySelect
+const mapStateToProps = (state) => ({ qty: state.selectedQty });
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  increaseQty,
+  decreaseQty,
+}, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductDetailQtySelect)

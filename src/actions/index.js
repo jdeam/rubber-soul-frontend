@@ -41,3 +41,26 @@ export function hideSizes() {
     dispatch({ type: SHOE_ON_LEAVE });
   };
 }
+
+export const QTY_INCREASED = 'QTY_INCREASED';
+export function increaseQty() {
+  return (dispatch) => {
+    dispatch({ type: QTY_INCREASED });
+  };
+}
+
+export const QTY_DECREASED = 'QTY_DECREASED';
+export function decreaseQty(qty) {
+  return (dispatch) => {
+    if (parseInt(qty) > 0) {
+      dispatch({ type: QTY_DECREASED })
+    }
+  };
+}
+
+export const QTY_RESET = 'QTY_RESET';
+export function resetQty() {
+  return (dispatch) => {
+    dispatch({ type: QTY_RESET })
+  }
+}

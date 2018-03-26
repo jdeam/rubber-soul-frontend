@@ -3,6 +3,8 @@
 }
 
 #ProductDetail-qty-input {
+  display: flex;
   align-items: center;
+  align-self: center;
   vertical-align: middle;
 }

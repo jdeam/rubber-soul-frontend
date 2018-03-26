@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchSingleShoe } from '../../actions';
+import { fetchSingleShoe, resetQty } from '../../actions';
 import ProductDetailTitle from './ProductDetailTitle';
 import ProductDetailImg from './ProductDetailImg';
 import ProductDetailPrice from './ProductDetailPrice';
@@ -17,6 +17,7 @@ import './ProductDetail.css';
 class ProductDetail extends Component {
   componentDidMount() {
     this.props.fetchSingleShoe(this.props.match.params.id);
+    this.props.resetQty();
     window.scrollTo(0, 0);
   }
 
@@ -75,7 +76,8 @@ class ProductDetail extends Component {
 const mapStateToProps = (state) => ({ shoe: state.shoeDetail });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  fetchSingleShoe
+  fetchSingleShoe,
+  resetQty
 }, dispatch);
 
 export default connect(
