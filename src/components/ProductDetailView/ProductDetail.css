@@ -6,6 +6,10 @@
   max-width: 100%;
 }
 
+#ProductDetail-size-qty {
+  display: flex;
+}
+
 #ProductDetail-reviews-div {
   padding-top: 1em;
 }

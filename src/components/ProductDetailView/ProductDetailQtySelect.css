@@ -1,8 +1,9 @@
-#ProductDetail-qty-select {
-  margin-bottom: 1em;
+#ProductDetail-qty-select{
+  margin-left: 3.5em;
 }
 
 #ProductDetail-qty-input {
+  /* display: flex; */
   align-items: center;
   vertical-align: middle;
 }

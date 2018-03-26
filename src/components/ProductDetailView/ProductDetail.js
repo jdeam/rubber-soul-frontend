@@ -39,8 +39,7 @@ class ProductDetail extends React.Component {
 
 
   render() {
-    // console.log(shoes);
-    console.log('STATE?', this.state)
+    // console.log('STATE: ', this.state)
 
     return this.state.shoe ? (
       <div className="main-container">
@@ -70,12 +69,14 @@ class ProductDetail extends React.Component {
                 />
                 <br />
                 <br />
-                <ProductDetailSizeDropdown
-                  shoeSizes={this.state.shoe.sizes}
-                />
-                <ProductDetailQtySelect
-                  shoeSizes={this.state.shoe.sizes}
-                />
+                <div id="ProductDetail-size-qty">
+                  <ProductDetailSizeDropdown
+                    shoeSizes={this.state.shoe.sizes}
+                  />
+                  <ProductDetailQtySelect
+                    shoeSizes={this.state.shoe.sizes}
+                  />
+                </div>
                 <ProductDetailAddToCartButton />
                 <br />
                 <ProductDetailItemTable
@@ -92,21 +93,16 @@ class ProductDetail extends React.Component {
             <div className="tabs">
               <ul>
                 <li className="is-active"><a>Reviews</a></li>
-                {/* <li className="is-active"><a>Overview</a></li>
-                <li><a>Details</a></li>
-                <li><a>Reviews</a></li>
-                <li><a>Shipping Calculator</a></li> */}
               </ul>
             </div>
             <div className="box">
-              {/* <ProductDetailReviews
-                shoeReviews={this.state.shoe.reviews}
-              /> */}
+              { this.state.shoe.reviews ? ( <ProductDetailReviews
+                shoeReviews={this.state.shoe.reviews} /> ) : `There are no reviews for this item.` }
             </div>
           </div>
         </div>
       </div>
-    ) : <div>{ "blah" }</div>
+    ) : <div>{ "Loading..." }</div>
   }
 }
 

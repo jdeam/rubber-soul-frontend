@@ -13,7 +13,7 @@ const ProductCol = ({ shoe }) => {
         <div className="card">
           <div className="card-image">
             <figure className="image">
-              <img src={ shoe.imgURL } />
+              <img src={ shoe.imgURL } alt="shoe-img" />
             </figure>
           </div>
           <div className="card-content">

@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import SearchBar from './components/SearchBar';
-
-import ProductDetail from './components/ProductDetailView/ProductDetail';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ProductList from './components/ProductListView/ProductList';
-import { Route } from 'react-router-dom';
-import 'bulma/css/bulma.css';
+import ProductDetail from './components/ProductDetail';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Header />
-          <Route path="/list" component={ ProductList }/>
-          <Route path="/detail" component={ ProductDetail }/>
-        <Footer />
+      <div className="App">
+        <ProductDetail />
+        {/* <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p> */}
       </div>
     );
   }

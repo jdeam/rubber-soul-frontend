@@ -2,14 +2,16 @@ import React from 'react';
 import './ProductDetailSizeDropdown.css'
 
 const ProductDetailSizeDropdown = ({shoeSizes}) => {
-
-  let shoeSize = shoeSizes.map((shoeSize, i) => {
-    console.log(shoeSize, i);
-    for (let key in shoeSize) {
-      console.log('key', key);
-      return key;
-      // console.log('qty', size[key]);
+  let shoeData = shoeSizes.map((shoeData, i) => {
+    for (let key in shoeData) {
+      let qty = shoeData[key];
+      return { key, qty };
     }
+  })
+  console.log('?????', shoeData);
+
+  let qtyRemaining = shoeData.find(shoe => {
+    console.log('SHOEEE', shoe);
   })
 
   return (
@@ -19,12 +21,22 @@ const ProductDetailSizeDropdown = ({shoeSizes}) => {
           <div className="select">
             <select>
               <option>Select Size</option>
-              { shoeSize.map((size, i) => {
+              { shoeData.map((size, i) => {
                 return (
-                  <option key={i}>{`${size}`}</option>
+                  <option key={i}>{`${size.key}`}</option>
                 )
               }) }
             </select>
+            { shoeData.map((size, i) => {
+              return (
+                 size.qty <= 3 ? (<div id="ProductDetail-qty-remaining">
+                  { `Hurry, Only ${size.qty} left!` }
+                </div>) : <div>did it?</div>
+              )
+            }) }
+            {/* { size.qty <= 3 ? (<div id="ProductDetail-qty-remaining">
+              { `Hurry, Only ${size.qty} left!` }
+            </div>) : <div>did it?</div> } */}
           </div>
         </div>
     </div>
