@@ -1,18 +1,14 @@
 import React from 'react';
-import './ProductDetailSizeDropdown.css'
+import './ProductDetailSizeDropdown.css';
 
-const ProductDetailSizeDropdown = ({shoeSizes}) => {
-  let shoeData = shoeSizes.map((shoeData, i) => {
-    for (let key in shoeData) {
-      let qty = shoeData[key];
-      return { key, qty };
-    }
-  })
-  console.log('?????', shoeData);
+const ProductDetailSizeDropdown = ({ sizes }) => {
 
-  let qtyRemaining = shoeData.find(shoe => {
-    console.log('SHOEEE', shoe);
-  })
+  const availableSizes = sizes ?
+    sizes.filter(size => {
+      return Object.values(size)[0];
+    }).map(size => {
+      return Object.keys(size)[0];
+    }) : [];
 
   return (
     <div id="ProductDetail-size-dropdown">
@@ -21,7 +17,7 @@ const ProductDetailSizeDropdown = ({shoeSizes}) => {
           <div className="select">
             <select>
               <option>Select Size</option>
-              { shoeData.map((size, i) => {
+              { availableSizes.map((size, i) => {
                 return (
                   <option key={i}>{`${size.key}`}</option>
                 )

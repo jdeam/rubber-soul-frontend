@@ -1,18 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => (
   <nav className="navbar has-shadow">
     <div className="navbar-brand">
-      <a className="navbar-item">
-        <h1 className="rubber-soul title is-1">RubberSoul</h1>
-      </a>
-
-      <div className="navbar-burger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
+      <Link to="/shoes" className="navbar-item">
+        <h1 className="rs-logo title is-1">RubberSoul</h1>
+      </Link>
     </div>
   </nav>
 );
