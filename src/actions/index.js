@@ -18,7 +18,6 @@ export function fetchSingleShoe(id) {
   return async (dispatch) => {
     const response = await axios.get(`${BaseURL}/api/shoes/${id}`);
     const shoe = response.data.data;
-    console.log(shoe);
     dispatch({
       type: SHOE_RECEIVED,
       shoe
@@ -29,7 +28,6 @@ export function fetchSingleShoe(id) {
 export const SHOE_ON_ENTER = 'SHOE_ON_ENTER';
 export function showSizes(id) {
   return (dispatch) => {
-    console.log(id);
     dispatch({
       type: SHOE_ON_ENTER,
       hover_id: id
@@ -40,7 +38,6 @@ export function showSizes(id) {
 export const SHOE_ON_LEAVE = 'SHOE_ON_LEAVE';
 export function hideSizes() {
   return (dispatch) => {
-    console.log(null);
     dispatch({ type: SHOE_ON_LEAVE });
   };
 }

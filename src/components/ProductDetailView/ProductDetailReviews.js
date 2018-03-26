@@ -1,13 +1,15 @@
 import React from 'react';
+import ProductDetailReviewsNav from './ProductDetailReviewsNav'
+import ProductDetailReviewsList from './ProductDetailReviewsList'
 
-const ProductDetailReviews = ({shoeReviews}) => {
+const ProductDetailReviews = ({reviews}) => {
 
   return (
-    <div>
-      <p>
-        Sample text for Reviews
-        {`${shoeReviews}`}
-      </p><br />
+    <div id="ProductDetail-reviews-div" className="section">
+      <div id="ProductDetail-reviews-container" className="container">
+        <ProductDetailReviewsNav />
+        <ProductDetailReviewsList reviews={ reviews }/>
+      </div>
     </div>
   )
 }

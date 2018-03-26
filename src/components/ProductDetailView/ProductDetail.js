@@ -66,24 +66,7 @@ class ProductDetail extends Component {
           </div>
         </div>
 
-        <div id="ProductDetail-reviews-div" className="section">
-          <div id="ProductDetail-reviews-container" className="container">
-            <div className="tabs">
-              <ul>
-                <li className="is-active"><a>Reviews</a></li>
-                {/* <li className="is-active"><a>Overview</a></li>
-                <li><a>Details</a></li>
-                <li><a>Reviews</a></li>
-                <li><a>Shipping Calculator</a></li> */}
-              </ul>
-            </div>
-            <div className="box">
-              {/* <ProductDetailReviews
-                shoeReviews={this.state.shoe.reviews}
-              /> */}
-            </div>
-          </div>
-        </div>
+        <ProductDetailReviews reviews={ this.props.shoe.reviews ? (this.props.shoe.reviews) : [] } />
       </div>
     );
   }
