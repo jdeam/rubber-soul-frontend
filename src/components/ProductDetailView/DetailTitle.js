@@ -1,17 +1,17 @@
 import React from 'react';
-import './ProductDetailTitle.css'
+import './DetailTitle.css'
 
-const ProductDetailTitle = ({
+const DetailTitle = ({
   shoeBrand,
   shoeModel,
 }) => {
 
   return (
-    <div id="ProductDetail-header" className="section product-header">
-      <div id="ProductDetail-header-container" className="container">
+    <div id="Detail-header" className="section product-header">
+      <div id="Detail-header-container" className="container">
         <div className="columns">
           <div className="column">
-            <span id="ProductDetail-brandname" className="title is-3">{`${shoeModel}`}</span>
+            <span id="Detail-brandname" className="title is-3">{`${shoeModel}`}</span>
             <span className="title is-3 has-text-muted">&nbsp;|&nbsp;</span>
             <span className="title is-4 has-text-muted">{`${shoeBrand}`}</span>
           </div>
@@ -21,4 +21,4 @@ const ProductDetailTitle = ({
   )
 }
 
-export default ProductDetailTitle
+export default DetailTitle

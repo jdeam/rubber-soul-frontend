@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductDetail from './components/ProductDetailView/ProductDetail';
+import DetailView from './components/ProductDetailView/DetailView';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProductList from './components/ProductListView/ProductList';
@@ -14,7 +14,7 @@ class App extends Component {
         <div>
           <Header />
           <Route exact path="/shoes" component={ ProductList }/>
-          <Route path="/shoes/:id" component={ ProductDetail }/>
+          <Route path="/shoes/:id" component={ DetailView }/>
           <Footer />
         </div>
       </Router>

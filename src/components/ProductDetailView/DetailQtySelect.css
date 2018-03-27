@@ -1,0 +1,10 @@
+#Detail-qty-select {
+  margin-bottom: 1em;
+}
+
+#Detail-qty-input {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  vertical-align: middle;
+}

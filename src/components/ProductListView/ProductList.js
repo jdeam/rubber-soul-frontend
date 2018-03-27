@@ -1,24 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ProductRows from './ProductRows';
 import SearchBar from '../SearchBar/SearchBar.js';
 import './ProductList.css';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { clearShoe } from '../../actions';
 
-const ProductList = ({ shoesInView }) => (
-  <div className="section">
-    <div className="container">
-      <div className="columns">
-        <div className="column is-12">
-          <div className="title">All Shoes</div>
+class ProductList extends Component {
+  componentDidMount() {
+    this.props.clearShoe()
+  }
+
+  render () {
+    return (
+      <div className="section">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-12">
+              <div className="title">All Shoes</div>
+            </div>
+          </div>
+          <hr />
+          <ProductRows shoes={ this.props.shoesInView } />
         </div>
       </div>
-      <hr />
-      <SearchBar />
-      <ProductRows shoes={ shoesInView } />
-    </div>
-  </div>
-);
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({ shoesInView: state.shoesInView });
 
-export default connect(mapStateToProps)(ProductList);
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  clearShoe
+}, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductList);

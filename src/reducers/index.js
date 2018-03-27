@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import {
   SHOES_RECEIVED,
   SHOE_RECEIVED,
+  SHOE_CLEARED,
   SHOE_ON_ENTER,
   SHOE_ON_LEAVE,
   SHOESINVIEW_LOAD,
@@ -11,12 +12,15 @@ import {
   FILTERLIST_LOAD,
   SIZES_LOAD,
   SELECTEDSIZE_TOGGLE_SIZE,
-  SEARCHQUERY_SET_QUERY
+  SEARCHQUERY_SET_QUERY,
+  QTY_INCREASED,
+  QTY_DECREASED,
+  QTY_RESET,
 } from '../actions';
 import { returnShoeData } from './searchFunctions';
 import { S_IWUSR } from 'constants';
 
-function shoes(state  = [], action) {
+function shoes(state = [], action) {
   switch (action.type) {
     case SHOES_RECEIVED: {
       return action.shoes;
@@ -121,10 +125,13 @@ function selectedSizes(state = [], action) {
   }
 }
 
-function shoeDetail(state = {}, action) {
+function shoeDetail(state = null, action) {
   switch (action.type) {
     case SHOE_RECEIVED: {
       return action.shoe;
+    }
+    case SHOE_CLEARED: {
+      return null;
     }
     default:
       return state;
@@ -132,16 +139,32 @@ function shoeDetail(state = {}, action) {
 }
 
 function hover_id(state = null, action) {
-    switch (action.type) {
-      case SHOE_ON_ENTER: {
-        return action.hover_id;
-      }
-      case SHOE_ON_LEAVE: {
-        return null;
-      }
-      default:
-        return state;
+  switch (action.type) {
+    case SHOE_ON_ENTER: {
+      return action.hover_id;
     }
+    case SHOE_ON_LEAVE: {
+      return null;
+    }
+    default:
+      return state;
+  }
 }
 
-export default combineReducers({ shoes, shoesInView, shoeDetail, hover_id, filter, filterList, sizes, selectedSizes, searchQuery });
+function selectedQty(state = 1, action) {
+  switch(action.type) {
+    case QTY_INCREASED: {
+      return state + 1;
+    }
+    case QTY_DECREASED: {
+      return state - 1;
+    }
+    case QTY_RESET: {
+      return 1;
+    }
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({ shoes, shoesInView, shoeDetail, hover_id, filter, filterList, sizes, selectedSizes, searchQuery, selectedQty });

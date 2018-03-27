@@ -1,0 +1,48 @@
+#DetailReview-rating {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#DetailReview-starRating {
+  display: flex;
+}
+
+#DetailReview-starCount {
+  margin-left: 1em;
+}
+
+#DetailReview-title {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+#DetailReview-user {
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+
+#DetailReview-thumbs {
+  display: flex;
+  margin-top: 1em;
+}
+
+#thumb-up-icon {
+  margin-left: 0.25em;
+  align-self: flex-start;
+  /* align-self: center */
+}
+
+#thumb-down-icon {
+  margin-left: 0.25em;
+  align-self: center;
+}
+
+#DetailReview-thumbsUp {
+  display: flex;
+  margin-right: 1.5em;
+}
+
+#DetailReview-thumbsDown {
+  display: flex;
+}
