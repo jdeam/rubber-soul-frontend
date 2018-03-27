@@ -2,17 +2,25 @@ import React, { Component } from 'react';
 import 'bulma/css/bulma.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { queryShoes } from '../../actions';
+import { setQueryString } from '../../actions';
 
-const determineQueryStr = (e, action, data, sizes) => {
-    action(e.target.value, data, sizes);
+const updateQueryStr = (e, action) => {
+    action(e.target.value);
 }
 
-const SearchInput = ({ queryShoes, shoes, searchQuery, selectedSizes }) => {
+const SearchInput = ({ setQueryString, shoes, searchQuery, selectedSizes }) => {
+  console.log(searchQuery);
     return(
         <div className="field">
             <div className="control has-icons-left">
-                <input className="input is-rounded" type="search" placeholder="Search shoes" defaultValue={searchQuery} onChange={(e) => determineQueryStr(e, queryShoes, shoes, selectedSizes)}/>
+                <input
+                  ref={(input) => { this.searchInput = input; }}
+                  className="input is-rounded"
+                  type="search"
+                  placeholder="Search shoes"
+                  value={searchQuery}
+                  onChange={(e) => updateQueryStr(e, setQueryString)}
+                />
                 <span className="icon is-small is-left">
                     <i className="fas fa-search"></i>
                 </span>
@@ -24,7 +32,7 @@ const SearchInput = ({ queryShoes, shoes, searchQuery, selectedSizes }) => {
 const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery, selectedSizes:state.selectedSizes });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  queryShoes
+  setQueryString
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchInput);

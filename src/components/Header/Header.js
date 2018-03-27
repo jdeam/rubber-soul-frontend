@@ -2,11 +2,20 @@ import React from 'react';
 import Headroom from 'react-headroom';
 import AccountDropdown from './AccountDropdown';
 import CartDropdown from './CartDropdown';
-import { Link } from 'react-router-dom';
-import './Header.css';
 import SearchInput from '../SearchBar/SearchInput';
+import './Header.css';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { queryShoes } from '../../actions';
 
-const Header = () => (
+const submitQuery = (e, action, searchQuery, data, sizes) => {
+  e.preventDefault();
+  console.log('PREVENTEDIT');
+  action(searchQuery, data, sizes);
+}
+
+const Header = ({ queryShoes, searchQuery, selectedSizes, shoes }) => (
   <Headroom id="Header">
     <nav id="Header-navbar" className="navbar has-shadow">
       <div className="navbar-brand">
@@ -15,11 +24,9 @@ const Header = () => (
         </Link>
         <div className="navbar-search">
           <p className="control has-icons-left">
-            <SearchInput />
-            {/* <input className="input is-rounded" type="search" placeholder="Search shoes" /> */}
-            {/* <span className="icon is-small is-left">
-              <i className="fa fa-search" aria-hidden="true" />
-            </span> */}
+            <form onSubmit={(e) => submitQuery(e, queryShoes, searchQuery, shoes, selectedSizes)}>
+              <SearchInput />
+            </form>
           </p>
         </div>
       </div>
@@ -34,4 +41,10 @@ const Header = () => (
   </Headroom>
 );
 
-export default Header;
+const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery, selectedSizes:state.selectedSizes });
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  queryShoes
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -37,10 +37,19 @@ export function applySortToShoes(sortType) {
   }
 }
 
-export const SHOESINVIEW_APPLY_QUERY = 'SHOES_APPLY_QUERY';
 export const SEARCHQUERY_SET_QUERY = 'SEARCHQUERY_SET_QUERY';
+export function setQueryString(queryStr) {
+  return (dispatch) => {
+    dispatch({
+      type: SEARCHQUERY_SET_QUERY,
+      queryStr
+    })
+  }
+}
+
+export const SHOESINVIEW_APPLY_QUERY = 'SHOES_APPLY_QUERY';
 export function queryShoes(queryStr, shoes, sizes) {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch({
       type: SHOESINVIEW_APPLY_QUERY,
       queryStr,
@@ -49,7 +58,7 @@ export function queryShoes(queryStr, shoes, sizes) {
     })
     dispatch({
       type: SEARCHQUERY_SET_QUERY,
-      queryStr
+      queryStr: ''
     })
   }
 }
