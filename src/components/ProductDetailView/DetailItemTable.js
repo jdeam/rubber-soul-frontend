@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductDetailItemTable = ({shoeColor, shoeTags}) => {
+const DetailItemTable = ({shoeColor, shoeTags}) => {
 
   return (
     <div>
@@ -24,4 +24,4 @@ const ProductDetailItemTable = ({shoeColor, shoeTags}) => {
   )
 }
 
-export default ProductDetailItemTable
+export default DetailItemTable

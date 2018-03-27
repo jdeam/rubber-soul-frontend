@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductDetailPrice = ({shoePrice}) => {
+const DetailPrice = ({shoePrice}) => {
 
   return (
     <div>
@@ -10,4 +10,4 @@ const ProductDetailPrice = ({shoePrice}) => {
   )
 }
 
-export default ProductDetailPrice
+export default DetailPrice

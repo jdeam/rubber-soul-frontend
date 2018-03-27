@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProductDetailReviewsNav = ({}) => {
+const DetailReviewsNav = () => {
 
   return(
     <div className="tabs">
@@ -12,4 +12,4 @@ const ProductDetailReviewsNav = ({}) => {
   )
 }
 
-export default ProductDetailReviewsNav
+export default DetailReviewsNav

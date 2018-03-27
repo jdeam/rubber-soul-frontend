@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductDetailDescription = ({shoeDescription}) => {
+const DetailDescription = ({shoeDescription}) => {
 
   return (
     <div>
@@ -9,4 +9,4 @@ const ProductDetailDescription = ({shoeDescription}) => {
   )
 }
 
-export default ProductDetailDescription
+export default DetailDescription

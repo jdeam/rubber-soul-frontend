@@ -1,8 +1,8 @@
-#ProductDetail-qty-select {
+#Detail-qty-select {
   margin-bottom: 1em;
 }
 
-#ProductDetail-qty-input {
+#Detail-qty-input {
   display: flex;
   align-items: center;
   align-self: center;

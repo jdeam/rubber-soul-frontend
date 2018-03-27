@@ -1,10 +1,10 @@
 import React from 'react';
-import './ProductDetailAddToCartButton.css'
+import './DetailAddToCartButton.css'
 
-const ProductDetailAddToCartButton = () => {
+const DetailAddToCartButton = () => {
 
   return (
-    <div id="ProductDetail-addToCart-button">
+    <div id="Detail-addToCart-button">
       <p>
         {/* <a href="#">
           <i className="fas fa-minus cart-icon" />
@@ -22,4 +22,4 @@ const ProductDetailAddToCartButton = () => {
   )
 }
 
-export default ProductDetailAddToCartButton
+export default DetailAddToCartButton

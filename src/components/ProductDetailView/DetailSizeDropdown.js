@@ -1,7 +1,7 @@
 import React from 'react';
-import './ProductDetailSizeDropdown.css';
+import './DetailSizeDropdown.css';
 
-const ProductDetailSizeDropdown = ({ sizes }) => {
+const DetailSizeDropdown = ({ sizes }) => {
 
   const availableSizes = sizes ?
     sizes.filter(size => {
@@ -11,7 +11,7 @@ const ProductDetailSizeDropdown = ({ sizes }) => {
     }) : [];
 
   return (
-    <div id="ProductDetail-size-dropdown">
+    <div id="Detail-size-dropdown">
       <p><strong>Size</strong></p>
         <div className="control">
           <div className="select">
@@ -29,4 +29,4 @@ const ProductDetailSizeDropdown = ({ sizes }) => {
   )
 }
 
-export default ProductDetailSizeDropdown
+export default DetailSizeDropdown

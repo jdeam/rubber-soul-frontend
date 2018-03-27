@@ -1,28 +1,28 @@
-#ProductDetailReview-rating {
+#DetailReview-rating {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-#ProductDetailReview-starRating {
+#DetailReview-starRating {
   display: flex;
 }
 
-#ProductDetailReview-starCount {
+#DetailReview-starCount {
   margin-left: 1em;
 }
 
-#ProductDetailReview-title {
+#DetailReview-title {
   font-weight: bold;
   margin-bottom: 0.5em;
 }
 
-#ProductDetailReview-user {
+#DetailReview-user {
   font-weight: bold;
   margin-top: 0.5em;
 }
 
-#ProductDetailReview-thumbs {
+#DetailReview-thumbs {
   display: flex;
   margin-top: 1em;
 }
@@ -38,11 +38,11 @@
   align-self: center;
 }
 
-#ProductDetailReview-thumbsUp {
+#DetailReview-thumbsUp {
   display: flex;
   margin-right: 1.5em;
 }
 
-#ProductDetailReview-thumbsDown {
+#DetailReview-thumbsDown {
   display: flex;
 }

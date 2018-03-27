@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchSingleShoe, resetQty } from '../../actions';
-import ProductDetailTitle from './ProductDetailTitle';
-import ProductDetailImg from './ProductDetailImg';
-import ProductDetailPrice from './ProductDetailPrice';
-import ProductDetailReviewBar from './ProductDetailReviewBar';
-import ProductDetailDescription from './ProductDetailDescription';
-import ProductDetailSizeDropdown from './ProductDetailSizeDropdown';
-import ProductDetailQtySelect from './ProductDetailQtySelect';
-import ProductDetailAddToCartButton from './ProductDetailAddToCartButton';
-import ProductDetailItemTable from './ProductDetailItemTable';
-import ProductDetailReviews from './ProductDetailReviews';
-import './ProductDetail.css';
+import DetailTitle from './DetailTitle';
+import DetailImg from './DetailImg';
+import DetailPrice from './DetailPrice';
+import DetailReviewBar from './DetailReviewBar';
+import DetailDescription from './DetailDescription';
+import DetailSizeDropdown from './DetailSizeDropdown';
+import DetailQtySelect from './DetailQtySelect';
+import DetailAddToCartButton from './DetailAddToCartButton';
+import DetailItemTable from './DetailItemTable';
+import DetailReviews from './DetailReviews';
 
-class ProductDetail extends Component {
+class DetailView extends Component {
   componentDidMount() {
     this.props.fetchSingleShoe(this.props.match.params.id);
     this.props.resetQty();
@@ -24,41 +23,41 @@ class ProductDetail extends Component {
   render() {
     return (
       <div className="main-container">
-        <ProductDetailTitle
+        <DetailTitle
           shoeBrand={ this.props.shoe.brand }
           shoeModel={ this.props.shoe.model }
         />
-        <div id="ProductDetail-main" className="section">
-          <div id="ProductDetail-main-container" className="container">
+        <div id="Detail-main" className="section">
+          <div id="Detail-main-container" className="container">
             <div className="columns">
-              <ProductDetailImg
+              <DetailImg
                 shoeImg={ this.props.shoe.imgURL }
               />
 
               <div className="column is-5 is-offset-1">
-                <ProductDetailPrice
+                <DetailPrice
                   shoePrice={ this.props.shoe.price }
                 />
                 <hr />
                 <br />
-                <ProductDetailReviewBar
+                <DetailReviewBar
                   shoeReviews={ this.props.shoe.reviews }
                 />
                 <br />
-                <ProductDetailDescription
+                <DetailDescription
                   shoeDescription={ this.props.shoe.description }
                 />
                 <br />
                 <br />
-                <ProductDetailSizeDropdown
+                <DetailSizeDropdown
                   sizes={ this.props.shoe.sizes }
                 />
-                <ProductDetailQtySelect
+                <DetailQtySelect
                   sizes={ this.props.shoe.sizes }
                 />
-                <ProductDetailAddToCartButton />
+                <DetailAddToCartButton />
                 <br />
-                <ProductDetailItemTable
+                <DetailItemTable
                   shoeColor={ this.props.shoe.color }
                   shoeTags={ this.props.shoe.tags }
                 />
@@ -67,7 +66,7 @@ class ProductDetail extends Component {
           </div>
         </div>
 
-        <ProductDetailReviews reviews={ this.props.shoe.reviews ? (this.props.shoe.reviews) : [] } />
+        <DetailReviews reviews={ this.props.shoe.reviews ? (this.props.shoe.reviews) : [] } />
       </div>
     );
   }
@@ -83,4 +82,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductDetail);
+)(DetailView);

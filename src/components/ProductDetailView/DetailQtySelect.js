@@ -1,10 +1,10 @@
 import React from 'react';
-import './ProductDetailQtySelect.css'
+import './DetailQtySelect.css'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { increaseQty, decreaseQty } from '../../actions';
 
-const ProductDetailQtySelect = ({
+const DetailQtySelect = ({
   shoeSizes,
   qty,
   increaseQty,
@@ -12,9 +12,9 @@ const ProductDetailQtySelect = ({
 }) => {
 
   return (
-    <div id="ProductDetail-qty-select">
+    <div id="Detail-qty-select">
       <p><strong>Quantity</strong></p>
-      <div id="ProductDetail-qty-input">
+      <div id="Detail-qty-input">
         <a onClick={ () => decreaseQty(qty) }>
           <i className="fa fa-minus cart-icon" />
         </a>
@@ -45,4 +45,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductDetailQtySelect)
+)(DetailQtySelect)
