@@ -12,11 +12,11 @@ const Header = () => (
         <Link to="/shoes" className="navbar-item">
           <h1 className="rs-logo title is-1">RubberSoul</h1>
         </Link>
-        <div class="navbar-search">
-          <p class="control has-icons-left">
-            <input class="input is-rounded" type="search" placeholder="Search shoes" />
-            <span class="icon is-small is-left">
-              <i class="fa fa-search" aria-hidden="true" />
+        <div className="navbar-search">
+          <p className="control has-icons-left">
+            <input className="input is-rounded" type="search" placeholder="Search shoes" />
+            <span className="icon is-small is-left">
+              <i className="fa fa-search" aria-hidden="true" />
             </span>
           </p>
         </div>
@@ -24,7 +24,7 @@ const Header = () => (
       <div className="navbar-menu">
         <div className="navbar-end">
           <AccountDropdown />
-          <hr class="navbar-divider" />
+          <hr className="navbar-divider" />
           <CartDropdown />
         </div>
       </div>

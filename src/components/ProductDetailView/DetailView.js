@@ -23,10 +23,10 @@ class DetailView extends Component {
   render() {
     return this.props.shoe ? (
       <div className="main-container">
-        <DetailTitle
+        {/* <DetailTitle
           shoeBrand={ this.props.shoe.brand }
           shoeModel={ this.props.shoe.model }
-        />
+        /> */}
         <div id="Detail-main" className="section">
           <div id="Detail-main-container" className="container">
             <div className="columns">
@@ -35,9 +35,13 @@ class DetailView extends Component {
               />
 
               <div className="column is-5 is-offset-1">
-                <DetailPrice
-                  shoePrice={ this.props.shoe.price }
+                <DetailTitle
+                  shoeBrand={ this.props.shoe.brand }
+                  shoeModel={ this.props.shoe.model }
                 />
+                {/* <DetailPrice
+                  shoePrice={ this.props.shoe.price }
+                /> */}
                 <hr />
                 <br />
                 <DetailReviewBar
