@@ -21,7 +21,6 @@ class ProductList extends Component {
             </div>
           </div>
           <hr />
-          <SearchBar />
           <ProductRows shoes={ this.props.shoesInView } />
         </div>
       </div>

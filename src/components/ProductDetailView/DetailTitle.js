@@ -7,7 +7,7 @@ const DetailTitle = ({
 }) => {
 
   return (
-    <div id="Detail-header" className="section">
+    <div id="Detail-header" className="product-header">
       <div id="Detail-header-container" className="container">
         <div className="columns">
           <div className="column">

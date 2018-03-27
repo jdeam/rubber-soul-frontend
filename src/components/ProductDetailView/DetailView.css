@@ -1,13 +1,15 @@
-/* #DetailView-main {
-  padding: 2.5em;
-} */
-
 #DetailView-main-container {
   max-width: 100%;
 }
 
+#DetailView-size-qty{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
 #DetailView-reviews-div {
-  padding-top: 1em;
+  padding: 1em;
 }
 
 #DetailView-reviews-container {

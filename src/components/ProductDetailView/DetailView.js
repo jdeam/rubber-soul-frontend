@@ -53,11 +53,18 @@ class DetailView extends Component {
                 />
                 <br />
                 <br />
-                <DetailSizeDropdown
-                  sizes={ this.props.shoe.sizes }
-                />
-                <DetailQtySelect
-                  sizes={ this.props.shoe.sizes }
+                <div id="DetailView-size-qty">
+                  <DetailSizeDropdown
+                    sizes={ this.props.shoe.sizes }
+                  />
+                  <DetailQtySelect
+                    sizes={ this.props.shoe.sizes }
+                  />
+                </div>
+                <br />
+
+                <DetailPrice
+                  shoePrice={ this.props.shoe.price }
                 />
                 <DetailAddToCartButton />
                 <br />

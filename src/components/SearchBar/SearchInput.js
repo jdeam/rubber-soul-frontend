@@ -11,9 +11,8 @@ const determineQueryStr = (e, action, data, sizes) => {
 const SearchInput = ({ queryShoes, shoes, searchQuery, selectedSizes }) => {
     return(
         <div className="field">
-            <label className="label">Find A Shoe</label>
             <div className="control has-icons-left">
-                <input className="input" type="text" placeholder="Enter Search Query Here" defaultValue={searchQuery} onChange={(e) => determineQueryStr(e, queryShoes, shoes, selectedSizes)}/>
+                <input className="input is-rounded" type="search" placeholder="Search shoes" defaultValue={searchQuery} onChange={(e) => determineQueryStr(e, queryShoes, shoes, selectedSizes)}/>
                 <span className="icon is-small is-left">
                     <i className="fas fa-search"></i>
                 </span>
@@ -25,7 +24,7 @@ const SearchInput = ({ queryShoes, shoes, searchQuery, selectedSizes }) => {
 const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery, selectedSizes:state.selectedSizes });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    queryShoes
+  queryShoes
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchInput);
