@@ -25,6 +25,13 @@ export function fetchSingleShoe(id) {
   };
 }
 
+export const SHOE_CLEARED = 'SHOE_CLEARED';
+export function clearShoe() {
+  return (dispatch) => {
+    dispatch({ type: SHOE_CLEARED });
+  }
+}
+
 export const SHOE_ON_ENTER = 'SHOE_ON_ENTER';
 export function showSizes(id) {
   return (dispatch) => {
@@ -52,7 +59,7 @@ export function increaseQty() {
 export const QTY_DECREASED = 'QTY_DECREASED';
 export function decreaseQty(qty) {
   return (dispatch) => {
-    if (parseInt(qty) > 0) {
+    if (parseInt(qty, 10) > 0) {
       dispatch({ type: QTY_DECREASED })
     }
   };

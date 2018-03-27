@@ -44,13 +44,13 @@ export default class extends Component {
         if (filter || queryStr.length < 4) {
             newShoeArray = newShoeArray.filter(shoe => {
                 let propArray = [];
-                
+
                 if (filter) {
                     let propToCheck = shoe[filter];
                     if (filter !== 'tags') {
                         propToCheck = shoe[filter.slice(0, -1)];
                     }
-                    
+
                     if (Array.isArray(propToCheck)) {
                         propArray = [...propToCheck];
                     } else {
@@ -64,7 +64,7 @@ export default class extends Component {
                     let key = Object.keys(size)[0];
                     return selectedSizes.includes(key);
                 });
-                
+
                 for (let j = 0; j < sizeArrToCheck.length; j++) {
                     let key = Object.keys(sizeArrToCheck[j])[0];
                     let qty = sizeArrToCheck[j][key];
@@ -86,7 +86,7 @@ export default class extends Component {
                     let key = Object.keys(size)[0];
                     return selectedSizes.includes(key);
                 });
-                
+
                 for (let j = 0; j < sizeArrToCheck.length; j++) {
                     let key = Object.keys(sizeArrToCheck[j])[0];
                     let qty = sizeArrToCheck[j][key];
@@ -124,7 +124,7 @@ export default class extends Component {
                 }
                 default: {
                     console.log('Unhandled Exception');
-                } 
+                }
             }
         }
         return newShoeArray;
@@ -155,7 +155,7 @@ export default class extends Component {
             default: {
                 newSortState = undefined;
                 console.log('Unhandled Exception');
-            }       
+            }
         }
         this.setState({ shoes: newState, sort: newSortState });
     }
@@ -163,8 +163,8 @@ export default class extends Component {
     setFilter = (e) => {
         let newFilterState = this.state.filter;
         switch(e.target.value) {
-            case 'Brands': 
-            case 'Tags': 
+            case 'Brands':
+            case 'Tags':
             case 'Colors': {
                 newFilterState = e.target.value;
                 break;
@@ -172,7 +172,7 @@ export default class extends Component {
             default: {
                 newFilterState = undefined;
                 console.log('Unhandled Exception');
-            }       
+            }
         }
         this.setState({ filter: newFilterState });
     }
@@ -180,7 +180,7 @@ export default class extends Component {
     applyFilter = (e) => {
         this.textInput.value = e.target.value;
         let mockEvent = { target: { value: e.target.value } };
-        
+
         this.queryShoes(mockEvent);
     }
 
@@ -258,7 +258,7 @@ export default class extends Component {
                                     </div>
                                 </div>
                             </div>
-                            {this.state.filter ? 
+                            {this.state.filter ?
                                 (<div className="column">
                                     <div className="field">
                                         <label className="label">{this.state.filter} List</label>
@@ -279,13 +279,13 @@ export default class extends Component {
                         })}
                     </div>
                 </div>
-                
-                
-                
+
+
+
                 {this.state.shoes.map(shoe => {
                     return <div>
                         <figure className="image is-128x128">
-                            <img src={shoe.imgURL} width={128} height={128} />
+                            <img src={shoe.imgURL} width={128} height={128} alt="shoe"/>
                         </figure>
                         <ul>
                             <li>{shoe.model}</li>

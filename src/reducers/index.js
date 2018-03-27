@@ -2,11 +2,11 @@ import { combineReducers } from 'redux';
 import {
   SHOES_RECEIVED,
   SHOE_RECEIVED,
+  SHOE_CLEARED,
   SHOE_ON_ENTER,
   SHOE_ON_LEAVE,
   QTY_INCREASED,
   QTY_DECREASED,
-  QTY_CHANGED,
   QTY_RESET,
 } from '../actions';
 
@@ -20,10 +20,13 @@ function shoes(state = [], action) {
   }
 }
 
-function shoeDetail(state = {}, action) {
+function shoeDetail(state = null, action) {
   switch (action.type) {
     case SHOE_RECEIVED: {
       return action.shoe;
+    }
+    case SHOE_CLEARED: {
+      return null;
     }
     default:
       return state;
