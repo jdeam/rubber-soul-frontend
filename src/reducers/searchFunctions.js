@@ -8,7 +8,7 @@ export function returnShoeData (shoeData, queryStr, sizes) {
         newShoeData = longFilter(shoeData, queryStr);
     }
     if (sizes) {
-        newShoeData = filterBySize(shoeData, sizes)
+        newShoeData = filterBySize(newShoeData, sizes)
     }
     return newShoeData;
 }
