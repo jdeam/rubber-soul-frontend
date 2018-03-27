@@ -12,7 +12,8 @@ import {
   FILTER_SET_FILTER,
   FILTERLIST_LOAD,
   SIZES_LOAD,
-  SELECTEDSIZE_TOGGLE_SIZE,
+  SELECTEDSIZES_TOGGLE_SIZE,
+  SELECTEDSIZE_SET_SIZE,
   SEARCHQUERY_SET_QUERY,
   QTY_INCREASED,
   QTY_DECREASED,
@@ -121,7 +122,7 @@ function sizes(state = [], action) {
 
 function selectedSizes(state = [], action) {
   switch(action.type) {
-    case 'SELECTEDSIZE_TOGGLE_SIZE': {
+    case SELECTEDSIZES_TOGGLE_SIZE: {
       let newState = [...state];
       if (newState.includes(action.size)) {
         let index = newState.indexOf(action.size);
@@ -130,6 +131,17 @@ function selectedSizes(state = [], action) {
         newState.push(action.size);
       }
       return newState;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
+function selectedSize(state = null, action) {
+  switch(action.type) {
+    case SELECTEDSIZE_SET_SIZE: {
+      return action.size;
     }
     default: {
       return state;
@@ -188,6 +200,7 @@ export default combineReducers({
   filterList,
   sizes,
   selectedSizes,
+  selectedSize,
   searchQuery,
   selectedQty,
   appliedQuery

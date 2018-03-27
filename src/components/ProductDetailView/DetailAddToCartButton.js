@@ -1,22 +1,20 @@
 import React from 'react';
 import './DetailAddToCartButton.css'
 
-const DetailAddToCartButton = () => {
+const addShoeToCart = (shoe_id, qty, size) => {
+  let cartItem = {
+    shoe_id,
+    qty,
+    size
+  }
+  console.log(cartItem);
+}
 
+const DetailAddToCartButton = ({ shoe_id, qty, size }) => {
   return (
     <div id="Detail-addToCart-button">
       <p>
-        {/* <a href="#">
-          <i className="fas fa-minus cart-icon" />
-        </a>
-        &nbsp;
-        <input type="text" name className="input has-text-centered" defaultValue={1} style={{width: 40}} />
-        &nbsp;
-        <a href="#">
-          <i className="fas fa-plus cart-icon" />
-        </a> */}
-        {/* &nbsp; &nbsp; &nbsp; */}
-        <a className="button is-primary">Add to cart</a>
+        <a onClick={ (e) => addShoeToCart(shoe_id, qty, size) } className="button is-primary">Add to cart</a>
       </p>
     </div>
   )

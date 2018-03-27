@@ -1,7 +1,7 @@
 import React from 'react';
 import './DetailSizeDropdown.css';
 
-const DetailSizeDropdown = ({ sizes }) => {
+const DetailSizeDropdown = ({ sizes, setSelectedSize }) => {
 
   const availableSizes = sizes ?
     sizes.filter(size => {
@@ -15,7 +15,7 @@ const DetailSizeDropdown = ({ sizes }) => {
       <p><strong>Size</strong></p>
         <div className="control">
           <div className="select">
-            <select>
+            <select onChange={ (e) => setSelectedSize(e.target.value) }>
               <option>Select Size</option>
               { availableSizes.map((size, i) => {
                 return (

@@ -102,11 +102,21 @@ export function loadSizes() {
   }
 }
 
-export const SELECTEDSIZE_TOGGLE_SIZE = 'SELECTEDSIZE_TOGGLE_SIZE';
-export function toggleSelectedSize(size) {
+export const SELECTEDSIZES_TOGGLE_SIZE = 'SELECTEDSIZES_TOGGLE_SIZE';
+export function toggleSelectedSizes(size) {
   return async (dispatch) => {
     dispatch({
-      type: SELECTEDSIZE_TOGGLE_SIZE,
+      type: SELECTEDSIZES_TOGGLE_SIZE,
+      size
+    })
+  }
+}
+
+export const SELECTEDSIZE_SET_SIZE = 'SELECTEDSIZE_SET_SIZE';
+export function setSelectedSize(size) {
+  return (dispatch) => {
+    dispatch({
+      type: SELECTEDSIZE_SET_SIZE,
       size
     })
   }

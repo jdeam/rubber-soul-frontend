@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchSingleShoe, resetQty } from '../../actions';
+import { fetchSingleShoe, resetQty, setSelectedSize } from '../../actions';
 import DetailTitle from './DetailTitle';
 import DetailImg from './DetailImg';
 import DetailPrice from './DetailPrice';
@@ -23,10 +23,6 @@ class DetailView extends Component {
   render() {
     return this.props.shoe ? (
       <div className="main-container">
-        {/* <DetailTitle
-          shoeBrand={ this.props.shoe.brand }
-          shoeModel={ this.props.shoe.model }
-        /> */}
         <div id="Detail-main" className="section">
           <div id="Detail-main-container" className="container">
             <div className="columns">
@@ -39,9 +35,6 @@ class DetailView extends Component {
                   shoeBrand={ this.props.shoe.brand }
                   shoeModel={ this.props.shoe.model }
                 />
-                {/* <DetailPrice
-                  shoePrice={ this.props.shoe.price }
-                /> */}
                 <hr />
                 <br />
                 <DetailReviewBar
@@ -56,6 +49,7 @@ class DetailView extends Component {
                 <div id="DetailView-size-qty">
                   <DetailSizeDropdown
                     sizes={ this.props.shoe.sizes }
+                    setSelectedSize={ this.props.setSelectedSize }
                   />
                   <DetailQtySelect
                     sizes={ this.props.shoe.sizes }
@@ -66,7 +60,11 @@ class DetailView extends Component {
                 <DetailPrice
                   shoePrice={ this.props.shoe.price * this.props.selectedQty }
                 />
-                <DetailAddToCartButton />
+                <DetailAddToCartButton
+                  shoe_id={ this.props.match.params.id }
+                  qty={ this.props.selectedQty }
+                  size={ this.props.selectedSize }
+                />
                 <br />
                 <DetailItemTable
                   shoeColor={ this.props.shoe.color }
@@ -83,11 +81,12 @@ class DetailView extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ shoe: state.shoeDetail, selectedQty: state.selectedQty });
+const mapStateToProps = (state) => ({ shoe: state.shoeDetail, selectedQty: state.selectedQty, selectedSize: state.selectedSize });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   fetchSingleShoe,
-  resetQty
+  resetQty,
+  setSelectedSize
 }, dispatch);
 
 export default connect(
