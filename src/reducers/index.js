@@ -8,9 +8,13 @@ import {
   SHOESINVIEW_APPLY_SORT,
   SHOESINVIEW_APPLY_QUERY,
   FILTER_SET_FILTER,
-  FILTERLIST_LOAD
+  FILTERLIST_LOAD,
+  SIZES_LOAD,
+  SELECTEDSIZE_TOGGLE_SIZE,
+  SEARCHQUERY_SET_QUERY
 } from '../actions';
 import { returnShoeData } from './searchFunctions';
+import { S_IWUSR } from 'constants';
 
 function shoes(state  = [], action) {
   switch (action.type) {
@@ -46,8 +50,19 @@ function shoesInView(state = [], action) {
       return newState;
     }
     case SHOESINVIEW_APPLY_QUERY: {
-      let newState = returnShoeData(action.shoes, action.queryStr);
+      let newState = returnShoeData(action.shoes, action.queryStr, action.sizes);
       return newState;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
+function searchQuery(state = '', action) {
+  switch(action.type) {
+    case SEARCHQUERY_SET_QUERY: {
+      return action.queryStr;
     }
     default: {
       return state;
@@ -72,7 +87,36 @@ function filterList(state = [], action) {
       return action.filterList;
     }
     default: {
-      return [];
+      return state;
+    }
+  }
+}
+
+function sizes(state = [], action) {
+  switch(action.type) {
+    case 'SIZES_LOAD': {
+      return action.sizesList;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
+function selectedSizes(state = [], action) {
+  switch(action.type) {
+    case 'SELECTEDSIZE_TOGGLE_SIZE': {
+      let newState = [...state];
+      if (newState.includes(action.size)) {
+        let index = newState.indexOf(action.size);
+        newState.splice(index, 1);
+      } else {
+        newState.push(action.size);
+      }
+      return newState;
+    }
+    default: {
+      return state;
     }
   }
 }
@@ -100,4 +144,4 @@ function hover_id(state = null, action) {
     }
 }
 
-export default combineReducers({ shoes, shoesInView, shoeDetail, hover_id, filter, filterList });
+export default combineReducers({ shoes, shoesInView, shoeDetail, hover_id, filter, filterList, sizes, selectedSizes, searchQuery });

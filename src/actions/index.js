@@ -38,12 +38,18 @@ export function applySortToShoes(sortType) {
 }
 
 export const SHOESINVIEW_APPLY_QUERY = 'SHOES_APPLY_QUERY';
-export function queryShoes(queryStr, shoes) {
+export const SEARCHQUERY_SET_QUERY = 'SEARCHQUERY_SET_QUERY';
+export function queryShoes(queryStr, shoes, sizes) {
   return async (dispatch) => {
     dispatch({
       type: SHOESINVIEW_APPLY_QUERY,
       queryStr,
-      shoes
+      shoes,
+      sizes
+    })
+    dispatch({
+      type: SEARCHQUERY_SET_QUERY,
+      queryStr
     })
   }
 }
@@ -68,6 +74,28 @@ export function loadFilterList(filter) {
         filterList
       })
     }
+}
+
+export const SIZES_LOAD = 'SIZES_LOAD';
+export function loadSizes() {
+  return async(dispatch) => {
+    const response = await axios.get(`${BaseURL}/api/shoes/sizes`);
+    const sizesList = response.data.data;
+    dispatch({
+      type: SIZES_LOAD,
+      sizesList
+    })
+  }
+}
+
+export const SELECTEDSIZE_TOGGLE_SIZE = 'SELECTEDSIZE_TOGGLE_SIZE';
+export function toggleSelectedSize(size) {
+  return async (dispatch) => {
+    dispatch({
+      type: SELECTEDSIZE_TOGGLE_SIZE,
+      size
+    })
+  }
 }
 
 export const SHOE_RECEIVED = 'SHOE_RECEIVED';
