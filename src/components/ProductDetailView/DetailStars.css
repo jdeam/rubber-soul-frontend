@@ -1,0 +1,11 @@
+#star-left-half {
+  position: absolute;
+}
+
+#star-right-half {
+  position: relative;
+}
+
+#DetailStars-rating-num {
+  margin-left: 0.5em;
+}
