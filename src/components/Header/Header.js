@@ -11,7 +11,6 @@ import { queryShoes } from '../../actions';
 
 const submitQuery = (e, action, searchQuery, data, sizes) => {
   e.preventDefault();
-  console.log('PREVENTEDIT');
   action(searchQuery, data, sizes);
 }
 

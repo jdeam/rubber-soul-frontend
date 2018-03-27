@@ -9,7 +9,6 @@ const updateQueryStr = (e, action) => {
 }
 
 const SearchInput = ({ setQueryString, shoes, searchQuery, selectedSizes }) => {
-  console.log(searchQuery);
     return(
         <div className="field">
             <div className="control has-icons-left">
