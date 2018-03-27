@@ -1,0 +1,10 @@
+.sign-up-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#dropdown-menu6 {
+  max-width: none;
+  width: 20vw;
+}
