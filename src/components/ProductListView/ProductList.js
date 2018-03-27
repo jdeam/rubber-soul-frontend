@@ -17,7 +17,7 @@ class ProductList extends Component {
         <div className="container">
           <div className="columns">
             <div className="column is-12">
-              <div className="title">All Shoes</div>
+              <div className="title">Displaying {this.props.appliedQuery ? `"${this.props.appliedQuery}"` : `All`} Shoes</div>
             </div>
           </div>
           <hr />
@@ -28,7 +28,7 @@ class ProductList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ shoesInView: state.shoesInView });
+const mapStateToProps = (state) => ({ shoesInView: state.shoesInView, appliedQuery: state.appliedQuery });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   clearShoe

@@ -48,6 +48,7 @@ export function setQueryString(queryStr) {
 }
 
 export const SHOESINVIEW_APPLY_QUERY = 'SHOES_APPLY_QUERY';
+export const APPLIED_QUERY_SET_QUERY = 'APPLIED_QUERY_SET_QUERY';
 export function queryShoes(queryStr, shoes, sizes) {
   return (dispatch) => {
     dispatch({
@@ -55,6 +56,10 @@ export function queryShoes(queryStr, shoes, sizes) {
       queryStr,
       shoes,
       sizes
+    })
+    dispatch({
+      type: APPLIED_QUERY_SET_QUERY,
+      queryStr
     })
     dispatch({
       type: SEARCHQUERY_SET_QUERY,

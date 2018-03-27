@@ -8,6 +8,7 @@ import {
   SHOESINVIEW_LOAD,
   SHOESINVIEW_APPLY_SORT,
   SHOESINVIEW_APPLY_QUERY,
+  APPLIED_QUERY_SET_QUERY,
   FILTER_SET_FILTER,
   FILTERLIST_LOAD,
   SIZES_LOAD,
@@ -74,9 +75,20 @@ function searchQuery(state = '', action) {
   }
 }
 
+function appliedQuery(state = '', action) {
+  switch(action.type) {
+    case APPLIED_QUERY_SET_QUERY: {
+      return action.queryStr;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 function filter(state = '', action) {
   switch(action.type) {
-    case 'FILTER_SET_FILTER': {
+    case FILTER_SET_FILTER: {
       return action.filter;
     }
     default: {
@@ -87,7 +99,7 @@ function filter(state = '', action) {
 
 function filterList(state = [], action) {
   switch(action.type) {
-    case 'FILTERLIST_LOAD': {
+    case FILTERLIST_LOAD: {
       return action.filterList;
     }
     default: {
@@ -98,7 +110,7 @@ function filterList(state = [], action) {
 
 function sizes(state = [], action) {
   switch(action.type) {
-    case 'SIZES_LOAD': {
+    case SIZES_LOAD: {
       return action.sizesList;
     }
     default: {
@@ -167,4 +179,16 @@ function selectedQty(state = 1, action) {
   }
 }
 
-export default combineReducers({ shoes, shoesInView, shoeDetail, hover_id, filter, filterList, sizes, selectedSizes, searchQuery, selectedQty });
+export default combineReducers({
+  shoes,
+  shoesInView,
+  shoeDetail,
+  hover_id,
+  filter,
+  filterList,
+  sizes,
+  selectedSizes,
+  searchQuery,
+  selectedQty,
+  appliedQuery
+});
