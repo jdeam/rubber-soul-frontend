@@ -32,12 +32,11 @@ const DetailStars = ({ rating, shoeReviews }) => {
       );
     }
   }
-  console.log('starEls', starEls);
 
   return (
     <div id="DetailReview-starRating">
       { starEls }
-      <p id="DetailStars-rating-num">{ ratingNum }</p>
+      {/* <p id="DetailStars-rating-num">{ ratingNum }</p> */}
     </div>
   )
 }

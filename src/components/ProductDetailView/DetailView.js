@@ -21,7 +21,7 @@ class DetailView extends Component {
   }
 
   render() {
-    return (
+    return this.props.shoe ? (
       <div className="main-container">
         <DetailTitle
           shoeBrand={ this.props.shoe.brand }
@@ -68,7 +68,7 @@ class DetailView extends Component {
 
         <DetailReviews reviews={ this.props.shoe.reviews ? (this.props.shoe.reviews) : [] } />
       </div>
-    );
+    ) : (<div></div>);
   }
 }
 
