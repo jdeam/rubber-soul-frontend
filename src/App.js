@@ -13,8 +13,8 @@ class App extends Component {
       <Router>
         <div>
           <Header />
-          <Route exact path="/shoes" component={ ProductList }/>
-          <Route path="/shoes/:id" component={ DetailView }/>
+          <Route exact path="/" component={ ProductList }/>
+          <Route path="/:id" component={ DetailView }/>
           <Footer />
         </div>
       </Router>

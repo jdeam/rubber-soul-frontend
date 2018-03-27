@@ -13,7 +13,7 @@ const ProductCol = ({ shoe, showSizes, hideSizes }) => {
       onMouseEnter={ () => showSizes(shoe.id) }
       onMouseLeave={ hideSizes }
     >
-      <Link to={ `/shoes/${shoe.id}` }>
+      <Link to={ `/${shoe.id}` }>
         <div className="card">
           <div className="card-image">
             <figure className="image">
