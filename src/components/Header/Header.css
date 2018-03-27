@@ -1,0 +1,11 @@
+a.navbar-item:hover {
+  background-color: #FFFFFF;
+  color: black;
+}
+
+.navbar-search {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 48vw;
+  align-self: center;
+}

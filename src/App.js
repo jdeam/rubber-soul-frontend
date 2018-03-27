@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DetailView from './components/ProductDetailView/DetailView';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Footer from './components/Footer';
 import ProductList from './components/ProductListView/ProductList';
 import { BrowserRouter as Router, Route } from 'react-router-dom';

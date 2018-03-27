@@ -1,0 +1,9 @@
+@import "../sass/utilities/initial-variables";
+@import "../sass/utilities/functions";
+
+$family-sans-serif: "Arimo", sans-serif;
+$dropdown-content-offset: 0px;
+$dropdown-content-radius: 0px;
+$family-primary: $family-sans-serif;
+
+@import "../bulma";

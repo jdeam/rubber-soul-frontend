@@ -4,6 +4,7 @@ import ProductContent from './ProductContent';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showSizes, hideSizes } from '../../actions';
+import './ProductCol.css';
 
 const ProductCol = ({ shoe, showSizes, hideSizes }) => {
   return (
