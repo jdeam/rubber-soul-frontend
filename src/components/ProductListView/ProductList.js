@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ProductRows from './ProductRows';
-import SearchBar from '../SearchBar/SearchBar.js';
 import './ProductList.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { clearShoe } from '../../actions';
+import SearchBar from '../SearchBar/SearchBar'
 
 class ProductList extends Component {
   componentDidMount() {
@@ -21,6 +21,7 @@ class ProductList extends Component {
             </div>
           </div>
           <hr />
+          <SearchBar />
           <ProductRows shoes={ this.props.shoesInView } />
         </div>
       </div>
