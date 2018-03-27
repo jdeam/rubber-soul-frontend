@@ -3,9 +3,9 @@ import DetailView from './components/ProductDetailView/DetailView';
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
 import ProductList from './components/ProductListView/ProductList';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bulma/css/bulma.css';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
   render() {

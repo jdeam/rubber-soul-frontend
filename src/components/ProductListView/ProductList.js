@@ -3,12 +3,13 @@ import ProductRows from './ProductRows';
 import './ProductList.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { clearShoe } from '../../actions';
+import { clearShoe, queryShoes } from '../../actions';
 import SearchBar from '../SearchBar/SearchBar'
 
 class ProductList extends Component {
   componentDidMount() {
     this.props.clearShoe()
+    this.props.queryShoes('', this.props.shoes, this.props.selectedSizes)
   }
 
   render () {
@@ -17,7 +18,7 @@ class ProductList extends Component {
         <div className="container">
           <div className="columns">
             <div className="column is-12">
-              <div className="title">Displaying {this.props.appliedQuery ? `"${this.props.appliedQuery}"` : `All`} Shoes</div>
+              <div className="title">Displaying  {this.props.appliedQuery ? ` All Shoes Matching: "${this.props.appliedQuery}"` : `All Shoes`}</div>
             </div>
           </div>
           <hr />
@@ -28,10 +29,11 @@ class ProductList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ shoesInView: state.shoesInView, appliedQuery: state.appliedQuery });
+const mapStateToProps = (state) => ({ shoesInView: state.shoesInView, appliedQuery: state.appliedQuery, shoes: state.shoes, selectedSizes: state.selectedSizes });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  clearShoe
+  clearShoe,
+  queryShoes
 }, dispatch);
 
 export default connect(

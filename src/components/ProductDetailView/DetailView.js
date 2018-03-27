@@ -64,7 +64,7 @@ class DetailView extends Component {
                 <br />
 
                 <DetailPrice
-                  shoePrice={ this.props.shoe.price }
+                  shoePrice={ this.props.shoe.price * this.props.selectedQty }
                 />
                 <DetailAddToCartButton />
                 <br />
@@ -83,7 +83,7 @@ class DetailView extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ shoe: state.shoeDetail });
+const mapStateToProps = (state) => ({ shoe: state.shoeDetail, selectedQty: state.selectedQty });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   fetchSingleShoe,

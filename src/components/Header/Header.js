@@ -40,7 +40,7 @@ const Header = ({ queryShoes, searchQuery, selectedSizes, shoes }) => (
   </Headroom>
 );
 
-const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery, selectedSizes:state.selectedSizes });
+const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery, selectedSizes: state.selectedSizes });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   queryShoes
