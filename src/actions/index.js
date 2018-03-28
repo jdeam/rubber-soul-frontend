@@ -102,6 +102,28 @@ export function loadSizes() {
   }
 }
 
+/////
+
+export const CALCULATE_AVG_RATING = 'CALCULATE_AVG_RATING';
+export function calculateAvg(rating) {
+  return (dispatch) => {
+    dispatch({
+      type: CALCULATE_AVG_RATING,
+      rating
+    })
+  }
+}
+
+export const SELECTEDSIZE_SET_SIZE = 'SELECTEDSIZE_SET_SIZE';
+export function setSizeDropdown(size) {
+  return async (dispatch) => {
+    dispatch({
+      type: SELECTEDSIZE_SET_SIZE,
+      size
+    })
+  }
+}
+
 export const SELECTEDSIZE_TOGGLE_SIZE = 'SELECTEDSIZE_TOGGLE_SIZE';
 export function toggleSelectedSize(size) {
   return async (dispatch) => {

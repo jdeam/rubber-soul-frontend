@@ -1,9 +1,14 @@
+#DetailReview-starRating {
+  margin-top: 3px;
+}
+
 #star-left-half {
   position: absolute;
 }
 
 #star-right-half {
   position: relative;
+  margin-bottom: 0.5em;
 }
 
 #DetailStars-rating-num {
