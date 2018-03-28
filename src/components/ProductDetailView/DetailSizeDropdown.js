@@ -21,7 +21,7 @@ const DetailSizeDropdown = ({ sizes, selectedSize, setSelectedSize, clearSelecte
         <div className="control">
           <div className="select">
             <select
-              value={ selectedSize } }
+              value={ selectedSize }
               onChange={ (e) => e.target.value === 'Select Size' ? clearSelectedSize() : setSelectedSize(e.target.value) }
             >
               <option>Select Size</option>
