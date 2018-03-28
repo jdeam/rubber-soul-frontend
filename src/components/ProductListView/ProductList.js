@@ -4,7 +4,6 @@ import './ProductList.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { clearShoe, queryShoes } from '../../actions';
-import SearchBar from '../SearchBar/SearchBar'
 
 class ProductList extends Component {
   componentDidMount() {

@@ -9,10 +9,6 @@ import {
   SHOESINVIEW_APPLY_SORT,
   SHOESINVIEW_APPLY_QUERY,
   APPLIED_QUERY_SET_QUERY,
-  FILTER_SET_FILTER,
-  FILTERLIST_LOAD,
-  SIZES_LOAD,
-  SELECTEDSIZES_TOGGLE_SIZE,
   SELECTEDSIZE_SET_SIZE,
   SEARCHQUERY_SET_QUERY,
   QTY_INCREASED,
@@ -87,57 +83,6 @@ function appliedQuery(state = '', action) {
   }
 }
 
-function filter(state = '', action) {
-  switch(action.type) {
-    case FILTER_SET_FILTER: {
-      return action.filter;
-    }
-    default: {
-      return state;
-    }
-  }
-}
-
-function filterList(state = [], action) {
-  switch(action.type) {
-    case FILTERLIST_LOAD: {
-      return action.filterList;
-    }
-    default: {
-      return state;
-    }
-  }
-}
-
-function sizes(state = [], action) {
-  switch(action.type) {
-    case SIZES_LOAD: {
-      return action.sizesList;
-    }
-    default: {
-      return state;
-    }
-  }
-}
-
-function selectedSizes(state = [], action) {
-  switch(action.type) {
-    case SELECTEDSIZES_TOGGLE_SIZE: {
-      let newState = [...state];
-      if (newState.includes(action.size)) {
-        let index = newState.indexOf(action.size);
-        newState.splice(index, 1);
-      } else {
-        newState.push(action.size);
-      }
-      return newState;
-    }
-    default: {
-      return state;
-    }
-  }
-}
-
 function selectedSize(state = null, action) {
   switch(action.type) {
     case SELECTEDSIZE_SET_SIZE: {
@@ -196,10 +141,6 @@ export default combineReducers({
   shoesInView,
   shoeDetail,
   hover_id,
-  filter,
-  filterList,
-  sizes,
-  selectedSizes,
   selectedSize,
   searchQuery,
   selectedQty,

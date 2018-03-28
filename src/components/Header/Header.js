@@ -9,12 +9,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { queryShoes } from '../../actions';
 
-const submitQuery = (e, action, searchQuery, data, sizes) => {
+const submitQuery = (e, action, searchQuery, data) => {
   e.preventDefault();
-  action(searchQuery, data, sizes);
+  action(searchQuery, data);
 }
 
-const Header = ({ queryShoes, searchQuery, selectedSizes, shoes }) => (
+const Header = ({ queryShoes, searchQuery, shoes }) => (
   <Headroom id="Header">
     <nav id="Header-navbar" className="navbar has-shadow">
       <div className="navbar-brand">
@@ -23,7 +23,7 @@ const Header = ({ queryShoes, searchQuery, selectedSizes, shoes }) => (
         </Link>
         <div className="navbar-search">
           <p className="control has-icons-left">
-            <form onSubmit={(e) => submitQuery(e, queryShoes, searchQuery, shoes, selectedSizes)}>
+            <form onSubmit={(e) => submitQuery(e, queryShoes, searchQuery, shoes)}>
               <SearchInput />
             </form>
           </p>
@@ -40,7 +40,7 @@ const Header = ({ queryShoes, searchQuery, selectedSizes, shoes }) => (
   </Headroom>
 );
 
-const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery, selectedSizes: state.selectedSizes });
+const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   queryShoes

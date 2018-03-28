@@ -49,13 +49,12 @@ export function setQueryString(queryStr) {
 
 export const SHOESINVIEW_APPLY_QUERY = 'SHOES_APPLY_QUERY';
 export const APPLIED_QUERY_SET_QUERY = 'APPLIED_QUERY_SET_QUERY';
-export function queryShoes(queryStr, shoes, sizes) {
+export function queryShoes(queryStr, shoes) {
   return (dispatch) => {
     dispatch({
       type: SHOESINVIEW_APPLY_QUERY,
       queryStr,
-      shoes,
-      sizes
+      shoes
     })
     dispatch({
       type: APPLIED_QUERY_SET_QUERY,
@@ -64,50 +63,6 @@ export function queryShoes(queryStr, shoes, sizes) {
     dispatch({
       type: SEARCHQUERY_SET_QUERY,
       queryStr: ''
-    })
-  }
-}
-
-export const FILTER_SET_FILTER = 'FILTER_SET_FILTER';
-export function setFilter(filter) {
-  return async (dispatch) => {
-    dispatch({
-      type: FILTER_SET_FILTER,
-      filter
-    })
-  }
-}
-
-export const FILTERLIST_LOAD = 'FILTERLIST_LOAD';
-export function loadFilterList(filter) {
-    return async(dispatch) => {
-      const response = await axios.get(`${BaseURL}/api/shoes/${filter.toLowerCase()}`);
-      const filterList = response.data.data;
-      dispatch({
-        type: FILTERLIST_LOAD,
-        filterList
-      })
-    }
-}
-
-export const SIZES_LOAD = 'SIZES_LOAD';
-export function loadSizes() {
-  return async(dispatch) => {
-    const response = await axios.get(`${BaseURL}/api/shoes/sizes`);
-    const sizesList = response.data.data;
-    dispatch({
-      type: SIZES_LOAD,
-      sizesList
-    })
-  }
-}
-
-export const SELECTEDSIZES_TOGGLE_SIZE = 'SELECTEDSIZES_TOGGLE_SIZE';
-export function toggleSelectedSizes(size) {
-  return async (dispatch) => {
-    dispatch({
-      type: SELECTEDSIZES_TOGGLE_SIZE,
-      size
     })
   }
 }

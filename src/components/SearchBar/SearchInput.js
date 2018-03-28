@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import 'bulma/css/bulma.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,7 +8,7 @@ const updateQueryStr = (e, action) => {
     action(e.target.value);
 }
 
-const SearchInput = ({ setQueryString, shoes, searchQuery, selectedSizes }) => {
+const SearchInput = ({ setQueryString, shoes, searchQuery }) => {
     return(
         <div className="field">
             <div className="control has-icons-left">
@@ -28,7 +28,7 @@ const SearchInput = ({ setQueryString, shoes, searchQuery, selectedSizes }) => {
     );
 }
 
-const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery, selectedSizes:state.selectedSizes });
+const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   setQueryString
