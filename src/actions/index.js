@@ -68,12 +68,19 @@ export function queryShoes(queryStr, shoes) {
 }
 
 export const SELECTEDSIZE_SET_SIZE = 'SELECTEDSIZE_SET_SIZE';
-export function setSelectedSize(size) {
-  return (dispatch) => {
+export function setSelectedSize(selectedSize) {
+  return async (dispatch) => {
     dispatch({
       type: SELECTEDSIZE_SET_SIZE,
-      size
+      selectedSize
     })
+  }
+}
+
+export const SELECTEDSIZE_CLEARED = 'SELECTEDSIZE_CLEARED';
+export function clearSelectedSize() {
+  return (dispatch) => {
+    dispatch({ type: SELECTEDSIZE_CLEARED });
   }
 }
 

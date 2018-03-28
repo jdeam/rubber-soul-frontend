@@ -18,9 +18,9 @@ const ProductContent = ({ shoe }) => {
           >{ `$${shoe.price.toFixed(2)}` }
         </span>
       </p>
-      <ProductSizes shoe={ shoe } />
+      <ProductSizes shoe={ shoe } rating={ shoe.avg_star_count } />
     </div>
   );
 }
 
-export default ProductContent;
+export default ProductContent

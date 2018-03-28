@@ -29,7 +29,6 @@ class DetailView extends Component {
               <DetailImg
                 shoeImg={ this.props.shoe.imgURL }
               />
-
               <div className="column is-5 is-offset-1">
                 <DetailTitle
                   shoeBrand={ this.props.shoe.brand }
@@ -56,7 +55,6 @@ class DetailView extends Component {
                   />
                 </div>
                 <br />
-
                 <DetailPrice
                   shoePrice={ this.props.shoe.price * this.props.selectedQty }
                 />

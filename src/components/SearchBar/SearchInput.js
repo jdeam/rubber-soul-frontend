@@ -11,19 +11,19 @@ const updateQueryStr = (e, action) => {
 const SearchInput = ({ setQueryString, shoes, searchQuery }) => {
     return(
         <div className="field">
-            <div className="control has-icons-left">
-                <input
-                  ref={(input) => { this.searchInput = input; }}
-                  className="input is-rounded"
-                  type="search"
-                  placeholder="Search shoes"
-                  value={searchQuery}
-                  onChange={(e) => updateQueryStr(e, setQueryString)}
-                />
-                <span className="icon is-small is-left">
-                    <i className="fas fa-search"></i>
-                </span>
-            </div>
+          <div className="control has-icons-left">
+            <input
+              ref={(input) => { this.searchInput = input; }}
+              className="input is-rounded"
+              type="search"
+              placeholder="Search shoes"
+              value={searchQuery}
+              onChange={(e) => updateQueryStr(e, setQueryString)}
+            />
+            <span className="icon is-small is-left">
+                <i className="fas fa-search"></i>
+            </span>
+          </div>
         </div>
     );
 }

@@ -22,11 +22,12 @@ const Header = ({ queryShoes, searchQuery, shoes }) => (
           <h1 className="rs-logo title is-1">RubberSoul</h1>
         </Link>
         <div className="navbar-search">
-          <p className="control has-icons-left">
-            <form onSubmit={(e) => submitQuery(e, queryShoes, searchQuery, shoes)}>
+          <div className="control has-icons-left">
+            <form
+              onSubmit={ (e) => submitQuery(e, queryShoes, searchQuery, shoes)}>
               <SearchInput />
             </form>
-          </p>
+          </div>
         </div>
       </div>
       <div className="navbar-menu">

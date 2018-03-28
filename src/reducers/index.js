@@ -10,6 +10,7 @@ import {
   SHOESINVIEW_APPLY_QUERY,
   APPLIED_QUERY_SET_QUERY,
   SELECTEDSIZE_SET_SIZE,
+  SELECTEDSIZE_CLEARED,
   SEARCHQUERY_SET_QUERY,
   QTY_INCREASED,
   QTY_DECREASED,
@@ -84,9 +85,12 @@ function appliedQuery(state = '', action) {
 }
 
 function selectedSize(state = null, action) {
-  switch(action.type) {
+  switch (action.type) {
     case SELECTEDSIZE_SET_SIZE: {
-      return action.size;
+      return action.selectedSize
+    }
+    case SELECTEDSIZE_CLEARED: {
+      return null;
     }
     default: {
       return state;
