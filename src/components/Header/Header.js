@@ -1,7 +1,7 @@
 import React from 'react';
 import Headroom from 'react-headroom';
-import AccountDropdown from './AccountDropdown';
-import CartDropdown from './CartDropdown';
+import AccountDropdown from './AccountDropdown/AccountDropdown';
+import CartDropdown from './CartDropdown/CartDropdown';
 import SearchInput from '../SearchBar/SearchInput';
 import './Header.css';
 import { Link } from 'react-router-dom';
@@ -41,7 +41,10 @@ const Header = ({ queryShoes, searchQuery, shoes }) => (
   </Headroom>
 );
 
-const mapStateToProps = (state) => ({ shoes: state.shoes, searchQuery: state.searchQuery });
+const mapStateToProps = (state) => ({
+  shoes: state.shoes,
+  searchQuery: state.searchQuery
+});
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   queryShoes

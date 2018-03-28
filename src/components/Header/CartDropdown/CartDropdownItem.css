@@ -1,0 +1,12 @@
+div.cart-item {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img.cart-img {
+  max-height: 70px !important;
+  width: 70px;
+  height: auto;
+}

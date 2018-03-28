@@ -3,8 +3,8 @@ import {
   SHOES_RECEIVED,
   SHOE_RECEIVED,
   SHOE_CLEARED,
-  SHOE_ON_ENTER,
-  SHOE_ON_LEAVE,
+  SHOE_MOUSED_ON,
+  SHOE_MOUSED_OFF,
   SHOESINVIEW_LOAD,
   SHOESINVIEW_APPLY_SORT,
   SHOESINVIEW_APPLY_QUERY,
@@ -15,14 +15,28 @@ import {
   QTY_INCREASED,
   QTY_DECREASED,
   QTY_RESET,
+  CART_ID_RECEIVED,
+  CART_ITEMS_RECEIVED
 } from '../actions';
 import { returnShoeData } from './searchFunctions';
-import { S_IWUSR } from 'constants';
 
 function shoes(state = [], action) {
   switch (action.type) {
     case SHOES_RECEIVED: {
       return action.shoes;
+    }
+    default:
+      return state;
+  }
+}
+
+function shoesById(state = {}, action) {
+  switch (action.type) {
+    case SHOES_RECEIVED: {
+      return action.shoes.reduce((byId, shoe) => {
+        byId[shoe.id] = shoe;
+        return byId;
+      }, {});
     }
     default:
       return state;
@@ -111,12 +125,12 @@ function shoeDetail(state = null, action) {
   }
 }
 
-function hover_id(state = null, action) {
+function hoverId(state = null, action) {
   switch (action.type) {
-    case SHOE_ON_ENTER: {
-      return action.hover_id;
+    case SHOE_MOUSED_ON: {
+      return action.hoverId;
     }
-    case SHOE_ON_LEAVE: {
+    case SHOE_MOUSED_OFF: {
       return null;
     }
     default:
@@ -140,13 +154,36 @@ function selectedQty(state = 1, action) {
   }
 }
 
+function cartId(state = null, action) {
+  switch(action.type) {
+    case CART_ID_RECEIVED: {
+      return action.cartId;
+    }
+    default:
+      return state;
+  }
+}
+
+function cartItems(state = [], action) {
+  switch(action.type) {
+    case CART_ITEMS_RECEIVED: {
+      return action.items;
+    }
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   shoes,
+  shoesById,
   shoesInView,
   shoeDetail,
-  hover_id,
+  hoverId,
   selectedSize,
   searchQuery,
   selectedQty,
-  appliedQuery
+  appliedQuery,
+  cartId,
+  cartItems
 });

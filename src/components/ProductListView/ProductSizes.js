@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setSelectedSize } from '../../actions';
 
-const ProductSizes = ({ shoe, hover_id, rating, setSelectedSize }) => {
+const ProductSizes = ({ shoe, hoverId, rating, setSelectedSize }) => {
   const sizes = shoe.sizes.filter(size => {
       return Object.values(size)[0];
     }).map(size => {
@@ -16,7 +16,7 @@ const ProductSizes = ({ shoe, hover_id, rating, setSelectedSize }) => {
     margin: '1%'
   };
 
-  const divClass = shoe.id === hover_id ? "tags fadeIn" : "sizes-hidden";
+  const divClass = shoe.id === hoverId ? "tags fadeIn" : "sizes-hidden";
 
   return (
     <div className={ divClass }>
@@ -36,7 +36,7 @@ const ProductSizes = ({ shoe, hover_id, rating, setSelectedSize }) => {
   );
 }
 
-const mapStateToProps = (state) => ({ hover_id: state.hover_id });
+const mapStateToProps = (state) => ({ hoverId: state.hoverId });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   setSelectedSize

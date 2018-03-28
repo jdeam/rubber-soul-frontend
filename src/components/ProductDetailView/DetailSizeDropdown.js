@@ -1,6 +1,5 @@
 import React from 'react';
 import './DetailSizeDropdown.css';
-import ProductSizes from '../ProductListView/ProductSizes';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setSelectedSize, clearSelectedSize } from '../../actions';;
@@ -21,7 +20,7 @@ const DetailSizeDropdown = ({ sizes, selectedSize, setSelectedSize, clearSelecte
         <div className="control">
           <div className="select">
             <select
-              value={ selectedSize }
+              value={ selectedSize ? selectedSize : '' }
               onChange={ (e) => e.target.value === 'Select Size' ? clearSelectedSize() : setSelectedSize(e.target.value) }
             >
               <option>Select Size</option>

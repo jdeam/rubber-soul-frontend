@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import store from './store';
 import { Provider } from 'react-redux';
-import { fetchShoes } from './actions';
+import { fetchShoes, loadCartId, fetchCart } from './actions';
 
 store.dispatch(fetchShoes());
+store.dispatch(loadCartId());
+store.dispatch(fetchCart());
 
 ReactDOM.render(
   <Provider store={ store }>
