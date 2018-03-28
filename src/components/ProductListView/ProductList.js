@@ -4,11 +4,12 @@ import './ProductList.css';
 import SearchBar from '../SearchBar/SearchBar'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { clearShoe, queryShoes, calculateAvg } from '../../actions';
+import { clearShoe, queryShoes, clearSelectedSize } from '../../actions';
 
 class ProductList extends Component {
   componentDidMount() {
     this.props.clearShoe();
+    this.props.clearSelectedSize();
     this.props.queryShoes('', this.props.shoes, this.props.selectedSizes);
   }
 
@@ -29,12 +30,12 @@ class ProductList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ shoesInView: state.shoesInView, appliedQuery: state.appliedQuery, shoes: state.shoes, selectedSizes: state.selectedSizes, calculateAvg: state.calculateAvg });
+const mapStateToProps = (state) => ({ shoesInView: state.shoesInView, appliedQuery: state.appliedQuery, shoes: state.shoes, selectedSizes: state.selectedSizes, selectedSize: state.selectedSize });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   clearShoe,
   queryShoes,
-  calculateAvg
+  clearSelectedSize,
 }, dispatch);
 
 export default connect(

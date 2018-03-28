@@ -102,8 +102,6 @@ export function loadSizes() {
   }
 }
 
-/////
-
 export const CALCULATE_AVG_RATING = 'CALCULATE_AVG_RATING';
 export function calculateAvg(rating) {
   return (dispatch) => {
@@ -115,12 +113,19 @@ export function calculateAvg(rating) {
 }
 
 export const SELECTEDSIZE_SET_SIZE = 'SELECTEDSIZE_SET_SIZE';
-export function setSizeDropdown(size) {
+export function setSelectedSize(selectedSize) {
   return async (dispatch) => {
     dispatch({
       type: SELECTEDSIZE_SET_SIZE,
-      size
+      selectedSize
     })
+  }
+}
+
+export const SELECTEDSIZE_CLEARED = 'SELECTEDSIZE_CLEARED';
+export function clearSelectedSize() {
+  return (dispatch) => {
+    dispatch({ type: SELECTEDSIZE_CLEARED });
   }
 }
 

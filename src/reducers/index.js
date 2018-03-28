@@ -13,6 +13,7 @@ import {
   FILTERLIST_LOAD,
   SIZES_LOAD,
   SELECTEDSIZE_SET_SIZE,
+  SELECTEDSIZE_CLEARED,
   SELECTEDSIZE_TOGGLE_SIZE,
   SEARCHQUERY_SET_QUERY,
   QTY_INCREASED,
@@ -124,6 +125,9 @@ function selectedSize(state = null, action) {
   switch (action.type) {
     case SELECTEDSIZE_SET_SIZE: {
       return action.selectedSize
+    }
+    case SELECTEDSIZE_CLEARED: {
+      return null;
     }
     default: {
       return state;

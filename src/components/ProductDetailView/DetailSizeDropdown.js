@@ -1,7 +1,11 @@
 import React from 'react';
 import './DetailSizeDropdown.css';
+import ProductSizes from '../ProductListView/ProductSizes';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setSelectedSize, clearSelectedSize } from '../../actions';;
 
-const DetailSizeDropdown = ({ sizes }) => {
+const DetailSizeDropdown = ({ sizes, selectedSize, setSelectedSize, clearSelectedSize }) => {
 
   const availableSizes = sizes ?
     sizes.filter(size => {
@@ -10,12 +14,16 @@ const DetailSizeDropdown = ({ sizes }) => {
       return Object.keys(size)[0];
     }) : [];
 
+
   return (
     <div id="Detail-size-dropdown">
       <p><strong>Size</strong></p>
         <div className="control">
           <div className="select">
-            <select>
+            <select
+              value={ selectedSize } }
+              onChange={ (e) => e.target.value === 'Select Size' ? clearSelectedSize() : setSelectedSize(e.target.value) }
+            >
               <option>Select Size</option>
               { availableSizes.map((size, i) => {
                 return (
@@ -29,4 +37,14 @@ const DetailSizeDropdown = ({ sizes }) => {
   )
 }
 
-export default DetailSizeDropdown
+const mapStateToProps = (state) => ({selectedSize: state.selectedSize});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  setSelectedSize,
+  clearSelectedSize
+}, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DetailSizeDropdown);
