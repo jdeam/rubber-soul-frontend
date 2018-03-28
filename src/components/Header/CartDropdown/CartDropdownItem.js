@@ -19,22 +19,22 @@ const CartDropdownItem = ({ item }) => {
           ><b>{ `$${item.shoe.price.toFixed(2)}` }</b>
           </p>
         </div>
-        <div class="field has-addons">
-          <div class="control qty-btn">
-            <a class="button">
+        <div className="field has-addons">
+          <div className="control qty-btn">
+            <a className="button">
               –
             </a>
           </div>
-          <div class="control" style={ {width: "35px"} }>
+          <div className="control" style={ {width: "35px"} }>
             <input
-              class="input"
+              className="input"
               type="text"
               value={ item.cart_qty }
               style={ { textAlign: "center" } }
               readOnly />
           </div>
-          <div class="control qty-btn">
-            <a class="button">
+          <div className="control qty-btn">
+            <a className="button">
               +
             </a>
           </div>

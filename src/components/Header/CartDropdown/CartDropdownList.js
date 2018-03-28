@@ -35,7 +35,7 @@ const CartDropdownList = ({ shoesById, cartItems }) => {
           <div className="is-size-6"><b>Subtotal:</b></div>
           <div className="is-size-6"><b>{ `$${subtotal.toFixed(2)}` }</b></div>
         </div>
-        <Link to="/checkout" class="button checkout-btn">CHECKOUT</Link>
+        <Link to="/checkout" className="button checkout-btn">CHECKOUT</Link>
       </div>
     </div>
   ) : (
