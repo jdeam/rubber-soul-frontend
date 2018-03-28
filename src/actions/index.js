@@ -141,20 +141,20 @@ export function clearShoe() {
   }
 }
 
-export const SHOE_ON_ENTER = 'SHOE_ON_ENTER';
+export const SHOE_MOUSED_ON = 'SHOE_ON_ENTER';
 export function showSizes(id) {
   return (dispatch) => {
     dispatch({
-      type: SHOE_ON_ENTER,
-      hover_id: id
+      type: SHOE_MOUSED_ON,
+      hoverId: id
     });
   };
 }
 
-export const SHOE_ON_LEAVE = 'SHOE_ON_LEAVE';
+export const SHOE_MOUSED_OFF = 'SHOE_ON_LEAVE';
 export function hideSizes() {
   return (dispatch) => {
-    dispatch({ type: SHOE_ON_LEAVE });
+    dispatch({ type: SHOE_MOUSED_OFF });
   };
 }
 
@@ -178,5 +178,31 @@ export const QTY_RESET = 'QTY_RESET';
 export function resetQty() {
   return (dispatch) => {
     dispatch({ type: QTY_RESET })
+  }
+}
+
+export const CART_ID_RECEIVED = 'CART_ID_RECEIVED';
+export function loadCartId() {
+  return (dispatch) => {
+    dispatch({
+      type: CART_ID_RECEIVED,
+      cartId: localStorage.getItem('cartId') });
+  }
+}
+export function setCardId(cartId) {
+  return (dispatch) => {
+    localStorage.setItem('cartId', cartId);
+    dispatch({ type: CART_ID_RECEIVED, cartId });
+  }
+}
+
+export const CART_ITEMS_RECEIVED = 'CART_ITEMS_RECEIVED';
+export function fetchCart() {
+  return async (dispatch) => {
+    const cartId = localStorage.getItem('cartId');
+    if (!cartId) return;
+    const response = await axios.get(`${BaseURL}/api/carts/${cartId}`);
+    const { cart_id, items } = response.data.data;
+    dispatch({ type: CART_ITEMS_RECEIVED, items });
   }
 }

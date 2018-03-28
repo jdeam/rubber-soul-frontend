@@ -2,23 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './ProductSizes.css';
 
-const ProductSizes = ({ shoe, hover_id }) => {
+const ProductSizes = ({ shoe, hoverId }) => {
   const sizes = shoe.sizes.filter(size => {
       return Object.values(size)[0];
     }).map(size => {
       return Object.keys(size)[0];
     });
 
-  const priceStyle = {
-    float: 'right',
-    fontWeight: 'bold'
-  };
-
   const tagStyle = {
     margin: '1%'
   };
 
-  const divClass = shoe.id === hover_id ? "tags fadeIn" : "sizes-hidden";
+  const divClass = shoe.id === hoverId ? "tags fadeIn" : "sizes-hidden";
 
   return (
     <div className={ divClass }>
@@ -33,7 +28,7 @@ const ProductSizes = ({ shoe, hover_id }) => {
   );
 }
 
-const mapStateToProps = (state) => ({ hover_id: state.hover_id });
+const mapStateToProps = (state) => ({ hoverId: state.hoverId });
 
 export default connect(
   mapStateToProps,
