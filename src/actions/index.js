@@ -102,16 +102,6 @@ export function loadSizes() {
   }
 }
 
-export const CALCULATE_AVG_RATING = 'CALCULATE_AVG_RATING';
-export function calculateAvg(rating) {
-  return (dispatch) => {
-    dispatch({
-      type: CALCULATE_AVG_RATING,
-      rating
-    })
-  }
-}
-
 export const SELECTEDSIZE_SET_SIZE = 'SELECTEDSIZE_SET_SIZE';
 export function setSelectedSize(selectedSize) {
   return async (dispatch) => {
