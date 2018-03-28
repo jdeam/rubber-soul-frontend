@@ -1,6 +1,17 @@
 div.subtotal {
-  height: 100px;
+  height: 80px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.subtotal-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-btn {
+  width: 100%;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import CartDropdownItem from './CartDropdownItem';
 import { connect } from 'react-redux';
 import './CartDropdownList.css';
+import { Link } from 'react-router-dom';
 
 const CartDropdownList = ({ shoesById, cartItems }) => {
   const itemsWithShoeData = cartItems.map(item => {
@@ -30,8 +31,11 @@ const CartDropdownList = ({ shoesById, cartItems }) => {
           ];
       }) }
       <div className="dropdown-item subtotal">
-        <div className="is-size-6"><b>Subtotal:</b></div>
-        <div className="is-size-6"><b>{ `$${subtotal.toFixed(2)}` }</b></div>
+        <div className="subtotal-content">
+          <div className="is-size-6"><b>Subtotal:</b></div>
+          <div className="is-size-6"><b>{ `$${subtotal.toFixed(2)}` }</b></div>
+        </div>
+        <Link to="/checkout" class="button checkout-btn">CHECKOUT</Link>
       </div>
     </div>
   ) : (
