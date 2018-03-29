@@ -3,6 +3,7 @@ import DetailView from './components/ProductDetailView/DetailView';
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
 import ProductList from './components/ProductListView/ProductList';
+import Checkout from './components/CheckoutView/Checkout';
 import Modal from './components/Modal/Modal';
 import 'bulma/css/bulma.css';
 import './App.css';
@@ -16,6 +17,7 @@ class App extends Component {
         <div>
           <Header />
           <Route exact path="/" component={ ProductList }/>
+          <Route path="/checkout" component={ Checkout } />
           <Route path="/:id" component={ DetailView }/>
           <Footer />
           <Modal />
