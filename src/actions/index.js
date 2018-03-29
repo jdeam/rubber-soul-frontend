@@ -198,3 +198,13 @@ export function toggleModal() {
     })
   }
 }
+
+export const MODAL_CONTENT_SET_CONTENT = 'MODAL_CONTENT_SET_CONTENT';
+export function setModalContent(contentType) {
+  return (dispatch) => {
+    dispatch({
+      type: MODAL_CONTENT_SET_CONTENT,
+      contentType
+    })
+  }
+}

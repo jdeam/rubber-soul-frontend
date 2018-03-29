@@ -18,7 +18,8 @@ import {
   USER_ID_RECEIVED,
   CART_ID_RECEIVED,
   CART_ITEMS_RECEIVED,
-  MODAL_TOGGLE_MODAL
+  MODAL_TOGGLE_MODAL,
+  MODAL_CONTENT_SET_CONTENT
 } from '../actions';
 import { returnShoeData } from './searchFunctions';
 
@@ -198,6 +199,17 @@ function modal(state= false, action) {
   }
 }
 
+function modalContent(state = null, action) {
+  switch(action.type) {
+    case MODAL_CONTENT_SET_CONTENT: {
+      return action.contentType;
+    }
+    default: {
+      return state;
+    }
+  }
+} 
+
 export default combineReducers({
   shoes,
   shoesById,
@@ -211,5 +223,6 @@ export default combineReducers({
   userId,
   cartId,
   cartItems,
-  modal
+  modal,
+  modalContent
 });

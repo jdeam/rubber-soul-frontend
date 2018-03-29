@@ -63,21 +63,20 @@ class SignupForm extends React.Component {
         let isEnabled = email.length > 0 && password.length > 0 && first_name.length > 0 && last_name.length > 0;
         return(
             <div>
-                <h1 className="title is-1 SignupForm-title">Create an Account</h1>
                 <div className="field">
-                    <label className="SignupForm-title">* First Name</label>
+                    <label className="label">* First Name</label>
                     <div className="control">
                         <input className="input" type="text" onChange={this.setFirstName} placeholder="Jane" />
                     </div>
                 </div>
                 <div className="field">
-                    <label className="SignupForm-title">* Last Name</label>
+                    <label className="label">* Last Name</label>
                     <div className="control">
                         <input className="input" type="text" onChange={this.setLastName} placeholder="Doe" />
                     </div>
                 </div>
                 <div className="field">
-                    <label className="SignupForm-title">* Email</label>
+                    <label className="label">* Email</label>
                     <div className="control has-icons-left has-icons-right">
                         <input className="input" type="email" onChange={this.setEmail} placeholder="myemail@..." />
                         <span className="icon is-small is-left">
@@ -86,7 +85,7 @@ class SignupForm extends React.Component {
                     </div>
                 </div>
                 <div className="field">
-                    <label className="SignupForm-title">* Password</label>
+                    <label className="label">* Password</label>
                     <div className="control">
                         <input className="input" type="password" onChange={this.setPassword} />
                     </div>

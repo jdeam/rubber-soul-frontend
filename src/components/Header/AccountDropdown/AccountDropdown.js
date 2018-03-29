@@ -11,11 +11,11 @@ const AccountDropdown = ({ user_id }) => {
         <div className="dropdown-trigger">
           {user_id ? 
             (<div to="/account" className="navbar-item">
-              <p>My Account &nbsp;</p>
+              <p>Hi, `name` &nbsp;</p>
               <i className="fa fa-user-circle title is-4" aria-hidden="true" />
             </div>) : (
             <div className="navbar-item">
-              <p>Login &nbsp;</p>
+              <p>My Account &nbsp;</p>
               <i className="fa fa-user-circle title is-4" aria-hidden="true" />
             </div>
           )}
