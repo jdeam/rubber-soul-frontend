@@ -18,7 +18,7 @@ const LoggedInMenu = ({ setCartId, setUserId, clearCart, user_id }) => {
             <div className="dropdown-item">
                 <div className="field">
                     <p className="control sign-up-field">
-                        <button onClick={(e) => attemptSignOut(e, setCartId, setUserId, clearCart )} className="button is-light">
+                        <button onClick={(e) => attemptSignOut(e, setCartId, setUserId, clearCart )} className="button is-danger">
                         Log Out
                         </button>
                     </p>

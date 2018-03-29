@@ -145,7 +145,7 @@ export function resetQty() {
 
 export const USER_ID_RECEIVED = 'USER_ID_RECEIVED';
 export function loadUserId() {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({
       type: USER_ID_RECEIVED,
       userId: JSON.parse(localStorage.getItem('user_id')) });
