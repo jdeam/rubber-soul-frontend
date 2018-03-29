@@ -12,3 +12,11 @@
 #my-account-option {
   margin-bottom: 10px;
 }
+
+#LoggedInMenu-logout-button {
+  width: 100%;
+}
+
+#LoggedOutMenu-login-button {
+  width: 100%;
+}

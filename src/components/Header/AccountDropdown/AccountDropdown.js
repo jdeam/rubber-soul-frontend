@@ -30,7 +30,7 @@ class AccountDropdown extends React.Component {
     return (
       <div className="navbar-item dropdown is-right is-hoverable">
           <div className="dropdown-trigger">
-            {this.props.user_id ? 
+            {this.props.user_id ?
               (<div to="/account" className="navbar-item">
                 {this.state.header ? this.state.header : <p>Loading... &nbsp;</p>}
                 <i className="fa fa-user-circle title is-4" aria-hidden="true" />
@@ -40,17 +40,17 @@ class AccountDropdown extends React.Component {
                 <i className="fa fa-user-circle title is-4" aria-hidden="true" />
               </div>
             )}
-            
+
           </div>
           <div className="dropdown-menu" id="dropdown-menu6" role="menu">
             {this.props.user_id ? <LoggedInMenu /> : <LoggedOutMenu /> }
           </div>
         </div>
     );
-  } 
+  }
 }
-  
-const mapStateToProps = (state) => ({ 
+
+const mapStateToProps = (state) => ({
   user_id: state.userId,
 });
 

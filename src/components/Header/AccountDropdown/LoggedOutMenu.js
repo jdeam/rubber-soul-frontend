@@ -24,7 +24,11 @@ class LoggedOutMenu extends React.Component {
                     <div className="dropdown-item">
                         <div className="field">
                         <p className="control sign-up-field">
-                            <button onClick={(e) => this.toggleLogin(this.props.toggleModal, this.props.setModalContent)} className="button is-info">
+                            <button
+                              onClick={(e) => this.toggleLogin(this.props.toggleModal, this.props.setModalContent)}
+                              className="button is-info"
+                              id="LoggedOutMenu-login-button"
+                            >
                                 Login
                             </button>
                         </p>
@@ -41,17 +45,17 @@ class LoggedOutMenu extends React.Component {
                     </div>
                 </div>
             </div>
-            
+
         );
     }
 }
 
 
 
-const mapStateToProps = (state) => ({ 
-    
+const mapStateToProps = (state) => ({
+
 });
-  
+
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     toggleModal,
     setModalContent

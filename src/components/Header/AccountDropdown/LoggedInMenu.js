@@ -18,7 +18,11 @@ const LoggedInMenu = ({ setCartId, setUserId, clearCart, user_id }) => {
             <div className="dropdown-item">
                 <div className="field">
                     <p className="control sign-up-field">
-                        <button onClick={(e) => attemptSignOut(e, setCartId, setUserId, clearCart )} className="button is-danger">
+                        <button
+                          id="LoggedInMenu-logout-button"
+                          onClick={(e) => attemptSignOut(e, setCartId, setUserId, clearCart )}
+                          className="button is-danger"
+                        >
                         Log Out
                         </button>
                     </p>
@@ -26,16 +30,16 @@ const LoggedInMenu = ({ setCartId, setUserId, clearCart, user_id }) => {
             </div>
         </div>
     );
-    
+
 }
 
-const mapStateToProps = (state) => ({ 
-    user_id: state.userId 
+const mapStateToProps = (state) => ({
+    user_id: state.userId
 });
-  
+
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    setCartId, 
-    setUserId, 
+    setCartId,
+    setUserId,
     clearCart
 }, dispatch);
 
