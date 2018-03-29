@@ -1,12 +1,14 @@
 import React from 'react';
 import DetailStarInput from './DetailStarInput';
 import './DetailReviewForm.css';
+import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {   setReviewTitle, clearReviewTitle, setReviewContent, clearReviewContent, setReviewRating, clearReviewRating, submitReview, hideReviewForm, clearActiveTab, clearReviewForm } from '../../actions';
+import {  setReviewTitle, clearReviewTitle, setReviewContent, clearReviewContent, setReviewRating, clearReviewRating, hideReviewForm, clearActiveTab, clearReviewForm, fetchSingleShoe } from '../../actions';
 
 const DetailReviewForm = ({
+  shoe_id,
   shoeBrand,
   shoeModel,
   setReviewTitle,
@@ -15,23 +17,30 @@ const DetailReviewForm = ({
   clearReviewContent,
   setReviewRating,
   clearReviewRating,
-  submitReview,
   clearActiveTab,
   hideReviewForm,
   clearReviewForm,
   addReview,
+  user_id,
   reviewTitle,
   reviewContent,
-  reviewRating = 5
+  reviewRating,
+  fetchSingleShoe
 }) => {
+  const BASE_URL = `http://localhost:8080`;
   let shoeBrandModel = `${shoeBrand} ${shoeModel}`;
 
-  let user_id;  // FIXME delete after hooking up auth
   const review = {
-    user_id,  // FIXME grab real user_id after hooking up auth
+    user_id,
+    shoe_id,
     title: reviewTitle,
     content: reviewContent,
     star_count: reviewRating
+  }
+
+  const submitReview = (review) => {
+    const token = localStorage.getItem('token');
+    return axios.post(`${BASE_URL}/auth/reviews`, review, { headers: {token} })
   }
 
   let confirmSubmit;
@@ -41,7 +50,28 @@ const DetailReviewForm = ({
     confirmSubmit = false;
   }
 
-  let submitAction = confirmSubmit ? (e) => notify.show('Review Submitted!', "success") : (e) => notify.show('Please complete all review fields', "error")
+  let submitAction;
+  if (confirmSubmit) {
+    submitAction = (e) => {
+      return submitReview(review)
+        .then(res => {
+          notify.show('Review Submitted!', "success");
+          fetchSingleShoe(shoe_id);
+          hideReviewForm();
+          clearActiveTab();
+          clearReviewTitle();
+          clearReviewContent();
+          clearReviewRating();
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  } else {
+    submitAction = (e) => {
+      notify.show('Please complete all review fields', "error")
+    }
+  }
 
   return (
     <div>
@@ -87,9 +117,11 @@ const DetailReviewForm = ({
 
 const mapStateToProps = (state) => ({
   addReview: state.addReview,
+  shoe_id: state.shoeDetail.id,
   reviewTitle: state.reviewTitle,
   reviewContent: state.reviewContent,
-  reviewRating: state.reviewRating
+  reviewRating: state.reviewRating,
+  user_id: state.userId
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
@@ -99,10 +131,10 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   clearReviewContent,
   setReviewRating,
   clearReviewRating,
-  submitReview,
   hideReviewForm,
   clearActiveTab,
-  clearReviewForm
+  clearReviewForm,
+  fetchSingleShoe
 }, dispatch)
 
 export default connect(

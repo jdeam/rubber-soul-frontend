@@ -9,18 +9,15 @@ const DetailReviewsNav = ({
   activeTab,
   setActiveTab,
   showReviewForm,
-  hideReviewForm
+  hideReviewForm,
+  user_id
 }) => {
   let reviewsTabClass;
   let writeReviewTabClass;
 
   activeTab ? writeReviewTabClass = "is-active" : reviewsTabClass = "is-active";
 
-  //FIXME validation for auth, if not auth display 'Please sign in to submit a review'
-
-  // let userAuth = false;
-  let userAuth = true;
-  let userAuthenticated = userAuth ? (e) => {showReviewForm('showForm'); setActiveTab('writeReview')} : (e) => notify.show('Please sign in to submit a review.', "error");
+  let userAuthenticated = user_id ? (e) => {showReviewForm('showForm'); setActiveTab('writeReview')} : (e) => notify.show('Please sign in to submit a review.', "error");
 
   return(
     <div className="tabs">
@@ -37,7 +34,7 @@ const DetailReviewsNav = ({
   )
 }
 
-const mapStateToProps = (state) => ({ reviewView: state.reviewView, activeTab: state.activeTab});
+const mapStateToProps = (state) => ({ reviewView: state.reviewView, activeTab: state.activeTab, user_id: state.userId });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   setActiveTab,
