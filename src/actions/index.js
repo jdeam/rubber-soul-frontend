@@ -143,17 +143,32 @@ export function resetQty() {
   }
 }
 
+export const USER_ID_RECEIVED = 'USER_ID_RECEIVED';
+export function loadUserId() {
+  return (dispatch) => {
+    dispatch({
+      type: USER_ID_RECEIVED,
+      cartId: localStorage.getItem('user_id') });
+  }
+}
+export function setUserId(userId) {
+  return (dispatch) => {
+    localStorage.setItem('user_id', userId);
+    dispatch({ type: USER_ID_RECEIVED, userId });
+  }
+}
+
 export const CART_ID_RECEIVED = 'CART_ID_RECEIVED';
 export function loadCartId() {
   return (dispatch) => {
     dispatch({
       type: CART_ID_RECEIVED,
-      cartId: localStorage.getItem('cartId') });
+      cartId: localStorage.getItem('cart_id') });
   }
 }
-export function setCardId(cartId) {
+export function setCartId(cartId) {
   return (dispatch) => {
-    localStorage.setItem('cartId', cartId);
+    localStorage.setItem('cart_id', cartId);
     dispatch({ type: CART_ID_RECEIVED, cartId });
   }
 }
@@ -161,7 +176,7 @@ export function setCardId(cartId) {
 export const CART_ITEMS_RECEIVED = 'CART_ITEMS_RECEIVED';
 export function fetchCart() {
   return async (dispatch) => {
-    const cartId = localStorage.getItem('cartId');
+    const cartId = localStorage.getItem('cart_id');
     if (!cartId) return;
     const response = await axios.get(`${BaseURL}/api/carts/${cartId}`);
     const { items } = response.data.data;

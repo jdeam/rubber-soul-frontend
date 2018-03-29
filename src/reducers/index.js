@@ -15,6 +15,7 @@ import {
   QTY_INCREASED,
   QTY_DECREASED,
   QTY_RESET,
+  USER_ID_RECEIVED,
   CART_ID_RECEIVED,
   CART_ITEMS_RECEIVED
 } from '../actions';
@@ -154,6 +155,16 @@ function selectedQty(state = 1, action) {
   }
 }
 
+function userId(state = null, action) {
+  switch(action.type) {
+    case USER_ID_RECEIVED: {
+      return action.userId;
+    }
+    default:
+      return state;
+  }
+}
+
 function cartId(state = null, action) {
   switch(action.type) {
     case CART_ID_RECEIVED: {
@@ -184,6 +195,7 @@ export default combineReducers({
   searchQuery,
   selectedQty,
   appliedQuery,
+  userId,
   cartId,
   cartItems
 });

@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setCartId, setUserId, fetchCart } from '../../../actions';
 import './AccountDropdown.css';
 
 class AccountDropdown extends React.Component {
@@ -28,9 +31,12 @@ class AccountDropdown extends React.Component {
         .then(res => {
           const token = res.headers.auth.split(' ')[1];
           localStorage.setItem('token', token);
-          console.log(res.data.user_id, res.data.cart_id);
-          console.log(token);
-          this.setState({ email: '', password: '' });
+          this.props.setCartId(res.data.claim.cart_id);
+          this.props.setUserId(res.data.claim.user_id);
+          return this.props.fetchCart();
+        })
+        .then(res => {
+          return this.setState({ email: '', password: '' });
         })
         .catch(err => {
           console.log('Invalid credentials');
@@ -85,4 +91,12 @@ class AccountDropdown extends React.Component {
   } 
 }
 
-export default AccountDropdown;
+const mapStateToProps = (state) => ({ });
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  setCartId, setUserId, fetchCart
+}, dispatch);
+
+export default connect(
+  mapStateToProps, mapDispatchToProps
+)(AccountDropdown);
