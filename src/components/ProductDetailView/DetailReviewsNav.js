@@ -18,6 +18,7 @@ const DetailReviewsNav = ({
 
   //FIXME validation for auth, if not auth display 'Please sign in to submit a review'
 
+  // let userAuth = false;
   let userAuth = true;
   let userAuthenticated = userAuth ? (e) => {showReviewForm('showForm'); setActiveTab('writeReview')} : (e) => notify.show('Please sign in to submit a review.', "error");
 
@@ -30,7 +31,6 @@ const DetailReviewsNav = ({
         </li>
         <li className={writeReviewTabClass? `${writeReviewTabClass}` : ''}>
           <a onClick={ userAuthenticated } value="Write A Review">Write A Review</a>
-          {/* <a onClick={ (e) => {showReviewForm('showForm'); setActiveTab('writeReview'); } } value="Write A Review">Write A Review</a> */}
         </li>
       </ul>
     </div>
