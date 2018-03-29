@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductSizes from './ProductSizes';
+import ProductContentOnHover from './ProductContentOnHover';
 
 const ProductContent = ({ shoe }) => {
   const priceStyle = {
@@ -18,9 +18,9 @@ const ProductContent = ({ shoe }) => {
           >{ `$${shoe.price.toFixed(2)}` }
         </span>
       </p>
-      <ProductSizes shoe={ shoe } rating={ shoe.avg_star_count } />
+      <ProductContentOnHover shoe={ shoe } />
     </div>
   );
 }
 
-export default ProductContent
+export default ProductContent;

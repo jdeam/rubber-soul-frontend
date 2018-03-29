@@ -18,7 +18,11 @@ class ProductList extends Component {
         <div className="container">
           <div className="columns">
             <div className="column is-12">
-              <div className="title"> {this.props.appliedQuery ? `Displaying All Shoes Matching: "${this.props.appliedQuery}"` : `All Shoes`}</div>
+              <div
+                className="title">
+                  { "All Shoes" + (this.props.appliedQuery ?
+                    ` matching "${this.props.appliedQuery}"` : "") }
+                </div>
             </div>
           </div>
           <hr />
