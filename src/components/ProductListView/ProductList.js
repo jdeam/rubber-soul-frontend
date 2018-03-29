@@ -6,13 +6,24 @@ import { bindActionCreators } from 'redux';
 import { clearShoe, queryShoes, clearSelectedSize } from '../../actions';
 
 class ProductList extends Component {
+  state = {
+    loaded: false,
+    ProductRows: null
+  }
+
   componentDidMount() {
     this.props.clearShoe();
     this.props.clearSelectedSize();
     this.props.queryShoes('', this.props.shoes);
   }
 
+  loadProductRows = (shoes) => {
+    let rows = <ProductRows shoes={ shoes } />
+    this.setState({ loaded: true, ProductRows: rows });
+  }
+
   render () {
+    console.log(this.state);
     return (
       <div className="section">
         <div className="container">
@@ -22,7 +33,8 @@ class ProductList extends Component {
             </div>
           </div>
           <hr />
-          <ProductRows shoes={ this.props.shoesInView } />
+          {this.state.loaded ? this.state.ProductRows : <p>Loading...</p>}
+          {this.state.loaded ? console.log('Done') : this.loadProductRows(this.props.shoesInView)}
         </div>
       </div>
     );

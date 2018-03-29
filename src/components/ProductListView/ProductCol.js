@@ -5,26 +5,34 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showSizes, hideSizes } from '../../actions';
 import './ProductCol.css';
+import placeholder from './222x222.png';
+import ProgressiveImage from 'react-progressive-image';
 
-const ProductCol = ({ shoe, showSizes, hideSizes }) => {
-  return (
-    <div
-      className="column is-3"
-      onMouseEnter={ () => showSizes(shoe.id) }
-      onMouseLeave={ hideSizes }
-    >
-      <Link to={ `/${shoe.id}` }>
-        <div className="card">
-          <div className="card-image">
-            <figure className="image">
-              <img src={ shoe.imgURL } alt={ `${shoe.brand} ${shoe.model}` }/>
-            </figure>
+class ProductCol extends React.Component {
+  
+  render() {
+    let { shoe, showSizes, hideSizes } = this.props;
+    return (
+      <div
+        className="column is-3"
+        onMouseEnter={ () => showSizes(shoe.id) }
+        onMouseLeave={ hideSizes }
+      >
+        <Link to={ `/${shoe.id}` }>
+          <div className="card">
+            <div className="card-image">
+              <figure className="image">
+                <ProgressiveImage src={shoe.imgURL} placeholder={placeholder} >
+                  {(src => <img src={src} alt={`${shoe.brand} ${shoe.model}`} />)}
+                </ProgressiveImage>
+              </figure>
+            </div>
+            <ProductContent shoe={ shoe } />
           </div>
-          <ProductContent shoe={ shoe } />
-        </div>
-      </Link>
-    </div>
-  );
+        </Link>
+      </div>
+    );
+  }
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
