@@ -1,11 +1,17 @@
 import React from 'react';
 import './CartDropdownItem.css';
 import { Link } from 'react-router-dom';
-import { fetchSingleShoe, clearShoe } from '../../../actions';
+import { fetchSingleShoe, clearShoe, updateCart } from '../../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-const CartDropdownItem = ({ item, fetchSingleShoe, clearShoe }) => {
+const CartDropdownItem = ({
+  item,
+  fetchSingleShoe,
+  clearShoe,
+  updateCart
+}) => {
+
   return (
     item.shoe ? (
       <div className="dropdown-item cart-item">
@@ -51,7 +57,17 @@ const CartDropdownItem = ({ item, fetchSingleShoe, clearShoe }) => {
         </Link>
         <div className="field has-addons">
           <div className="control qty-btn">
-            <a className="button">
+            <a
+              className="button"
+              onClick={ () => {
+                const body = {
+                  shoe_id: item.shoe.id,
+                  size: item.size,
+                  qty: item.cart_qty-1
+                }
+                updateCart(body);
+              } }
+            >
               –
             </a>
           </div>
@@ -64,7 +80,17 @@ const CartDropdownItem = ({ item, fetchSingleShoe, clearShoe }) => {
               readOnly />
           </div>
           <div className="control qty-btn">
-            <a className="button">
+            <a
+              className="button"
+              onClick={ () => {
+                const body = {
+                  shoe_id: item.shoe.id,
+                  size: item.size,
+                  qty: item.cart_qty+1
+                }
+                updateCart(body);
+              } }
+            >
               +
             </a>
           </div>
@@ -78,7 +104,8 @@ const CartDropdownItem = ({ item, fetchSingleShoe, clearShoe }) => {
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   fetchSingleShoe,
-  clearShoe
+  clearShoe,
+  updateCart
 }, dispatch);
 
 export default connect(

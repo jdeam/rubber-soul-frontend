@@ -10,7 +10,7 @@ const DetailAddToCartButton = ({ shoe_id, qty, size, updateCart }) => {
       <p>
         <a
           onClick={ () => {
-            if (qty && size) updateCart({shoe_id, qty, size});  
+            if (qty && size) updateCart({shoe_id, qty, size});
           } }
           className="button is-primary"
         >

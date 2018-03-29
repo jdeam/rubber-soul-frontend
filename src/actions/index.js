@@ -176,7 +176,11 @@ export function updateCart(cartItem) {
       cartItem
     );
     const cart = response.data.data;
-    setCartId(cart.cart_id);
-    fetchCart();
+    const { cart_id, items } = cart;
+    if (cart_id !== cartId) {
+      localStorage.setItem('cart_id', cart_id);
+      dispatch({ type: CART_ID_RECEIVED, cartId: cart_id })
+    }
+    dispatch({ type: CART_ITEMS_RECEIVED, items });
   }
 }
