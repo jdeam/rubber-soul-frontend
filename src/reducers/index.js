@@ -15,6 +15,18 @@ import {
   QTY_INCREASED,
   QTY_DECREASED,
   QTY_RESET,
+  SET_ACTIVE_TAB,
+  CLEAR_ACTIVE_TAB,
+  SHOW_REVIEW_FORM,
+  HIDE_REVIEW_FORM,
+  SET_REVIEW_TITLE,
+  CLEAR_REVIEW_TITLE,
+  SET_REVIEW_CONTENT,
+  CLEAR_REVIEW_CONTENT,
+  SET_REVIEW_RATING,
+  CLEAR_REVIEW_RATING,
+  REVIEW_SUBMITTED,
+  REVIEW_CLEARED,
   CART_ID_RECEIVED,
   CART_ITEMS_RECEIVED
 } from '../actions';
@@ -154,6 +166,84 @@ function selectedQty(state = 1, action) {
   }
 }
 
+function activeTab(state = '', action) {
+  switch(action.type) {
+    case SET_ACTIVE_TAB: {
+      return action.tab;
+    }
+    case CLEAR_ACTIVE_TAB: {
+      return '';
+    }
+    default:
+      return state;
+  }
+}
+
+function reviewView(state = '', action) {
+  switch(action.type) {
+    case SHOW_REVIEW_FORM: {
+      return action.viewName;
+    }
+    case HIDE_REVIEW_FORM: {
+      return '';
+    }
+    default:
+      return state;
+  }
+}
+
+function reviewTitle(state = null, action) {
+  switch(action.type) {
+    case SET_REVIEW_TITLE: {
+      return action.title;
+    }
+    case CLEAR_REVIEW_TITLE: {
+      return null;
+    }
+    default:
+      return state;
+  }
+}
+
+function reviewContent(state = null, action) {
+  switch(action.type) {
+    case SET_REVIEW_CONTENT: {
+      return action.content;
+    }
+    case CLEAR_REVIEW_CONTENT: {
+      return null;
+    }
+    default:
+      return state;
+  }
+}
+
+function reviewRating(state = null, action) {
+  switch(action.type) {
+    case SET_REVIEW_RATING: {
+      return action.rating;
+    }
+    case CLEAR_REVIEW_RATING: {
+      return null;
+    }
+    default:
+      return state;
+  }
+}
+
+function addReview(state = {}, action) {
+  switch(action.type) {
+    case REVIEW_SUBMITTED: {
+      return action.review;
+    }
+    case REVIEW_CLEARED: {
+      return {};
+    }
+    default:
+      return state;
+  }
+}
+
 function cartId(state = null, action) {
   switch(action.type) {
     case CART_ID_RECEIVED: {
@@ -184,6 +274,12 @@ export default combineReducers({
   searchQuery,
   selectedQty,
   appliedQuery,
+  activeTab,
+  reviewView,
+  reviewTitle,
+  reviewContent,
+  reviewRating,
+  addReview,
   cartId,
   cartItems
 });

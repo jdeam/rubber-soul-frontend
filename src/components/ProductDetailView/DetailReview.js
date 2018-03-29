@@ -1,7 +1,7 @@
-import React from 'react'
-import './DetailReview.css'
-import DetailStars from './DetailStars'
-import moment from 'moment'
+import React from 'react';
+import './DetailReview.css';
+import DetailStars from './DetailStars';
+import moment from 'moment';
 moment().format();
 
 const DetailReview = ({ review }) => {
