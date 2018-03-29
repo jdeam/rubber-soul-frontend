@@ -3,12 +3,15 @@ import ProductRows from './ProductRows';
 import './ProductList.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { clearShoe, queryShoes, clearSelectedSize } from '../../actions';
+import { clearShoe, queryShoes, clearSelectedSize, hideReviewForm, clearReviewForm, clearActiveTab } from '../../actions';
 
 class ProductList extends Component {
   componentDidMount() {
     this.props.clearShoe();
     this.props.clearSelectedSize();
+    this.props.clearActiveTab();
+    this.props.hideReviewForm();
+    this.props.clearReviewForm();
     this.props.queryShoes('', this.props.shoes);
   }
 
@@ -44,6 +47,9 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   clearShoe,
   queryShoes,
   clearSelectedSize,
+  hideReviewForm,
+  clearReviewForm,
+  clearActiveTab
 }, dispatch);
 
 export default connect(

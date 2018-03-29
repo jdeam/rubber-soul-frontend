@@ -140,6 +140,105 @@ export const QTY_RESET = 'QTY_RESET';
 export function resetQty() {
   return (dispatch) => {
     dispatch({ type: QTY_RESET })
+  };
+}
+
+export const SET_ACTIVE_TAB = 'SET_ACTIVE_TAB';
+export function setActiveTab(tab) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_ACTIVE_TAB,
+      tab
+    })
+  }
+}
+
+export const CLEAR_ACTIVE_TAB = 'CLEAR_ACTIVE_TAB';
+export function clearActiveTab() {
+  return (dispatch) => {
+    dispatch({ type: CLEAR_ACTIVE_TAB })
+  }
+}
+
+export const SHOW_REVIEW_FORM = 'SHOW_REVIEW_FORM';
+export function showReviewForm(viewName) {
+  return (dispatch) => {
+    dispatch({
+      type: SHOW_REVIEW_FORM,
+      viewName
+    })
+  }
+}
+
+export const HIDE_REVIEW_FORM = 'HIDE_REVIEW_FORM';
+export function hideReviewForm() {
+  return (dispatch) => {
+    dispatch({ type: HIDE_REVIEW_FORM })
+  }
+}
+
+export const SET_REVIEW_TITLE = 'SET_REVIEW_TITLE';
+export function setReviewTitle(title) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_REVIEW_TITLE,
+      title
+    })
+  }
+}
+
+export const CLEAR_REVIEW_TITLE = 'CLEAR_REVIEW_TITLE';
+export function clearReviewTitle() {
+  return (dispatch) => {
+    dispatch({ type: CLEAR_REVIEW_TITLE })
+  }
+}
+
+export const SET_REVIEW_CONTENT = 'SET_REVIEW_CONTENT';
+export function setReviewContent(content) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_REVIEW_CONTENT,
+      content
+    })
+  }
+}
+
+export const CLEAR_REVIEW_CONTENT = 'CLEAR_REVIEW_CONTENT';
+export function clearReviewContent() {
+  return (dispatch) => {
+    dispatch({ type: CLEAR_REVIEW_CONTENT })
+  }
+}
+
+export const SET_REVIEW_RATING = 'SET_REVIEW_RATING';
+export function setReviewRating(rating) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_REVIEW_RATING,
+      rating
+    })
+  }
+}
+
+export const CLEAR_REVIEW_RATING = 'CLEAR_REVIEW_RATING';
+export function clearReviewRating() {
+  return (dispatch) => {
+    dispatch({ type: CLEAR_REVIEW_RATING })
+  }
+}
+
+export const REVIEW_SUBMITTED = 'REVIEW_SUBMITTED';
+export function submitReview(review) {
+  return (dispatch) => {
+    dispatch({ type: REVIEW_SUBMITTED })
+  }
+}
+
+export const REVIEW_CLEARED = 'REVIEW_CLEARED';
+export function clearReviewForm() {
+  return (dispatch) => {
+    dispatch({ type: REVIEW_CLEARED })
   }
 }
 
@@ -166,6 +265,7 @@ export function loadCartId() {
       cartId: JSON.parse(localStorage.getItem('cart_id')) });
   }
 }
+
 export function setCartId(cartId) {
   return (dispatch) => {
     localStorage.setItem('cart_id', cartId);

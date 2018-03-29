@@ -73,7 +73,11 @@ class DetailView extends Component {
           </div>
         </div>
 
-        <DetailReviews reviews={ this.props.shoe.reviews ? (this.props.shoe.reviews) : [] } />
+        <DetailReviews
+          reviews={ this.props.shoe.reviews ? (this.props.shoe.reviews) : [] }
+          shoeBrand={ this.props.shoe.brand }
+          shoeModel={ this.props.shoe.model }
+        />
       </div>
     ) : (<div style={ { height: "100vh" } }></div>);
   }
