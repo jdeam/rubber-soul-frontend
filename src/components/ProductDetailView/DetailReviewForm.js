@@ -1,4 +1,5 @@
 import React from 'react';
+import './DetailReviewForm.css';
 import Notifications, {notify} from 'react-notify-toast';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -24,10 +25,6 @@ const DetailReviewForm = ({
 }) => {
   let shoeBrandModel = `${shoeBrand} ${shoeModel}`;
 
-  const submitStyle = {
-    marginTop: '3em'
-  };
-
   let user_id;  // FIXME delete after hooking up auth
   const review = {
     user_id,  // FIXME grab real user_id after hooking up auth
@@ -50,7 +47,7 @@ const DetailReviewForm = ({
     <div>
       <Notifications />
       <h3 className="title is-3">{`Review "${shoeBrandModel}"`}</h3>
-      <div className="field">
+      <div id="review-title" className="field">
         <label className="label">Title</label>
         <div className="control">
           <input
@@ -61,7 +58,7 @@ const DetailReviewForm = ({
           />
         </div>
       </div>
-      <div className="field">
+      <div id="review-content" className="field">
         <label className="label">Review</label>
         <div className="control">
           <textarea
@@ -72,11 +69,11 @@ const DetailReviewForm = ({
           />
         </div>
       </div>
-      <div className="field">
+      <div id="review-rating" className="field">
         <label className="label">Rating</label>
         <p>Rating Stars Go Here!</p>
       </div>
-      <div style={submitStyle} className="field is-grouped">
+      <div id="submit-cancel" className="field is-grouped">
         <div className="control">
           <button onClick = {submitAction} className="button is-link">Submit</button>
         </div>
