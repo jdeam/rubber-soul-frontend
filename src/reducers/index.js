@@ -168,6 +168,7 @@ function userId(state = null, action) {
 function cartId(state = null, action) {
   switch(action.type) {
     case CART_ID_RECEIVED: {
+      console.log(typeof action.cartId);
       return action.cartId;
     }
     default:

@@ -148,7 +148,7 @@ export function loadUserId() {
   return (dispatch) => {
     dispatch({
       type: USER_ID_RECEIVED,
-      cartId: localStorage.getItem('user_id') });
+      userId: JSON.parse(localStorage.getItem('user_id')) });
   }
 }
 export function setUserId(userId) {
@@ -163,7 +163,7 @@ export function loadCartId() {
   return (dispatch) => {
     dispatch({
       type: CART_ID_RECEIVED,
-      cartId: localStorage.getItem('cart_id') });
+      cartId: JSON.parse(localStorage.getItem('cart_id')) });
   }
 }
 export function setCartId(cartId) {
@@ -181,5 +181,11 @@ export function fetchCart() {
     const response = await axios.get(`${BaseURL}/api/carts/${cartId}`);
     const { items } = response.data.data;
     dispatch({ type: CART_ITEMS_RECEIVED, items });
+  }
+}
+
+export function clearCart() {
+  return (dispatch) => {
+    dispatch({ type: CART_ITEMS_RECEIVED, items: [] });
   }
 }
