@@ -39,8 +39,8 @@ const CartDropdownList = ({ shoesById, cartItems }) => {
       </div>
     </div>
   ) : (
-    <div className="dropdown-content">
-      Your cart is empty.
+    <div className="dropdown-content empty-cart">
+      <p className="is-size-4">Your cart is empty</p>
     </div>
   )
 }

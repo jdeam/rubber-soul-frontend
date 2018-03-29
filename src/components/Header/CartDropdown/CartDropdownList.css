@@ -6,6 +6,13 @@ div.subtotal {
   align-items: center;
 }
 
+div.empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
 .subtotal-content {
   width: 100%;
   display: flex;

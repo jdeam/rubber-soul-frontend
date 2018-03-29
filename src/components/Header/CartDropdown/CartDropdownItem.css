@@ -10,3 +10,7 @@ img.cart-img {
   width: 70px;
   height: auto;
 }
+
+.dropdown-item a {
+  color: black;
+}
