@@ -1,0 +1,11 @@
+.SignupForm-title {
+    color: white;
+}
+
+.SignupForm-hide {
+    display: none;
+}
+
+.SignupForm-shown {
+    display: initial;
+}

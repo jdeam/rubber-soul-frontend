@@ -189,3 +189,12 @@ export function clearCart() {
     dispatch({ type: CART_ITEMS_RECEIVED, items: [] });
   }
 }
+
+export const MODAL_TOGGLE_MODAL = 'MODAL_TOGGLE_MODAL';
+export function toggleModal() {
+  return (dispatch) => {
+    dispatch({
+      type: MODAL_TOGGLE_MODAL
+    })
+  }
+}

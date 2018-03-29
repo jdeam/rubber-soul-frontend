@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setCartId, setUserId, clearCart } from '../../../actions';
@@ -14,22 +12,13 @@ const attemptSignOut = (e, setCartId, setUserId, clearCart) => {
     clearCart();
 }
 
-const LoggedInMenu = ({ setCartId, setUserId, clearCart }) => {
+const LoggedInMenu = ({ setCartId, setUserId, clearCart, user_id }) => {
     return (
         <div className="dropdown-content">
             <div className="dropdown-item">
-                <Link to="/account">
-                    <div id="my-account-option" className="field">
-                        <p className="control has-icons-left has-icons-right">
-                            <i className="fas fa-edit"></i>
-                            <p>Edit My Account &nbsp;</p>
-                        </p>
-                    </div>
-                </Link>
-                
                 <div className="field">
                     <p className="control sign-up-field">
-                        <button onClick={(e) => attemptSignOut(e, setCartId, setUserId, clearCart)} className="button is-light">
+                        <button onClick={(e) => attemptSignOut(e, setCartId, setUserId, clearCart )} className="button is-light">
                         Log Out
                         </button>
                     </p>

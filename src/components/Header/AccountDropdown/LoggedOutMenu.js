@@ -3,8 +3,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setCartId, setUserId, fetchCart } from '../../../actions';
+import { setCartId, setUserId, fetchCart, toggleModal } from '../../../actions';
 import './AccountDropdown.css';
+import SignupView from '../../SignupView/SignupView';
 
 
 class LoggedOutMenu extends React.Component {
@@ -19,6 +20,9 @@ class LoggedOutMenu extends React.Component {
 
     setPassword = (e) => {
         this.setState({ password: e.target.value });
+    }
+    setModalState = () => {
+        this.setState({ modalIsActive: !this.state.modalIsActive });
     }
 
     attemptLogin = (e) => {
@@ -49,39 +53,44 @@ class LoggedOutMenu extends React.Component {
 
     render() {
         return (
-            <div className="dropdown-content">
-                <div className="dropdown-item">
-                    <div className="field">
-                    <p className="control has-icons-left has-icons-right">
-                        <input onChange={this.setEmail} value={this.state.email} className="input" type="email" placeholder="Email" />
-                        <span className="icon is-small is-left">
-                        <i className="fas fa-envelope"></i>
-                        </span>
-                    </p>
-                    </div>
-                    <div className="field">
-                    <p className="control has-icons-left">
-                        <input onChange={this.setPassword} value={this.state.password} className="input" type="password" placeholder="Password" />
-                        <span className="icon is-small is-left">
-                        <i className="fas fa-lock"></i>
-                        </span>
-                    </p>
-                    </div>
-                    <div className="field">
-                    <p className="control sign-up-field">
-                        <button onClick={(e) => this.attemptLogin(e)} className="button is-light">
-                        Login
-                        </button>
-                        <button className="button is-text is-small">
-                        Create an account
-                        </button>
-                    </p>
+            <div>
+                <div className="dropdown-content">
+                    <div className="dropdown-item">
+                        <div className="field">
+                        <p className="control has-icons-left has-icons-right">
+                            <input onChange={this.setEmail} value={this.state.email} className="input" type="email" placeholder="Email" />
+                            <span className="icon is-small is-left">
+                            <i className="fas fa-envelope"></i>
+                            </span>
+                        </p>
+                        </div>
+                        <div className="field">
+                        <p className="control has-icons-left">
+                            <input onChange={this.setPassword} value={this.state.password} className="input" type="password" placeholder="Password" />
+                            <span className="icon is-small is-left">
+                            <i className="fas fa-lock"></i>
+                            </span>
+                        </p>
+                        </div>
+                        <div className="field">
+                        <p className="control sign-up-field">
+                            <button onClick={(e) => this.attemptLogin(e)} className="button is-light">
+                            Login
+                            </button>
+                            <button onClick={() => this.props.toggleModal()} className="button is-text is-small">
+                            Create an account
+                            </button>
+                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         );
     }
 }
+
+
 
 const mapStateToProps = (state) => ({ 
     user_id: state.userId 
@@ -90,7 +99,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     setCartId, 
     setUserId, 
-    fetchCart
+    fetchCart,
+    toggleModal
 }, dispatch);
 
 export default connect(

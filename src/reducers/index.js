@@ -17,7 +17,8 @@ import {
   QTY_RESET,
   USER_ID_RECEIVED,
   CART_ID_RECEIVED,
-  CART_ITEMS_RECEIVED
+  CART_ITEMS_RECEIVED,
+  MODAL_TOGGLE_MODAL
 } from '../actions';
 import { returnShoeData } from './searchFunctions';
 
@@ -186,6 +187,17 @@ function cartItems(state = [], action) {
   }
 }
 
+function modal(state= false, action) {
+  switch(action.type) {
+    case MODAL_TOGGLE_MODAL: {
+      return !state;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 export default combineReducers({
   shoes,
   shoesById,
@@ -198,5 +210,6 @@ export default combineReducers({
   appliedQuery,
   userId,
   cartId,
-  cartItems
+  cartItems,
+  modal
 });
