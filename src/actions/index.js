@@ -143,12 +143,27 @@ export function resetQty() {
   }
 }
 
+export const USER_ID_RECEIVED = 'USER_ID_RECEIVED';
+export function loadUserId() {
+  return async (dispatch) => {
+    dispatch({
+      type: USER_ID_RECEIVED,
+      userId: JSON.parse(localStorage.getItem('user_id')) });
+  }
+}
+export function setUserId(userId) {
+  return (dispatch) => {
+    localStorage.setItem('user_id', userId);
+    dispatch({ type: USER_ID_RECEIVED, userId });
+  }
+}
+
 export const CART_ID_RECEIVED = 'CART_ID_RECEIVED';
 export function loadCartId() {
   return (dispatch) => {
     dispatch({
       type: CART_ID_RECEIVED,
-      cartId: localStorage.getItem('cart_id') });
+      cartId: JSON.parse(localStorage.getItem('cart_id')) });
   }
 }
 export function setCartId(cartId) {
@@ -182,5 +197,30 @@ export function updateCart(cartItem) {
       dispatch({ type: CART_ID_RECEIVED, cartId: cart_id })
     }
     dispatch({ type: CART_ITEMS_RECEIVED, items });
+  }
+}
+
+export function clearCart() {
+  return (dispatch) => {
+    dispatch({ type: CART_ITEMS_RECEIVED, items: [] });
+  }
+}
+
+export const MODAL_TOGGLE_MODAL = 'MODAL_TOGGLE_MODAL';
+export function toggleModal() {
+  return (dispatch) => {
+    dispatch({
+      type: MODAL_TOGGLE_MODAL
+    })
+  }
+}
+
+export const MODAL_CONTENT_SET_CONTENT = 'MODAL_CONTENT_SET_CONTENT';
+export function setModalContent(contentType) {
+  return (dispatch) => {
+    dispatch({
+      type: MODAL_CONTENT_SET_CONTENT,
+      contentType
+    })
   }
 }

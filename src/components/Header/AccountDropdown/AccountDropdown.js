@@ -1,88 +1,59 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './AccountDropdown.css';
+import LoggedInMenu from './LoggedInMenu';
+import LoggedOutMenu from './LoggedOutMenu';
 
 class AccountDropdown extends React.Component {
-  state = { 
-    email: '', 
-    password: ''
-  };
-
-  setEmail = (e) => {
-    this.setState({ email: e.target.value });
+  state = {
+    header: null
   }
-  setPassword = (e) => {
-    this.setState({ password: e.target.value });
+  componentDidMount() {
+    if (this.props.user_id) {
+      this.showName(this.props.user_id)
+        .then(jsx => {
+          this.setState({ header: jsx });
+        })
+    }
   }
-  attemptLogin = (e) => {
-    e.preventDefault();
-    if (!this.state.email.length || !this.state.password.length) {
-      console.log('Please enter all fields');
-    } else {
-      const BaseURL = 'http://localhost:8080';
-      axios.post(`${BaseURL}/user/login`, {
-        email: this.state.email,
-        password: this.state.password
+  showName = (user_id) => {
+    // make axios call
+    const BaseURL = 'http://localhost:8080';
+    return axios.get(`${BaseURL}/user/${user_id}`)
+      .then(user => {
+        return <p>Hi, {user.data.data.first_name}! &nbsp;</p>;
       })
-        .then(res => {
-          const token = res.headers.auth.split(' ')[1];
-          localStorage.setItem('token', token);
-          console.log(res.data.user_id, res.data.cart_id);
-          console.log(token);
-          this.setState({ email: '', password: '' });
-        })
-        .catch(err => {
-          console.log('Invalid credentials');
-        })
-    } 
   }
-
-  render () {
-    
+  render() {
     return (
       <div className="navbar-item dropdown is-right is-hoverable">
-        <div className="dropdown-trigger">
-          <Link to="/account" className="navbar-item">
-            <p>My Account &nbsp;</p>
-            <i className="fa fa-user-circle title is-4" aria-hidden="true" />
-          </Link>
-        </div>
-        <div className="dropdown-menu" id="dropdown-menu6" role="menu">
-          <div className="dropdown-content">
-            <div className="dropdown-item">
-              <div className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <input onChange={this.setEmail} value={this.state.email} className="input" type="email" placeholder="Email" />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-envelope"></i>
-                  </span>
-                </p>
+          <div className="dropdown-trigger">
+            {this.props.user_id ? 
+              (<div to="/account" className="navbar-item">
+                {this.state.header ? this.state.header : <p>Loading... &nbsp;</p>}
+                <i className="fa fa-user-circle title is-4" aria-hidden="true" />
+              </div>) : (
+              <div className="navbar-item">
+                <p>My Account &nbsp;</p>
+                <i className="fa fa-user-circle title is-4" aria-hidden="true" />
               </div>
-              <div className="field">
-                <p className="control has-icons-left">
-                  <input onChange={this.setPassword} value={this.state.password} className="input" type="password" placeholder="Password" />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-lock"></i>
-                  </span>
-                </p>
-              </div>
-              <div className="field">
-                <p className="control sign-up-field">
-                  <button onClick={(e) => this.attemptLogin(e)} className="button is-light">
-                    Login
-                    </button>
-                  <button className="button is-text is-small">
-                    Create an account
-                  </button>
-                </p>
-              </div>
-            </div>
+            )}
+            
+          </div>
+          <div className="dropdown-menu" id="dropdown-menu6" role="menu">
+            {this.props.user_id ? <LoggedInMenu /> : <LoggedOutMenu /> }
           </div>
         </div>
-      </div>
     );
   } 
 }
+  
+const mapStateToProps = (state) => ({ 
+  user_id: state.userId,
+});
 
-export default AccountDropdown;
+export default connect(
+  mapStateToProps
+)(AccountDropdown);

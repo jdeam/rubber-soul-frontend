@@ -15,8 +15,11 @@ import {
   QTY_INCREASED,
   QTY_DECREASED,
   QTY_RESET,
+  USER_ID_RECEIVED,
   CART_ID_RECEIVED,
-  CART_ITEMS_RECEIVED
+  CART_ITEMS_RECEIVED,
+  MODAL_TOGGLE_MODAL,
+  MODAL_CONTENT_SET_CONTENT
 } from '../actions';
 import { returnShoeData } from './searchFunctions';
 
@@ -154,9 +157,20 @@ function selectedQty(state = 1, action) {
   }
 }
 
+function userId(state = null, action) {
+  switch(action.type) {
+    case USER_ID_RECEIVED: {
+      return action.userId;
+    }
+    default:
+      return state;
+  }
+}
+
 function cartId(state = null, action) {
   switch(action.type) {
     case CART_ID_RECEIVED: {
+      console.log(typeof action.cartId);
       return action.cartId;
     }
     default:
@@ -174,6 +188,28 @@ function cartItems(state = [], action) {
   }
 }
 
+function modal(state= false, action) {
+  switch(action.type) {
+    case MODAL_TOGGLE_MODAL: {
+      return !state;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
+function modalContent(state = null, action) {
+  switch(action.type) {
+    case MODAL_CONTENT_SET_CONTENT: {
+      return action.contentType;
+    }
+    default: {
+      return state;
+    }
+  }
+} 
+
 export default combineReducers({
   shoes,
   shoesById,
@@ -184,6 +220,9 @@ export default combineReducers({
   searchQuery,
   selectedQty,
   appliedQuery,
+  userId,
   cartId,
-  cartItems
+  cartItems,
+  modal,
+  modalContent
 });

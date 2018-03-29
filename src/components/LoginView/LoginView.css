@@ -1,0 +1,7 @@
+.LoginForm-hide {
+    display: none;
+}
+
+.LoginForm-shown {
+    display: initial;
+}
