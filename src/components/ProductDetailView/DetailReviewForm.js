@@ -1,6 +1,8 @@
 import React from 'react';
+import DetailStarInput from './DetailStarInput';
 import './DetailReviewForm.css';
 import Notifications, {notify} from 'react-notify-toast';
+import Rating from 'react-rating';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {   setReviewTitle, clearReviewTitle, setReviewContent, clearReviewContent, setReviewRating, clearReviewRating, submitReview, hideReviewForm, clearActiveTab, clearReviewForm } from '../../actions';
@@ -34,14 +36,13 @@ const DetailReviewForm = ({
   }
 
   let confirmSubmit;
-  // if (reviewTitle && reviewContent) {
   if (reviewTitle && reviewContent && reviewRating) {
     confirmSubmit = true;
   } else {
     confirmSubmit = false;
   }
 
-  let submitAction = confirmSubmit ? (e) => notify.show('Review Submitted!', "success") : (e) => notify.show('Please complete all review fields', "warning")
+  let submitAction = confirmSubmit ? (e) => notify.show('Review Submitted!', "success") : (e) => notify.show('Please complete all review fields', "error")
 
   return (
     <div>
@@ -71,11 +72,11 @@ const DetailReviewForm = ({
       </div>
       <div id="review-rating" className="field">
         <label className="label">Rating</label>
-        <p>Rating Stars Go Here!</p>
+        <DetailStarInput />
       </div>
       <div id="submit-cancel" className="field is-grouped">
         <div className="control">
-          <button onClick = {submitAction} className="button is-link">Submit</button>
+          <button onClick={submitAction} className="button is-link">Submit</button>
         </div>
         <div className="control">
           <button onClick={ (e) => {hideReviewForm(); clearActiveTab(); clearReviewTitle(); clearReviewContent(); clearReviewRating();} } className="button is-text">Cancel</button>
