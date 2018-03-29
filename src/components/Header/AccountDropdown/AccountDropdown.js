@@ -32,7 +32,7 @@ class AccountDropdown extends React.Component {
           <div className="dropdown-trigger">
             {this.props.user_id ? 
               (<div to="/account" className="navbar-item">
-                {this.state.header}
+                {this.state.header ? this.state.header : <p>Loading... &nbsp;</p>}
                 <i className="fa fa-user-circle title is-4" aria-hidden="true" />
               </div>) : (
               <div className="navbar-item">
