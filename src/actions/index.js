@@ -130,7 +130,7 @@ export function increaseQty() {
 export const QTY_DECREASED = 'QTY_DECREASED';
 export function decreaseQty(qty) {
   return (dispatch) => {
-    if (parseInt(qty, 10) > 0) {
+    if (parseInt(qty, 10) > 1) {
       dispatch({ type: QTY_DECREASED })
     }
   };
