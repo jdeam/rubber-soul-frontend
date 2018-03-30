@@ -6,18 +6,13 @@ import LoggedInMenu from './LoggedInMenu';
 import LoggedOutMenu from './LoggedOutMenu';
 
 class AccountDropdown extends React.Component {
+  
   state = {
-    header: null
+    headerJSX: null
   }
   componentDidMount() {
-    if (this.props.user_id) {
-      this.showName(this.props.user_id)
-        .then(jsx => {
-          this.setState({ header: jsx });
-        })
-    }
+    this.showName(this.props.user_id);
   }
-
   showName = (user_id) => {
     // make axios call
     const BaseURL = 'http://localhost:8080';
@@ -25,14 +20,18 @@ class AccountDropdown extends React.Component {
       .then(user => {
         return <p>Hi, {user.data.data.first_name} &nbsp;</p>;
       })
+      .then(jsx => {
+        this.setState({ headerJSX: jsx });
+      });
   }
+
   render() {
     return (
       <div className="navbar-item dropdown is-right is-hoverable">
           <div className="dropdown-trigger">
             {this.props.user_id ?
               (<div to="/account" className="navbar-item">
-                {this.state.header ? this.state.header : <p>Loading... &nbsp;</p>}
+                {this.state.headerJSX ? this.state.headerJSX : <p>Loading... &nbsp;</p>}
                 <i className="fa fa-user-circle title is-4" aria-hidden="true" />
               </div>) : (
               <div className="navbar-item">

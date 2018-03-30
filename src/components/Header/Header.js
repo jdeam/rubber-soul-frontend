@@ -16,7 +16,7 @@ const submitQuery = (e, action, searchQuery, data, applySortToShoes, sort, histo
   history.push("/");
 }
 
-const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort, history }) => {
+const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort, history, user_id, headerJSX }) => {
   return (
   
   <Headroom id="Header">
@@ -36,7 +36,7 @@ const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort, histor
       </div>
       <div className="navbar-menu">
         <div className="navbar-end">
-          <AccountDropdown />
+          <AccountDropdown header={headerJSX} />
           <hr className="navbar-divider" />
           <CartDropdown />
         </div>
@@ -49,7 +49,8 @@ const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort, histor
 const mapStateToProps = (state) => ({
   shoes: state.shoes,
   searchQuery: state.searchQuery,
-  sort: state.sort
+  sort: state.sort,
+  user_id: state.userId
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

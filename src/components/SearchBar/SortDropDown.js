@@ -38,7 +38,7 @@ const determineSortType = (e, action, action2) => {
             break;
         }
         default: {
-            console.log('Unhandled Exception');
+            
         }
     }
     action2(sortType);

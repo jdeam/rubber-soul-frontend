@@ -1,11 +1,8 @@
 import React from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setCartId, setUserId, fetchCart, toggleModal, setModalContent } from '../../../actions';
+import { toggleModal, setModalContent } from '../../../actions';
 import './AccountDropdown.css';
-import SignupView from '../../SignupView/SignupView';
 
 class LoggedOutMenu extends React.Component {
     toggleLogin = (toggleModal, setModalToLogin) => {
