@@ -5,19 +5,20 @@ import rootReducer from './reducers';
 import { createLogger } from 'redux-logger';
 import { SHOE_MOUSED_ON, SHOE_MOUSED_OFF } from './actions';
 
+const middlewares = [ thunkMiddleware ];
+
 const logger = createLogger({
   predicate: (getState, action) => (
     action.type !== SHOE_MOUSED_ON && action.type !== SHOE_MOUSED_OFF
   )
 });
 
+if (process.env.NODE_ENV === `development`) middlewares.push(logger);
+
 const store = createStore(
   rootReducer,
   composeWithDevTools(
-    applyMiddleware(
-      thunkMiddleware,
-      logger
-    )
+    applyMiddleware([ ...middlewares ])
   )
 );
 
