@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ProductList from './components/ProductListView/ProductList';
 import Checkout from './components/CheckoutView/Checkout';
 import Modal from './components/Modal/Modal';
+import Cart from './components/CartView/Cart';
 import 'bulma/css/bulma.css';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -18,9 +19,10 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route exact path="/" component={ ProductList }/>
             <Route path="/checkout" component={ Checkout } />
+            <Route path="/cart" component={ Cart } />
             <Route path="/:id" component={ DetailView }/>
+            <Route path="/" component={ ProductList }/>
           </Switch>
           <Footer />
           <Modal />

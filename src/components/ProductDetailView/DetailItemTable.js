@@ -1,6 +1,9 @@
 import React from 'react';
 
 const DetailItemTable = ({shoeColor, shoeTags}) => {
+  const formattedTagList = shoeTags.reduce((list, tag, i, arr) => {
+    return (i === arr.length-1 ? list + tag : list + `${tag}, `);
+  }, "");
 
   return (
     <div>
@@ -16,7 +19,7 @@ const DetailItemTable = ({shoeColor, shoeTags}) => {
             <td className="has-text-right">
               <strong>Tags</strong>
             </td>
-            <td>{`${shoeTags}`}</td>
+            <td>{ formattedTagList }</td>
           </tr>
         </tbody>
       </table>

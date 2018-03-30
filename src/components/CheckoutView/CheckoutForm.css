@@ -1,0 +1,16 @@
+.checkout-form {
+  padding-right: 35px;
+}
+
+.is-larger {
+  width: 65%;
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.is-wide {
+  width: 300px;
+}

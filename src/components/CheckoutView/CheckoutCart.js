@@ -15,18 +15,41 @@ const CheckoutCart = ({ shoesById, cartItems }) => {
   }, 0);
 
   return (
-    <div className="column is-5">
+    <div className="column is-5 checkout-cart-container">
       <CheckoutCartList items={ itemsWithShoeData } />
       <hr />
-      <div class="field has-addons coupon-box">
-        <div class="control">
-          <input class="input" type="text" placeholder="Discount code" />
+      <div
+        className="field has-addons coupon-box"
+        style={ { marginTop: "10px"} }
+      >
+        <div className="control is-expanded">
+          <input
+            className="input"
+            type="text"
+            placeholder="Discount code"
+          />
         </div>
-        <div class="control">
-          <a class="button">
+        <div className="control">
+          <a className="button">
             APPLY
           </a>
         </div>
+      </div>
+      <hr />
+      <div className="checkout-subtotal">
+        <div>
+          <p className="is-5">Subtotal</p>
+          <p className="is-5">Shipping</p>
+        </div>
+        <div>
+          <p className="is-5"><b>{ `$${subtotal.toFixed(2)}` }</b></p>
+          <p className="is-5 shipping-right"><b>FREE</b></p>
+        </div>
+      </div>
+      <hr />
+      <div className="checkout-total">
+        <span className="title is-4">Total</span>
+        <span className="title is-4">{ `$${subtotal.toFixed(2)}` }</span>
       </div>
     </div>
   );

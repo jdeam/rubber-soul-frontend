@@ -5,7 +5,7 @@ const DetailImg = ({shoeImg}) => {
 
   return (
     <div className="column is-6">
-      <div className="image is-2by2">
+      <div className="image is-2by2 shoe-detail-img">
         <img id="Detail-img" src={`${shoeImg}`} alt="product"/>
       </div>
     </div>
