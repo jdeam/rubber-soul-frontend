@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductContent from './ProductContent';
+import ProgressiveImage from 'react-progressive-image';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showSizes, hideSizes } from '../../actions';
 import './ProductCol.css';
+import placeholder from './222x222.png';
 
 const ProductCol = ({ shoe, showSizes, hideSizes }) => {
   return (
@@ -17,7 +19,9 @@ const ProductCol = ({ shoe, showSizes, hideSizes }) => {
         <div className="card">
           <div className="card-image">
             <figure className="image">
-              <img src={ shoe.imgURL } alt={ `${shoe.brand} ${shoe.model}` }/>
+              <ProgressiveImage src={shoe.imgURL} placeholder={placeholder} >
+                  {(src => <img src={src} alt={`${shoe.brand} ${shoe.model}`} />)}
+              </ProgressiveImage>
             </figure>
           </div>
           <ProductContent shoe={ shoe } />

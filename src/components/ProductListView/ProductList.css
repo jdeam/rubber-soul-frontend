@@ -18,3 +18,11 @@ body {
   font-weight: bold;
   padding: 0 10px;
 }
+
+.ProductList-title {
+  float: left;
+}
+
+.ProductList-sortDrop {
+  float: right;
+}

@@ -4,17 +4,21 @@ import AccountDropdown from './AccountDropdown/AccountDropdown';
 import CartDropdown from './CartDropdown/CartDropdown';
 import SearchInput from '../SearchBar/SearchInput';
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { queryShoes } from '../../actions';
+import { queryShoes, applySortToShoes } from '../../actions';
 
-const submitQuery = (e, action, searchQuery, data) => {
+const submitQuery = (e, action, searchQuery, data, applySortToShoes, sort, history) => {
   e.preventDefault();
   action(searchQuery, data);
+  applySortToShoes(sort)
+  history.push("/");
 }
 
-const Header = ({ queryShoes, searchQuery, shoes }) => (
+const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort, history }) => {
+  return (
+  
   <Headroom id="Header">
     <nav id="Header-navbar" className="navbar has-shadow">
       <div className="navbar-brand">
@@ -24,7 +28,7 @@ const Header = ({ queryShoes, searchQuery, shoes }) => (
         <div className="navbar-search">
           <div className="control has-icons-left">
             <form
-              onSubmit={ (e) => submitQuery(e, queryShoes, searchQuery, shoes)}>
+              onSubmit={ (e) => submitQuery(e, queryShoes, searchQuery, shoes, applySortToShoes, sort, history)}>
               <SearchInput />
             </form>
           </div>
@@ -40,14 +44,16 @@ const Header = ({ queryShoes, searchQuery, shoes }) => (
     </nav>
   </Headroom>
 );
+}
 
 const mapStateToProps = (state) => ({
   shoes: state.shoes,
-  searchQuery: state.searchQuery
+  searchQuery: state.searchQuery,
+  sort: state.sort
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  queryShoes
+  queryShoes, applySortToShoes
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
