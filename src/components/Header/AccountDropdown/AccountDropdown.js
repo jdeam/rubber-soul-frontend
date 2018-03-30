@@ -1,8 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setUserInfo } from '../../../actions';
 import './AccountDropdown.css';
 import LoggedInMenu from './LoggedInMenu';
 import LoggedOutMenu from './LoggedOutMenu';
@@ -10,7 +8,6 @@ import LoggedOutMenu from './LoggedOutMenu';
 class AccountDropdown extends React.Component {
   
   render() {
-    console.log(this.props.user_info);
     return (
       <div className="navbar-item dropdown is-right is-hoverable">
           <div className="dropdown-trigger">
