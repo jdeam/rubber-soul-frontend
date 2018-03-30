@@ -51,19 +51,19 @@ const SortDropDown = ({ applySortToShoes, saveSort }) => {
           <div className="field-label is-normal">
             <label className="label">Sort by:</label>
           </div>
-            <div className="control">
-                <div className="select">
-                    <select onChange={(e) => determineSortType(e, applySortToShoes, saveSort)} >
-                        <option>- Select option -</option>
-                        <option>Price - low</option>
-                        <option>Price - high</option>
-                        <option>Rating - low</option>
-                        <option>Rating - high</option>
-                        <option>Alphabetical A-Z</option>
-                        <option>Alphabetical Z-A</option>
-                    </select>
-                </div>
+          <div className="control">
+            <div className="select">
+              <select onChange={(e) => determineSortType(e, applySortToShoes, saveSort)} >
+                <option>- Select option -</option>
+                <option>Price - low</option>
+                <option>Price - high</option>
+                <option>Rating - low</option>
+                <option>Rating - high</option>
+                <option>Alphabetical A-Z</option>
+                <option>Alphabetical Z-A</option>
+              </select>
             </div>
+          </div>
         </div>
     )
 }
