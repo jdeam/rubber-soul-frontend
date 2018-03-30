@@ -14,7 +14,7 @@ class ProductList extends Component {
     this.props.hideReviewForm();
     this.props.clearReviewForm();
     this.props.saveSort({});
-    this.props.queryShoes('', this.props.shoes);
+    this.props.queryShoes(this.props.searchQuery, this.props.shoes);
     this.props.applySortToShoes(this.props.sortType);
   }
 
@@ -45,7 +45,8 @@ const mapStateToProps = (state) => ({
   appliedQuery: state.appliedQuery,
   shoes: state.shoes,
   selectedSize: state.selectedSize,
-  sort: state.sort
+  sort: state.sort,
+  searchQuery: state.searchQuery 
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

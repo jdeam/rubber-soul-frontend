@@ -70,10 +70,10 @@ export function queryShoes(queryStr, shoes) {
       type: APPLIED_QUERY_SET_QUERY,
       queryStr
     })
-    dispatch({
-      type: SEARCHQUERY_SET_QUERY,
-      queryStr: ''
-    })
+    // dispatch({
+    //   type: SEARCHQUERY_SET_QUERY,
+    //   queryStr: ''
+    // })
   }
 }
 

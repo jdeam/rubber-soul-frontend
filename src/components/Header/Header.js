@@ -4,19 +4,20 @@ import AccountDropdown from './AccountDropdown/AccountDropdown';
 import CartDropdown from './CartDropdown/CartDropdown';
 import SearchInput from '../SearchBar/SearchInput';
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { queryShoes, applySortToShoes } from '../../actions';
 
-const submitQuery = (e, action, searchQuery, data, applySortToShoes, sort) => {
-  console.log(sort);
+const submitQuery = (e, action, searchQuery, data, applySortToShoes, sort, history) => {
   e.preventDefault();
   action(searchQuery, data);
   applySortToShoes(sort)
+  history.push("/");
 }
 
-const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort }) => (
+const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort, history }) => {
+  return (
   
   <Headroom id="Header">
     <nav id="Header-navbar" className="navbar has-shadow">
@@ -27,7 +28,7 @@ const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort }) => (
         <div className="navbar-search">
           <div className="control has-icons-left">
             <form
-              onSubmit={ (e) => submitQuery(e, queryShoes, searchQuery, shoes, applySortToShoes, sort)}>
+              onSubmit={ (e) => submitQuery(e, queryShoes, searchQuery, shoes, applySortToShoes, sort, history)}>
               <SearchInput />
             </form>
           </div>
@@ -43,6 +44,7 @@ const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort }) => (
     </nav>
   </Headroom>
 );
+}
 
 const mapStateToProps = (state) => ({
   shoes: state.shoes,
@@ -54,4 +56,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   queryShoes, applySortToShoes
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
