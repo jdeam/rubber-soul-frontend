@@ -66,7 +66,12 @@ class SignupForm extends React.Component {
                 <div className="field">
                     <label className="label">* First Name</label>
                     <div className="control">
-                        <input className="input" type="text" onChange={this.setFirstName} placeholder="Jane" />
+                        <input
+                          className="input is-focused" 
+                          type="text"
+                          onChange={this.setFirstName}
+                          placeholder="Jane"
+                        />
                     </div>
                 </div>
                 <div className="field">

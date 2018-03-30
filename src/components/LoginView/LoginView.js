@@ -58,9 +58,15 @@ class LoginView extends React.Component {
             <div>
               <form onSubmit={(e) => this.attemptLogin(e)}>
                 <div className="field">
-                    <label className="label">Email</label>
+                    <label className="label ">Email</label>
                     <p className="control has-icons-left has-icons-right">
-                        <input onChange={this.setEmail} value={this.state.email} className="input" type="email" placeholder="Email" />
+                        <input
+                          onChange={this.setEmail}
+                          value={this.state.email}
+                          className="input is-focused"
+                          type="email"
+                          placeholder="Email"
+                        />
                         <span className="icon is-small is-left">
                             <i className="fas fa-envelope"></i>
                         </span>
