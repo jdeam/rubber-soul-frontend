@@ -9,9 +9,9 @@ const DetailAddToCartButton = ({ shoe_id, qty, size, updateCart }) => {
 
   let submitAction;
   if (qty && size) {
-    submitAction = () => {updateCart({shoe_id, qty, size}); notify.show('Item Added!', "success")}
+    submitAction = () => {updateCart({shoe_id, qty, size}); notify.show('Item Added!', "success", 2500)}
   } else {
-    submitAction = () => notify.show('Please select a size and quantity.', "error")
+    submitAction = () => notify.show('Please select a size and quantity.', "error", 2500)
   }
 
   return (

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setCartId, fetchCart } from '../../actions';
 import { bindActionCreators } from 'redux';
+import Notifications, {notify} from 'react-notify-toast';
 import states from './states';
 import axios from 'axios';
 import './CheckoutForm.css';
@@ -217,6 +218,7 @@ class CheckoutForm extends Component {
         <br />
 
         <div className="control cart-buttons">
+          <Notifications />
           <Link
             to="/"
             className="button is-text"
@@ -228,10 +230,12 @@ class CheckoutForm extends Component {
           </Link>
           <button
             className="button is-primary is-wide"
-            onClick={ () => this.postOrder({
+            onClick={ () =>
+              {this.postOrder({
               user_id: this.props.user_id,
               cart_id: this.props.cart_id
-            }) }
+              });
+              notify.show("Thanks for shopping with us!", "success", 2500)} }
           >
             PLACE ORDER
           </button>
