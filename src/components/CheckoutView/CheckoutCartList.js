@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckoutCartItem from './CheckoutCartItem';
+import './CheckoutCartList.css';
 
 const CheckoutCartList = ({ items }) => {
   const itemEls = items.map((item, i) => {
@@ -7,7 +8,7 @@ const CheckoutCartList = ({ items }) => {
   });
 
   return itemEls.length ? (
-    <div>
+    <div className="checkout-cart-list">
       { itemEls }
     </div>
   ) : (

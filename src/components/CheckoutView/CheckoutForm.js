@@ -5,7 +5,7 @@ const CheckoutForm = () => {
   return (
     <div
       className="column is-7"
-      style={ { borderRight: "0.25px solid #DBDBDB" } }
+      style={ { borderRight: "1px solid #DBDBDB" } }
     >
 
     </div>

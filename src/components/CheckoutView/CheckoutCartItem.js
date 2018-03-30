@@ -9,47 +9,52 @@ const CheckoutCartItem = ({ item, fetchSingleShoe, clearShoe }) => {
 
   return (
     item.shoe ? (
-      <div className="">
-        <Link
-          to={ `/${item.shoe.id}` }
-          onClick={ () => {
-            clearShoe();
-            fetchSingleShoe(item.shoe.id);
-          } }
-        >
-          <img
-            className=""
-            alt={ `${item.shoe.brand} ${item.shoe.model}` }
-            src={ item.shoe.imgURL }
-          />
-        </Link>
-        <Link
-          to={ `/${item.shoe.id}` }
-          onClick={ () => {
-            clearShoe();
-            fetchSingleShoe(item.shoe.id);
-          } }
-        >
-          <div>
-            <p className="is-size-6">{ item.shoe.model }</p>
-            <p className="is-size-7">{ item.shoe.brand }</p>
-            <p className="is-size-7">{ `Size ${item.size}` }</p>
+      <div className="checkout-cart-item-container">
+        <div className="checkout-cart-item">
+          <div className="cart-image-content">
+            <Link
+              to={ `/${item.shoe.id}` }
+              onClick={ () => {
+                clearShoe();
+                fetchSingleShoe(item.shoe.id);
+              } }
+            >
+              <img
+                className="checkout-cart-img"
+                alt={ `${item.shoe.brand} ${item.shoe.model}` }
+                src={ item.shoe.imgURL }
+              />
+            </Link>
+            <Link
+              to={ `/${item.shoe.id}` }
+              onClick={ () => {
+                clearShoe();
+                fetchSingleShoe(item.shoe.id);
+              } }
+            >
+              <div>
+                <p>
+                  <span className="is-size-5"><b>{ item.shoe.model }</b></span>
+                  <span className="is-size-5">&nbsp;|&nbsp;</span>
+                  <span className="is-size-6">{ item.shoe.brand }</span>
+                </p>
+                <p>
+                  <span className="is-size-7">{ `Size ${item.size}` }</span>
+                </p>
+              </div>
+            </Link>
           </div>
-        </Link>
-        <Link
-          to={ `/${item.shoe.id}` }
-          onClick={ () => {
-            clearShoe();
-            fetchSingleShoe(item.shoe.id);
-          } }
-        >
           <div>
             <p
               className="is-size-6"
-            ><b>{ `$${item.shoe.price.toFixed(2)}` }</b>
+            >
+              <b>{
+              `$${item.shoe.price.toFixed(2)}` +
+              (item.cart_qty > 1 ? ` × ${item.cart_qty}` : "") }
+              </b>
             </p>
           </div>
-        </Link>
+        </div>
       </div>
     ) : (
       <div></div>

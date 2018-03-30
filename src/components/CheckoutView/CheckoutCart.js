@@ -16,6 +16,8 @@ const CheckoutCart = ({ shoesById, cartItems }) => {
   return (
     <div className="column is-5">
       <CheckoutCartList items={ itemsWithShoeData } />
+      <hr />
+      
     </div>
   );
 }
