@@ -16,6 +16,7 @@ class ProductList extends Component {
     this.props.saveSort({});
     this.props.queryShoes(this.props.searchQuery, this.props.shoes);
     this.props.applySortToShoes(this.props.sortType);
+    window.scrollTo(0, 0);
   }
 
   render () {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import states from './states';
 import axios from 'axios';
@@ -8,24 +9,30 @@ const BaseURL = 'http://localhost:8080';
 class CheckoutForm extends Component {
 
   state = {
+    first_name: '',
+    last_name: '',
     email: '',
-    firstName: '',
-    lastName: '',
-    company: '',
-    address: '',
-    apt: '',
+    address_line_1: '',
+    address_line_2: '',
     city: '',
-    country: '',
     state: '',
-    zip: ''
+    zip: '',
+    phone_number: '',
+    country: 'United States'
   }
 
   async componentDidMount() {
     const response = await axios.get(
       `${BaseURL}/user/${this.props.userId}`
     );
-    const userData = response.data.data;
-    console.log(userData);
+    const user = response.data.data;
+    console.log(user);
+    if (user.email) this.setState({ email: user.email });
+    if (user.first_name) this.setState({ first_name: user.first_name });
+    if (user.last_name) this.setState({ last_name: user.last_name });
+    if (user.city) this.setState({ city: user.city });
+    if (user.state) this.setState({ state: user.state });
+    if (user.zip) this.setState({ zip: user.zip });
   }
 
   render() {
@@ -67,8 +74,8 @@ class CheckoutForm extends Component {
                   className="input"
                   type="text"
                   placeholder="First name"
-                  onChange={ (e) => this.setState({ firstName: e.target.value }) }
-                  value={ this.state.firstName }
+                  onChange={ (e) => this.setState({ first_name: e.target.value }) }
+                  value={ this.state.first_name }
                 />
               </p>
             </div>
@@ -78,8 +85,8 @@ class CheckoutForm extends Component {
                   className="input"
                   type="text"
                   placeholder="Last name"
-                  onChange={ (e) => this.setState({ lastName: e.target.value }) }
-                  value={ this.state.lastName }
+                  onChange={ (e) => this.setState({ last_name: e.target.value }) }
+                  value={ this.state.last_name }
                 />
               </p>
             </div>
@@ -91,38 +98,23 @@ class CheckoutForm extends Component {
             <input
               className="input"
               type="text"
-              placeholder="Company (optional)"
-              onChange={ (e) => this.setState({ company: e.target.value }) }
-              value={ this.state.company }
+              placeholder="Address"
+              onChange={ (e) => this.setState({ address_line_1: e.target.value }) }
+              value={ this.state.address_line_1 }
             />
           </p>
         </div>
 
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field is-larger">
-              <p className="control">
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Address"
-                  onChange={ (e) => this.setState({ address: e.target.value }) }
-                  value={ this.state.address }
-                />
-              </p>
-            </div>
-            <div className="field">
-              <p className="control">
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Apt, suite, etc (optional)"
-                  onChange={ (e) => this.setState({ apt: e.target.value }) }
-                  value={ this.state.apt }
-                />
-              </p>
-            </div>
-          </div>
+        <div className="field">
+          <p className="control is-expanded">
+            <input
+              className="input"
+              type="text"
+              placeholder="Line 2 (optional)"
+              onChange={ (e) => this.setState({ address_line_2: e.target.value }) }
+              value={ this.state.address_line_2 }
+            />
+          </p>
         </div>
 
         <div className="field">
@@ -185,6 +177,18 @@ class CheckoutForm extends Component {
         </div>
 
         <div className="field">
+          <p className="control is-expanded">
+            <input
+              className="input"
+              type="tel"
+              placeholder="Phone"
+              onChange={ (e) => this.setState({ phone_number: e.target.value }) }
+              value={ this.state.phone_number }
+            />
+          </p>
+        </div>
+
+        <div className="field">
           <div className="control">
             <label className="checkbox">
               <input type="checkbox" />
@@ -195,8 +199,17 @@ class CheckoutForm extends Component {
 
         <br />
 
-        <div className="control">
-          <button className="button is-primary is-floated-right">PLACE ORDER</button>
+        <div className="control cart-buttons">
+          <Link
+            to="/"
+            className="button is-text"
+            >
+            <span className="icon">
+              <i className="fa fa-caret-left"></i>
+            </span>
+            <span>See more shoes</span>
+          </Link>
+          <button className="button is-primary is-wide">PLACE ORDER</button>
         </div>
       </div>
     );

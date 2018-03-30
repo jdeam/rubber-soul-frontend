@@ -18,7 +18,10 @@ const CheckoutCart = ({ shoesById, cartItems }) => {
     <div className="column is-5 checkout-cart-container">
       <CheckoutCartList items={ itemsWithShoeData } />
       <hr />
-      <div className="field has-addons coupon-box">
+      <div
+        className="field has-addons coupon-box"
+        style={ { marginTop: "10px"} }
+      >
         <div className="control is-expanded">
           <input
             className="input"

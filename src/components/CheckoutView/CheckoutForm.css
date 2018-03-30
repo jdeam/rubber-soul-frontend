@@ -6,7 +6,11 @@
   width: 65%;
 }
 
-.is-floated-right {
-  float: right;
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.is-wide {
   width: 300px;
 }
