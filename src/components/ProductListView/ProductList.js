@@ -24,8 +24,7 @@ class ProductList extends Component {
         <div className="container">
           <div className="columns">
             <div className="column is-12">
-              <div
-                className="title ProductList-title">
+              <div className="title is-2 ProductList-title">
                   { "All Shoes" + (this.props.appliedQuery ?
                     ` matching "${this.props.appliedQuery}"` : "") }
                 </div>
@@ -48,7 +47,7 @@ const mapStateToProps = (state) => ({
   shoes: state.shoes,
   selectedSize: state.selectedSize,
   sort: state.sort,
-  searchQuery: state.searchQuery 
+  searchQuery: state.searchQuery
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

@@ -10,7 +10,7 @@ const Checkout = () => {
         <div className="container">
           <div className="columns">
             <div className="column is-12">
-              <div className="title">
+              <div className="title is-2">
                 Checkout
               </div>
             </div>

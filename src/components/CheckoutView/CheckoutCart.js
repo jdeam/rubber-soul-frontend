@@ -15,7 +15,7 @@ const CheckoutCart = ({ shoesById, cartItems }) => {
   }, 0);
 
   return (
-    <div className="column is-5">
+    <div className="column is-5 checkout-cart-container">
       <CheckoutCartList items={ itemsWithShoeData } />
       <hr />
       <div className="field has-addons coupon-box">

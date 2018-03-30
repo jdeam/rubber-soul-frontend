@@ -5,11 +5,6 @@ import {  setReviewRating, clearReviewRating } from '../../actions';
 import FontAwesome from 'react-fontawesome';
 
 class DetailStarInput extends Component {
-
-  state = {
-    hoverId: null
-  }
-
   createStars = (rating) => {
     const starEls = [];
 
@@ -22,7 +17,7 @@ class DetailStarInput extends Component {
           <FontAwesome
             className="title"
             name={ "star" + (rating >= i ? "": "-o" )}
-            style={{color: '#ed6c63'}}
+            style={ {color: '#ed6c63'} }
           />
         </a>
       );

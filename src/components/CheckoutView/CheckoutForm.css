@@ -1,0 +1,12 @@
+.checkout-form {
+  padding-right: 35px;
+}
+
+.is-larger {
+  width: 65%;
+}
+
+.is-floated-right {
+  float: right;
+  width: 300px;
+}

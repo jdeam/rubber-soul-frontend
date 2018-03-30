@@ -17,9 +17,9 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route exact path="/" component={ ProductList }/>
             <Route path="/checkout" component={ Checkout } />
             <Route path="/:id" component={ DetailView }/>
+            <Route path="/" component={ ProductList }/>
           </Switch>
           <Footer />
           <Modal />
