@@ -2,7 +2,7 @@ import levenshtein from 'fast-levenshtein';
 
 export function returnShoeData (shoeData, queryStr, sizes) {
     let newShoeData = [...shoeData];
-    if (queryStr.length < 4) {
+    if (queryStr.length < 5) {
         newShoeData = shortFilter(shoeData, queryStr);
     } else {
         newShoeData = longFilter(shoeData, queryStr);

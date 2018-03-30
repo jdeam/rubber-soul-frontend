@@ -7,14 +7,17 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { queryShoes } from '../../actions';
+import { queryShoes, applySortToShoes } from '../../actions';
 
-const submitQuery = (e, action, searchQuery, data) => {
+const submitQuery = (e, action, searchQuery, data, applySortToShoes, sort) => {
+  console.log(sort);
   e.preventDefault();
   action(searchQuery, data);
+  applySortToShoes(sort)
 }
 
-const Header = ({ queryShoes, searchQuery, shoes }) => (
+const Header = ({ queryShoes, applySortToShoes, searchQuery, shoes, sort }) => (
+  
   <Headroom id="Header">
     <nav id="Header-navbar" className="navbar has-shadow">
       <div className="navbar-brand">
@@ -24,7 +27,7 @@ const Header = ({ queryShoes, searchQuery, shoes }) => (
         <div className="navbar-search">
           <div className="control has-icons-left">
             <form
-              onSubmit={ (e) => submitQuery(e, queryShoes, searchQuery, shoes)}>
+              onSubmit={ (e) => submitQuery(e, queryShoes, searchQuery, shoes, applySortToShoes, sort)}>
               <SearchInput />
             </form>
           </div>
@@ -43,11 +46,12 @@ const Header = ({ queryShoes, searchQuery, shoes }) => (
 
 const mapStateToProps = (state) => ({
   shoes: state.shoes,
-  searchQuery: state.searchQuery
+  searchQuery: state.searchQuery,
+  sort: state.sort
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  queryShoes
+  queryShoes, applySortToShoes
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

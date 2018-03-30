@@ -37,6 +37,16 @@ export function applySortToShoes(sortType) {
   }
 }
 
+export const SORT_SAVE_SORT = 'SORT_SAVE_SORT';
+export function saveSort(sortType) {
+  return (dispatch) => {
+    dispatch({
+      type: SORT_SAVE_SORT,
+      sortType
+    })
+  }
+}
+
 export const SEARCHQUERY_SET_QUERY = 'SEARCHQUERY_SET_QUERY';
 export function setQueryString(queryStr) {
   return (dispatch) => {

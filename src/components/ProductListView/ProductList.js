@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import ProductRows from './ProductRows';
+import SortDropDown from '../SearchBar/SortDropDown';
 import './ProductList.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { clearShoe, queryShoes, clearSelectedSize, hideReviewForm, clearReviewForm, clearActiveTab } from '../../actions';
+import { clearShoe, queryShoes, clearSelectedSize, hideReviewForm, clearReviewForm, clearActiveTab, applySortToShoes, saveSort } from '../../actions';
 
 class ProductList extends Component {
   componentDidMount() {
@@ -12,7 +13,9 @@ class ProductList extends Component {
     this.props.clearActiveTab();
     this.props.hideReviewForm();
     this.props.clearReviewForm();
+    this.props.saveSort({});
     this.props.queryShoes('', this.props.shoes);
+    this.props.applySortToShoes(this.props.sortType);
   }
 
   render () {
@@ -26,6 +29,7 @@ class ProductList extends Component {
                   { "All Shoes" + (this.props.appliedQuery ?
                     ` matching "${this.props.appliedQuery}"` : "") }
                 </div>
+                <SortDropDown />
             </div>
           </div>
           <hr />
@@ -40,16 +44,19 @@ const mapStateToProps = (state) => ({
   shoesInView: state.shoesInView,
   appliedQuery: state.appliedQuery,
   shoes: state.shoes,
-  selectedSize: state.selectedSize
+  selectedSize: state.selectedSize,
+  sort: state.sort
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   clearShoe,
   queryShoes,
+  applySortToShoes,
   clearSelectedSize,
   hideReviewForm,
   clearReviewForm,
-  clearActiveTab
+  clearActiveTab,
+  saveSort
 }, dispatch);
 
 export default connect(

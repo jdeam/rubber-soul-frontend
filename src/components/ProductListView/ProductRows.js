@@ -12,6 +12,7 @@ const ProductRows = ({ shoes }) => {
     <div>
       {
         shoeRows.map((row, i) => {
+          
           return <ProductRow key={ i } shoes={ row } />
         })
       }

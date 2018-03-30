@@ -31,7 +31,8 @@ import {
   CART_ID_RECEIVED,
   CART_ITEMS_RECEIVED,
   MODAL_TOGGLE_MODAL,
-  MODAL_CONTENT_SET_CONTENT
+  MODAL_CONTENT_SET_CONTENT,
+  SORT_SAVE_SORT
 } from '../actions';
 import { returnShoeData } from './searchFunctions';
 
@@ -65,25 +66,38 @@ function shoesInView(state = [], action) {
     }
     case SHOESINVIEW_APPLY_SORT: {
       let newState = [...state];
-      let param = action.sortType.sort;
-      if (action.sortType.direction === 'Low') {
-        newState.sort((a, b) => {
-          if (a[param] < b[param]) return -1;
-          if (a[param] > b[param]) return 1;
-          return 0;
-        });
-      } else {
-        newState.sort((a, b) => {
-          if (a[param] > b[param]) return -1;
-          if (a[param] < b[param]) return 1;
-          return 0;
-        });
+      if (action.sortType) {
+        let param = action.sortType.sort;
+        if (action.sortType.direction === 'Low') {
+          newState.sort((a, b) => {
+            if (a[param] < b[param]) return -1;
+            if (a[param] > b[param]) return 1;
+            return 0;
+          });
+        } else {
+          newState.sort((a, b) => {
+            if (a[param] > b[param]) return -1;
+            if (a[param] < b[param]) return 1;
+            return 0;
+          });
+        }
       }
       return newState;
     }
     case SHOESINVIEW_APPLY_QUERY: {
       let newState = returnShoeData(action.shoes, action.queryStr, action.sizes);
       return newState;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
+function sort(state = {}, action) {
+  switch(action.type) {
+    case SORT_SAVE_SORT: {
+      return action.sortType;
     }
     default: {
       return state;
@@ -308,6 +322,7 @@ export default combineReducers({
   hoverId,
   selectedSize,
   searchQuery,
+  sort,
   selectedQty,
   appliedQuery,
   userId,

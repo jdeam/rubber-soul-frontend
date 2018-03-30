@@ -2,9 +2,9 @@ import React from 'react';
 import 'bulma/css/bulma.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { applySortToShoes } from '../../actions';
+import { applySortToShoes, saveSort } from '../../actions';
 
-const determineSortType = (e, action) => {
+const determineSortType = (e, action, action2) => {
     let sortType = {};
     switch(e.target.value) {
         case 'Price - Low': {
@@ -41,16 +41,17 @@ const determineSortType = (e, action) => {
             console.log('Unhandled Exception');
         }
     }
+    action2(sortType);
     action(sortType);
 }
 
-const SortDropDown = ({ applySortToShoes }) => {
+const SortDropDown = ({ applySortToShoes, saveSort }) => {
     return (
         <div className="field">
             <label className="label">Sort</label>
             <div className="control">
                 <div className="select">
-                    <select onChange={(e) => determineSortType(e, applySortToShoes)} >
+                    <select onChange={(e) => determineSortType(e, applySortToShoes, saveSort)} >
                         <option>- Select Option -</option>
                         <option>Price - Low</option>
                         <option>Price - High</option>
@@ -66,7 +67,7 @@ const SortDropDown = ({ applySortToShoes }) => {
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    applySortToShoes
+    applySortToShoes, saveSort
 }, dispatch);
 
 export default connect(null, mapDispatchToProps)(SortDropDown);
