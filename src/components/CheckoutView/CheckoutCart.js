@@ -1,6 +1,7 @@
 import React from 'react';
 import CheckoutCartList from './CheckoutCartList';
 import { connect } from 'react-redux';
+import './CheckoutCart.css';
 
 const CheckoutCart = ({ shoesById, cartItems }) => {
   const itemsWithShoeData = cartItems.map(item => {
@@ -17,7 +18,16 @@ const CheckoutCart = ({ shoesById, cartItems }) => {
     <div className="column is-5">
       <CheckoutCartList items={ itemsWithShoeData } />
       <hr />
-      
+      <div class="field has-addons coupon-box">
+        <div class="control">
+          <input class="input" type="text" placeholder="Discount code" />
+        </div>
+        <div class="control">
+          <a class="button">
+            APPLY
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
