@@ -334,3 +334,16 @@ export function setModalContent(contentType) {
     })
   }
 }
+
+export const USER_INFO_SET_USER_INFO = 'USER_INFO_SET_USER_INFO';
+export function setUserInfo(user_id) {
+  return async (dispatch) => {
+    const user_req = await axios.get(`${BaseURL}/user/${user_id}`)
+    const user_info = user_req.data.data;
+    console.log(user_info);
+    dispatch({
+      type: 'USER_INFO_SET_USER_INFO',
+      user_info
+    })
+  }
+}

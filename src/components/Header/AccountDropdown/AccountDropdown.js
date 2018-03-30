@@ -1,37 +1,19 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import './AccountDropdown.css';
 import LoggedInMenu from './LoggedInMenu';
 import LoggedOutMenu from './LoggedOutMenu';
 
 class AccountDropdown extends React.Component {
-
-  state = {
-    headerJSX: null
-  }
-  componentDidMount() {
-    this.showName(this.props.user_id);
-  }
-  showName = (user_id) => {
-    // make axios call
-    const BaseURL = 'https://rubber-soul.herokuapp.com';
-    return axios.get(`${BaseURL}/user/${user_id}`)
-      .then(user => {
-        return <p>Hi, {user.data.data.first_name} &nbsp;</p>;
-      })
-      .then(jsx => {
-        this.setState({ headerJSX: jsx });
-      });
-  }
-
+  
   render() {
     return (
       <div className="navbar-item dropdown is-right is-hoverable">
           <div className="dropdown-trigger">
             {this.props.user_id ?
               (<div to="/account" className="navbar-item">
-                {this.state.headerJSX ? this.state.headerJSX : <p>Loading... &nbsp;</p>}
+                {this.props.user_info.first_name ? <p>Hi, {this.props.user_info.first_name} &nbsp;</p> : <p>Loading... &nbsp;</p>}
                 <i className="fa fa-user-circle title is-4" aria-hidden="true" />
               </div>) : (
               <div className="navbar-item">
@@ -51,8 +33,13 @@ class AccountDropdown extends React.Component {
 
 const mapStateToProps = (state) => ({
   user_id: state.userId,
+  user_info: state.user_info
 });
 
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+
+});
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(AccountDropdown);

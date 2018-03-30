@@ -32,7 +32,8 @@ import {
   CART_ITEMS_RECEIVED,
   MODAL_TOGGLE_MODAL,
   MODAL_CONTENT_SET_CONTENT,
-  SORT_SAVE_SORT
+  SORT_SAVE_SORT,
+  USER_INFO_SET_USER_INFO
 } from '../actions';
 import { returnShoeData } from './searchFunctions';
 
@@ -313,6 +314,18 @@ function modalContent(state = null, action) {
   }
 }
 
+function user_info(state = {}, action) {
+  switch(action.type) {
+    case USER_INFO_SET_USER_INFO: {
+      const {password, ...user_info_noPass} = action.user_info; 
+      return user_info_noPass;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 export default combineReducers({
   shoes,
   shoesById,
@@ -334,5 +347,6 @@ export default combineReducers({
   cartId,
   cartItems,
   modal,
-  modalContent
+  modalContent,
+  user_info
 });
