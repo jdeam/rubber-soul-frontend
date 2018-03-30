@@ -81,7 +81,7 @@ const DetailReviewForm = ({
         <label className="label">Title</label>
         <div className="control">
           <input
-            className="input"
+            className="input is-focused"
             type="text"
             placeholder="Review Title"
             onChange={ (e) => setReviewTitle(e.target.value) }
