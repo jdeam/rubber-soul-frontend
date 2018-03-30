@@ -31,9 +31,12 @@ class CheckoutForm extends Component {
     if (user.email) this.setState({ email: user.email });
     if (user.first_name) this.setState({ first_name: user.first_name });
     if (user.last_name) this.setState({ last_name: user.last_name });
+    if (user.address_line_1) this.setState({ address_line_1: user.address_line_1 });
+    if (user.address_line_2) this.setState({ address_line_2: user.address_line_2 });
     if (user.city) this.setState({ city: user.city });
     if (user.state) this.setState({ state: user.state });
     if (user.zip) this.setState({ zip: user.zip });
+    if (user.phone_number) this.setState({ phone_number: user.phone_number });
   }
 
   postOrder = async (body) => {
