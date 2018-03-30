@@ -30,7 +30,7 @@ class LoginView extends React.Component {
         if (!this.state.email.length || !this.state.password.length) {
             console.log('Please enter all fields');
         } else {
-            const BaseURL = 'http://localhost:8080';
+            const BaseURL = 'https://rubber-soul.herokuapp.com';
             axios.post(`${BaseURL}/user/login`, {
                 email: this.state.email,
                 password: this.state.password

@@ -7,7 +7,7 @@ import Notifications, {notify} from 'react-notify-toast';
 import states from './states';
 import axios from 'axios';
 import './CheckoutForm.css';
-const BaseURL = 'http://localhost:8080';
+const BaseURL = 'https://rubber-soul.herokuapp.com';
 
 class CheckoutForm extends Component {
 

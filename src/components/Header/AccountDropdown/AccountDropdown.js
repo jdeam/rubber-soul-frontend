@@ -6,7 +6,7 @@ import LoggedInMenu from './LoggedInMenu';
 import LoggedOutMenu from './LoggedOutMenu';
 
 class AccountDropdown extends React.Component {
-  
+
   state = {
     headerJSX: null
   }
@@ -15,7 +15,7 @@ class AccountDropdown extends React.Component {
   }
   showName = (user_id) => {
     // make axios call
-    const BaseURL = 'http://localhost:8080';
+    const BaseURL = 'https://rubber-soul.herokuapp.com';
     return axios.get(`${BaseURL}/user/${user_id}`)
       .then(user => {
         return <p>Hi, {user.data.data.first_name} &nbsp;</p>;

@@ -32,7 +32,7 @@ class SignupForm extends React.Component {
             return;
         }
         let { first_name, last_name, email, password } = this.state;
-        const BaseURL = 'http://localhost:8080';
+        const BaseURL = 'https://rubber-soul.herokuapp.com';
         axios.post(`${BaseURL}/user/signup`, {
             first_name,
             last_name,
@@ -67,7 +67,7 @@ class SignupForm extends React.Component {
                     <label className="label">* First Name</label>
                     <div className="control">
                         <input
-                          className="input is-focused" 
+                          className="input is-focused"
                           type="text"
                           onChange={this.setFirstName}
                           placeholder="Jane"

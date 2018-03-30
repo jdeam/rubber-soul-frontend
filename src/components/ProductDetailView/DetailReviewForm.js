@@ -27,7 +27,7 @@ const DetailReviewForm = ({
   reviewRating,
   fetchSingleShoe
 }) => {
-  const BASE_URL = `http://localhost:8080`;
+  const BASE_URL = `https://rubber-soul.herokuapp.com`;
   let shoeBrandModel = `${shoeBrand} ${shoeModel}`;
 
   const review = {

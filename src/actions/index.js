@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BaseURL = 'http://localhost:8080';
+const BaseURL = 'https://rubber-soul.herokuapp.com';
 
 export const SHOES_RECEIVED = 'SHOES_RECEIVED';
 export function fetchShoes() {
