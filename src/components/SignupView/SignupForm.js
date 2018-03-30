@@ -2,7 +2,6 @@ import React from 'react';
 import 'bulma/css/bulma.css';
 import './SignupView.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setCartId, setUserId, fetchCart, toggleModal } from '../../actions';
