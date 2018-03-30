@@ -317,7 +317,8 @@ function modalContent(state = null, action) {
 function user_info(state = {}, action) {
   switch(action.type) {
     case USER_INFO_SET_USER_INFO: {
-      return action.user_info;
+      const {password, ...user_info_noPass} = action.user_info; 
+      return user_info_noPass;
     }
     default: {
       return state;
