@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { setCartId, fetchCart } from '../../actions';
+import { bindActionCreators } from 'redux';
 import states from './states';
 import axios from 'axios';
 import './CheckoutForm.css';
@@ -23,16 +25,28 @@ class CheckoutForm extends Component {
 
   async componentDidMount() {
     const response = await axios.get(
-      `${BaseURL}/user/${this.props.userId}`
+      `${BaseURL}/user/${this.props.user_id}`
     );
     const user = response.data.data;
-    console.log(user);
     if (user.email) this.setState({ email: user.email });
     if (user.first_name) this.setState({ first_name: user.first_name });
     if (user.last_name) this.setState({ last_name: user.last_name });
     if (user.city) this.setState({ city: user.city });
     if (user.state) this.setState({ state: user.state });
     if (user.zip) this.setState({ zip: user.zip });
+  }
+
+  postOrder = async (body) => {
+    if (!body.user_id || !body.cart_id) return;
+    const token = localStorage.getItem('token');
+    const response = await axios.patch(
+      `${BaseURL}/auth/cart/complete`,
+      body,
+      { headers: { token } }
+    );
+    const cart = response.data.data;
+    this.props.setCartId(cart.id);
+    this.props.fetchCart();
   }
 
   render() {
@@ -209,7 +223,15 @@ class CheckoutForm extends Component {
             </span>
             <span>See more shoes</span>
           </Link>
-          <button className="button is-primary is-wide">PLACE ORDER</button>
+          <button
+            className="button is-primary is-wide"
+            onClick={ () => this.postOrder({
+              user_id: this.props.user_id,
+              cart_id: this.props.cart_id
+            }) }
+          >
+            PLACE ORDER
+          </button>
         </div>
       </div>
     );
@@ -217,9 +239,16 @@ class CheckoutForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  userId: state.userId
+  user_id: state.userId,
+  cart_id: state.cartId
 });
 
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  setCartId,
+  fetchCart
+}, dispatch)
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(CheckoutForm);
