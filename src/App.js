@@ -8,7 +8,7 @@ import Modal from './components/Modal/Modal';
 import Cart from './components/CartView/Cart';
 import 'bulma/css/bulma.css';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setUserInfo } from './actions';
