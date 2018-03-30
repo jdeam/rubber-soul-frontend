@@ -24,7 +24,7 @@ class AccountDropdown extends React.Component {
     const BaseURL = 'http://localhost:8080';
     return axios.get(`${BaseURL}/user/${user_id}`)
       .then(user => {
-        return <p>Hi, {user.data.data.first_name}! &nbsp;</p>;
+        return <p>Hi, {user.data.data.first_name} &nbsp;</p>;
       })
   }
   render() {

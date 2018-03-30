@@ -1,0 +1,32 @@
+div.checkout-cart-item {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px;
+}
+
+div.checkout-cart-item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+img.checkout-cart-img {
+  max-height: 80px !important;
+  width: 70px;
+  height: auto;
+  margin-right: 16px;
+}
+
+.checkout-cart-item a {
+  color: black;
+}
+
+.cart-image-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
