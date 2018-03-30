@@ -4,7 +4,13 @@ import './SignupView.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setCartId, setUserId, fetchCart, toggleModal } from '../../actions';
+import {
+  setCartId,
+  setUserId,
+  fetchCart,
+  toggleModal,
+  setUserInfo
+} from '../../actions';
 
 class SignupForm extends React.Component {
     state = {
@@ -28,7 +34,11 @@ class SignupForm extends React.Component {
     }
     createUser = (e) => {
         e.preventDefault();
-        if ((!this.state.first_name.length) || (!this.state.last_name.length) || (!this.state.email.length) ||(!this.state.password.length)) {
+        if (
+          (!this.state.first_name.length) ||
+          (!this.state.last_name.length) ||
+          (!this.state.email.length) ||
+          (!this.state.password.length)) {
             return;
         }
         let { first_name, last_name, email, password } = this.state;
@@ -51,6 +61,7 @@ class SignupForm extends React.Component {
                 this.props.setCartId(res.data.claim.cart_id);
                 this.props.setUserId(res.data.claim.user_id);
                 this.props.toggleModal();
+                this.props.setUserInfo(res.data.claim.user_id);
                 return this.props.fetchCart();
             })
             .catch(err => {
@@ -123,7 +134,8 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
     setCartId,
     setUserId,
     fetchCart,
-    toggleModal
+    toggleModal,
+    setUserInfo
 }, dispatch);
 
 export default connect(

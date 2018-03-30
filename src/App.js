@@ -15,9 +15,11 @@ import { setUserInfo } from './actions';
 
 
 class App extends Component {
+
   componentDidMount() {
     if (this.props.user_id) this.props.setUserInfo(this.props.user_id);
   }
+
   render() {
     return (
       <Router>
