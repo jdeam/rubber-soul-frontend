@@ -55,7 +55,7 @@ const DetailReviewForm = ({
     submitAction = (e) => {
       return submitReview(review)
         .then(res => {
-          notify.show('Review Submitted!', "success");
+          notify.show('Review Submitted!', "success", 2500);
           fetchSingleShoe(shoe_id);
           hideReviewForm();
           clearActiveTab();
@@ -69,7 +69,7 @@ const DetailReviewForm = ({
     }
   } else {
     submitAction = (e) => {
-      notify.show('Please complete all review fields', "error")
+      notify.show('Please complete all review fields', "error", 3000)
     }
   }
 
