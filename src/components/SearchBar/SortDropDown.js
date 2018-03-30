@@ -38,7 +38,7 @@ const determineSortType = (e, action, action2) => {
             break;
         }
         default: {
-            
+            return;
         }
     }
     action2(sortType);
