@@ -1,4 +1,19 @@
 div.coupon-box {
-  width: 500px;
-  margin-left: 15px;
+  margin-left: 20px;
+}
+
+div.checkout-subtotal {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
+.shipping-right {
+  float: right;
+}
+
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
 }
