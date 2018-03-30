@@ -1,9 +1,7 @@
 import React from 'react';
 
 const DetailItemTable = ({shoeColor, shoeTags}) => {
-  const formattedTagList = shoeTags.reduce((list, tag, i, arr) => {
-    return (i === arr.length-1 ? list + tag : list + `${tag}, `);
-  }, "");
+  const formattedTagList = shoeTags.join(', ');
 
   return (
     <div>
