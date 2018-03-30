@@ -9,10 +9,15 @@ import Cart from './components/CartView/Cart';
 import 'bulma/css/bulma.css';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setUserInfo } from './actions';
 
 
 class App extends Component {
-
+  componentDidMount() {
+    if (this.props.user_id) this.props.setUserInfo(this.props.user_id);
+  }
   render() {
     return (
       <Router>
@@ -32,4 +37,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  user_id: state.userId
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  setUserInfo
+}, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

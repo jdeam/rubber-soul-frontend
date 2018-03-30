@@ -13,8 +13,9 @@ class ProductList extends Component {
     this.props.clearActiveTab();
     this.props.hideReviewForm();
     this.props.clearReviewForm();
-    if (this.props.user_id) this.props.setUserInfo(this.props.user_id);
     this.props.saveSort({});
+    if (this.props.user_id) this.props.setUserInfo(this.props.user_id);
+
     this.props.queryShoes(this.props.searchQuery, this.props.shoes);
     this.props.applySortToShoes(this.props.sortType);
     window.scrollTo(0, 0);

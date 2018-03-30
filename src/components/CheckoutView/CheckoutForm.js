@@ -23,12 +23,20 @@ class CheckoutForm extends Component {
     phone_number: '',
     country: 'United States'
   }
-
-  async componentDidMount() {
-    const response = await axios.get(
-      `${BaseURL}/user/${this.props.user_id}`
-    );
-    const user = response.data.data;
+  componentDidMount() {
+    let user = this.props.user_info;
+    if (user.email) this.setState({ email: user.email });
+    if (user.first_name) this.setState({ first_name: user.first_name });
+    if (user.last_name) this.setState({ last_name: user.last_name });
+    if (user.address_line_1) this.setState({ address_line_1: user.address_line_1 });
+    if (user.address_line_2) this.setState({ address_line_2: user.address_line_2 });
+    if (user.city) this.setState({ city: user.city });
+    if (user.state) this.setState({ state: user.state });
+    if (user.zip) this.setState({ zip: user.zip });
+    if (user.phone_number) this.setState({ phone_number: user.phone_number });
+  }
+  componentWillReceiveProps() {
+    let user = this.props.user_info;
     if (user.email) this.setState({ email: user.email });
     if (user.first_name) this.setState({ first_name: user.first_name });
     if (user.last_name) this.setState({ last_name: user.last_name });
@@ -250,7 +258,8 @@ class CheckoutForm extends Component {
 const mapStateToProps = (state) => ({
   user_id: state.userId,
   cart_id: state.cartId,
-  cartItems: state.cartItems
+  cartItems: state.cartItems,
+  user_info: state.user_info
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
