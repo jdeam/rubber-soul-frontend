@@ -7,22 +7,22 @@ import { applySortToShoes, saveSort } from '../../actions';
 const determineSortType = (e, action, action2) => {
     let sortType = {};
     switch(e.target.value) {
-        case 'Price - Low': {
+        case 'Price - low': {
             sortType.sort = 'price';
             sortType.direction = 'Low';
             break;
         }
-        case 'Price - High':{
+        case 'Price - high':{
             sortType.sort = 'price';
             sortType.direction = 'High';
             break;
         }
-        case 'Rating - Low': {
+        case 'Rating - low': {
             sortType.sort = 'avg_star_count';
             sortType.direction = 'Low';
             break;
         }
-        case 'Rating - High': {
+        case 'Rating - high': {
             sortType.sort = 'avg_star_count';
             sortType.direction = 'High';
             break;
@@ -46,26 +46,26 @@ const determineSortType = (e, action, action2) => {
 }
 
 const SortDropDown = ({ applySortToShoes, saveSort }) => {
-    return (
-        <div className="field is-horizontal">
-          <div className="field-label is-normal">
-            <label className="label">Sort by:</label>
-          </div>
-          <div className="control">
-            <div className="select">
-              <select onChange={(e) => determineSortType(e, applySortToShoes, saveSort)} >
-                <option>- Select option -</option>
-                <option>Price - low</option>
-                <option>Price - high</option>
-                <option>Rating - low</option>
-                <option>Rating - high</option>
-                <option>Alphabetical A-Z</option>
-                <option>Alphabetical Z-A</option>
-              </select>
-            </div>
-          </div>
+  return (
+    <div className="field is-horizontal">
+      <div className="field-label is-normal">
+        <label className="label">Sort by:</label>
+      </div>
+      <div className="control">
+        <div className="select">
+          <select onChange={(e) => determineSortType(e, applySortToShoes, saveSort)} >
+            <option>- Select option -</option>
+            <option>Price - low</option>
+            <option>Price - high</option>
+            <option>Rating - low</option>
+            <option>Rating - high</option>
+            <option>Alphabetical A-Z</option>
+            <option>Alphabetical Z-A</option>
+          </select>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
