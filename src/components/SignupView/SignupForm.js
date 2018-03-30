@@ -63,6 +63,7 @@ class SignupForm extends React.Component {
         let isEnabled = email.length > 0 && password.length > 0 && first_name.length > 0 && last_name.length > 0;
         return(
             <div>
+              <form onSubmit={(e) => this.createUser(e)}>
                 <div className="field">
                     <label className="label">* First Name</label>
                     <div className="control">
@@ -95,23 +96,28 @@ class SignupForm extends React.Component {
                 </div>
                 <div className="field is-grouped">
                     <div className="control">
-                        <button disabled={!isEnabled} onClick={(e) => this.createUser(e)} className="button is-link">Sign Up</button>
+                        <button disabled={!isEnabled}
+                          onClick={(e) => this.createUser(e)}
+                          className="button is-link"
+                        >
+                          Sign Up
+                        </button>
                     </div>
-                    
                 </div>
+              </form>
             </div>
         );
     }
-    
+
 }
 
-const mapStateToProps = (state) => ({ 
+const mapStateToProps = (state) => ({
     user_id: state.user_id
 });
-  
+
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    setCartId, 
-    setUserId, 
+    setCartId,
+    setUserId,
     fetchCart,
     toggleModal
 }, dispatch);
