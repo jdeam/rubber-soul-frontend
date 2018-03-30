@@ -4,3 +4,15 @@
   justify-content: space-between;
   margin-left: 20px;
 }
+
+.empty-cart-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+}
+
+.continue-shopping {
+  width: 324px;
+}

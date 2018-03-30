@@ -54,6 +54,7 @@ class CheckoutForm extends Component {
   }
 
   render() {
+    const enabledState = !!this.props.cartItems.length;
     return (
       <div
         className="column is-7 checkout-form"
@@ -229,6 +230,7 @@ class CheckoutForm extends Component {
             <span>See more shoes</span>
           </Link>
           <button
+            disabled={ !enabledState }
             className="button is-primary is-wide"
             onClick={ () =>
               {this.postOrder({
@@ -247,7 +249,8 @@ class CheckoutForm extends Component {
 
 const mapStateToProps = (state) => ({
   user_id: state.userId,
-  cart_id: state.cartId
+  cart_id: state.cartId,
+  cartItems: state.cartItems
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

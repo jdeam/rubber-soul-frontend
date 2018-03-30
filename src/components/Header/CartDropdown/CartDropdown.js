@@ -8,7 +8,7 @@ const CartDropdown = () => {
   return (
     <div className="navbar-item dropdown is-right is-hoverable">
       <div className="dropdown-trigger">
-        <Link to="/cart" className="navbar-item">
+        <Link to="/checkout" className="navbar-item">
           <i className="fa fa-shopping-cart fa-flip-horizontal title is-4" aria-hidden="true" />
         </Link>
       </div>

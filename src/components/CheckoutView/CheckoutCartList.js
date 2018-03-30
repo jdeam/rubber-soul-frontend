@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckoutCartItem from './CheckoutCartItem';
+import { Link } from 'react-router-dom';
 import './CheckoutCartList.css';
 
 const CheckoutCartList = ({ items }) => {
@@ -12,7 +13,15 @@ const CheckoutCartList = ({ items }) => {
       { itemEls }
     </div>
   ) : (
-    <div></div>
+    <div className="empty-cart-message is-size-4">
+      There are no items in your cart
+      <Link
+        to="/"
+        className="button continue-shopping"
+      >
+        Continue shopping
+      </Link>
+    </div>
   )
 }
 
