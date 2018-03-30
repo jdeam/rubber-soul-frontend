@@ -9,12 +9,12 @@ import { setCartId, setUserId, fetchCart, toggleModal } from '../../actions';
 
 
 class LoginView extends React.Component {
-    state = { 
-        email: '', 
+    state = {
+        email: '',
         password: '',
         hasFailed: false,
     };
-    
+
     setEmail = (e) => {
         this.setState({ email: e.target.value });
     }
@@ -50,13 +50,14 @@ class LoginView extends React.Component {
             .catch(err => {
                 this.setState({ hasFailed: true });
             })
-        } 
+        }
     }
     render() {
         const { email, password } = this.state;
         let isEnabled = email.length > 0 && password.length > 0;
         return (
             <div>
+              <form onSubmit={(e) => this.attemptLogin(e)}>
                 <div className="field">
                     <label className="label">Email</label>
                     <p className="control has-icons-left has-icons-right">
@@ -80,23 +81,27 @@ class LoginView extends React.Component {
                 </div>
                 <div className="field">
                     <p className="control sign-up-field">
-                        <button disabled={!isEnabled} onClick={(e) => this.attemptLogin(e)} className="button is-info">
+                        <button
+                          disabled={!isEnabled}
+                          onClick={(e) => this.attemptLogin(e)}
+                          className="button is-info">
                             Login
                         </button>
                     </p>
                 </div>
+              </form>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => ({ 
+const mapStateToProps = (state) => ({
     user_id: state.user_id
 });
-  
+
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    setCartId, 
-    setUserId, 
+    setCartId,
+    setUserId,
     fetchCart,
     toggleModal
 }, dispatch);

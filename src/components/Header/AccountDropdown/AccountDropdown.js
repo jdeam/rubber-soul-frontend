@@ -18,6 +18,7 @@ class AccountDropdown extends React.Component {
         })
     }
   }
+
   showName = (user_id) => {
     // make axios call
     const BaseURL = 'http://localhost:8080';
