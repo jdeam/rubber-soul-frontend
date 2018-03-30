@@ -3,6 +3,7 @@ import 'bulma/css/bulma.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { applySortToShoes, saveSort } from '../../actions';
+import './SortDropDown.css';
 
 const determineSortType = (e, action, action2) => {
     let sortType = {};
@@ -52,8 +53,10 @@ const SortDropDown = ({ applySortToShoes, saveSort }) => {
         <label className="label">Sort by:</label>
       </div>
       <div className="control">
-        <div className="select">
-          <select onChange={(e) => determineSortType(e, applySortToShoes, saveSort)} >
+        <div className="select" id="sort-select">
+          <select
+            onChange={(e) => determineSortType(e, applySortToShoes, saveSort)}
+          >
             <option>- Select option -</option>
             <option>Price - low</option>
             <option>Price - high</option>
