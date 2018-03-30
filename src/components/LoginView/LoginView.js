@@ -4,7 +4,7 @@ import './LoginView.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setCartId, setUserId, fetchCart, toggleModal } from '../../actions';
+import { setCartId, setUserId, fetchCart, toggleModal, setUserInfo } from '../../actions';
 
 
 class LoginView extends React.Component {
@@ -41,6 +41,7 @@ class LoginView extends React.Component {
                 this.props.setCartId(res.data.claim.cart_id);
                 this.props.setUserId(res.data.claim.user_id);
                 this.props.toggleModal();
+                this.props.setUserInfo(res.data.claim.user_id);
                 return this.props.fetchCart();
             })
             .then(res => {
@@ -108,7 +109,8 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
     setCartId,
     setUserId,
     fetchCart,
-    toggleModal
+    toggleModal,
+    setUserInfo
 }, dispatch);
 
 export default connect(
