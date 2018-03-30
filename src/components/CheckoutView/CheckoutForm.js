@@ -58,8 +58,27 @@ class CheckoutForm extends Component {
     this.props.fetchCart();
   }
 
+  getDisabledState() {
+    if (
+      !this.state.first_name ||
+      !this.state.last_name ||
+      !this.state.email ||
+      !this.state.address_line_1 ||
+      !this.state.city ||
+      !this.state.state ||
+      !this.state.country ||
+      !this.state.zip ||
+      !this.state.phone_number
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
-    const enabledState = !!this.props.cartItems.length;
+    const disabledState = (
+      !!this.props.cartItems.length ? this.getDisabledState() : false
+    );
     return (
       <div
         className="column is-7 checkout-form"
@@ -224,7 +243,6 @@ class CheckoutForm extends Component {
         <br />
 
         <div className="control cart-buttons">
-          <Notifications />
           <Link
             to="/"
             className="button is-text"
@@ -234,8 +252,9 @@ class CheckoutForm extends Component {
             </span>
             <span>See more shoes</span>
           </Link>
+          <Notifications />
           <button
-            disabled={ !enabledState }
+            disabled={ disabledState }
             className="button is-primary is-wide"
             onClick={ () =>
               {this.postOrder({
