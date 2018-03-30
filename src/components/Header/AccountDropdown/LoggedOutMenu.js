@@ -33,8 +33,14 @@ class LoggedOutMenu extends React.Component {
                     </div>
                     <div className="dropdown-item">
                         <div className="field">
-                        <p className="control sign-up-field">
-                            <button onClick={() => this.toggleSignup(this.props.toggleModal, this.props.setModalContent)} className="button is-text is-small">
+                        <p
+                          className="control sign-up-field"
+                        >
+                            <button
+                              onClick={() => this.toggleSignup(this.props.toggleModal, this.props.setModalContent)}
+                              className="button is-text is-small"
+                              id="create-account-button"
+                            >
                             Create an account
                             </button>
                         </p>
