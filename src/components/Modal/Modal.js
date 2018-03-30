@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bulma/css/bulma.css';
+import './Modal.css';
 import SignupView from '../SignupView/SignupView';
 import LoginView from '../LoginView/LoginView';
 import { connect } from 'react-redux';
@@ -40,8 +41,7 @@ const Modal = ({ toggleModal, modal, modalContent }) => {
     )
 }
 
-
-const mapStateToProps = (state) => ({ 
+const mapStateToProps = (state) => ({
     modal: state.modal, modalContent: state.modalContent
 });
 
@@ -50,7 +50,6 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 }, dispatch);
 
 export default connect(
-    mapStateToProps, 
+    mapStateToProps,
     mapDispatchToProps
 )(Modal);
-  

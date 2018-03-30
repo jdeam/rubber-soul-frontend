@@ -4,9 +4,9 @@ import SignupForm from './SignupForm';
 
 const SignupView = (e) => {
     return (
-        <form>
+        <div>
             <SignupForm />
-        </form>
+        </div>
     );
 }
 
