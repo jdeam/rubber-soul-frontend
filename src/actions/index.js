@@ -342,8 +342,16 @@ export function setUserInfo(user_id) {
     const user_info = user_req.data.data;
     console.log(user_info);
     dispatch({
-      type: 'USER_INFO_SET_USER_INFO',
+      type: USER_INFO_SET_USER_INFO,
       user_info
     })
   }
+}
+export function clearUserInfo() {
+  return (dispatch) => {
+    dispatch({
+      type: USER_INFO_SET_USER_INFO,
+      user_info: {}
+    });
+  };
 }
